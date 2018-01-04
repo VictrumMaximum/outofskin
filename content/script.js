@@ -1,0 +1,70 @@
+var slideIndex = 1;
+var slideTimer;
+
+$(document).ready(function() {
+	addSelectButtons();
+	showSlides(slideIndex);
+	slideTimer = setInterval(nextSlide, 8000);
+});
+
+function nextSlide() {
+	var previousIndex = slideIndex;
+	slideIndex += 1;
+    showSlides(previousIndex);
+}
+
+function showSlides(previousIndex) {
+    var quotes = document.getElementsByClassName("quote");
+	var selects = document.getElementsByClassName("select");
+	
+    if (slideIndex > quotes.length) {slideIndex = 1} 
+    if (slideIndex < 1) {slideIndex = quotes.length};
+	
+	var prevQ = quotes[previousIndex - 1];
+	var nextQ = quotes[slideIndex - 1];
+	
+	// fade out for 1 second
+	prevQ.style.webkitAnimationName = "fadeOut";
+	prevQ.style.webkitAnimationDuration = "1s";
+	prevQ.style.animation = "fadeOut 1s";
+	
+	// don't timeout if this is the first time loading
+	var timeout = 900;
+	if(previousIndex == slideIndex) {
+		timeout = 0;
+	}
+	setTimeout(function () {
+		prevQ.style.display = "none"; // get rid of previous slide
+		nextQ.style.display = "block"; // add next slide
+		// fade in for 1 second
+		nextQ.style.webkitAnimationName = "fadeIn";
+		nextQ.style.webkitAnimationDuration = "1s";
+		nextQ.style.animation = "fadeIn 1s";
+	}, timeout);
+	
+	// change the highlight of the select buttons
+	selects[previousIndex - 1].style.backgroundColor = "transparent";
+	selects[slideIndex - 1].style.backgroundColor = "#ffefe0";
+}
+
+// adds the appropriate amount of select buttons for the slides/quotes
+function addSelectButtons() {
+	var selector = document.getElementById('slide-selector');
+	var numberOfQuotes = document.getElementsByClassName("quote").length;
+	var i;
+	for (i = 0; i < numberOfQuotes; i++) {
+		var div = document.createElement('div');
+		div.className = "select";
+		selector.appendChild(div);
+	}
+}
+
+$(document).on('click', '.select', function() {
+	var previousIndex = slideIndex;
+	var index = $(this).index();
+	slideIndex = index + 1;
+	showSlides(previousIndex);
+	// reset interval timer
+	clearInterval(slideTimer);
+	slideTimer = setInterval(nextSlide, 8000);
+});
