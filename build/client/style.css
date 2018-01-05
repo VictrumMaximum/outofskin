@@ -8,9 +8,9 @@ Version: 1.0
 
 @font-face {
     font-family: 'mic-32';
-    src: url('./fonts/mic-32regular-webfont.woff') format('woff'),
-	 url('./fonts/mic-32regular-webfont.woff2') format('woff2'),
-	 url("./fonts/mic-32regular.ttf") format('truetype');
+    src: url('fonts/mic-32regular-webfont.woff') format('woff'),
+	 url('fonts/mic-32regular-webfont.woff2') format('woff2'),
+	 url("fonts/mic-32regular.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -22,7 +22,7 @@ Version: 1.0
 
 @media (max-width: 700px), handheld {
 	body{
-		background-image: url("./photos/rotated_mobile.jpg");
+		background-image: url("photos/rotated_mobile.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-size: auto 100%;
@@ -219,7 +219,7 @@ a {
 @media only screen and (min-width: 700px) {
 
 	body {
-		background-image: url("./photos/rotated_wide.jpg");
+		background-image: url("photos/rotated_wide.jpg");
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: auto 100%;
@@ -268,7 +268,7 @@ a {
 
 @media only screen and (min-width: 85em) {
 	body {
-		background-image: url("./photos/normal_extrawide.jpg");
+		background-image: url("photos/normal_extrawide.jpg");
 	}
 }
 
