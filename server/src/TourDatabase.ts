@@ -5,11 +5,12 @@ import {Promise} from "es6-promise";
 
 const qb = new QueryBuilder("mysql");
 const config = {
+	host     : 'localhost',
 	user     : 'root',
 	password : 'root',
 	database : 'oldsite',
 	dateStrings: true,
-	socketPath: "/cloudsql/my-second-project-191112:europe-west1:outofskindb"
+	// socketPath: "/cloudsql/my-second-project-191112:europe-west1:outofskindb"
 };
 const pool = mysql.createPool(config);
 
