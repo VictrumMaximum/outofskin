@@ -58,8 +58,7 @@ typings/
 .env
 
 # compiled server files
-build/Server.js
-build/TourDatabase.js
+build/*.js
 
 # intellij stuff
 .idea/
