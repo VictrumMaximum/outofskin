@@ -4,3 +4,23 @@ div.tour {
 span.tourField {
     display: block;
 }
+
+.dayInput {
+    width: 2em;
+}
+
+.monthInput {
+    width: 2em;
+}
+
+.yearInput {
+    width: 4em;
+}
+
+.hourInput {
+    width: 2em;
+}
+
+.minuteInput {
+    width: 2em;
+}

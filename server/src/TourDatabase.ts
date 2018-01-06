@@ -8,19 +8,20 @@ const config = {
 	host     : 'localhost',
 	user     : 'root',
 	password : 'root',
-	database : 'oldsite'
+	database : 'oldsite',
+	dateStrings: true
 };
 const pool = mysql.createPool(config);
 
 function add(query): Promise<any> {
 	const dbQuery = qb.insert({
 		eventName: query.eventName,
+		eventLink: query.eventLink,
 		city: query.city,
-		beginDate: query.beginDate,
-		endDate: query.endDate,
-		beginTime: query.beginTime,
-		endTime: query.endTime,
-		location: query.location
+		begin: query.begin,
+		end: query.end,
+		location: query.location,
+		locationLink: query.locationLink
 	}).from("tours").call();
 
 	return queryDatabase(dbQuery);
@@ -60,14 +61,16 @@ function queryDatabase(query: string): Promise<any> {
 				connection.release();
 				if (error) {
 					console.log("Database query failed with error " + JSON.stringify(error, null, 2));
-					throw (error);
+					reject (error);
 				}
 				else {
 					console.log("Database query succeeded");
 					resolve(results);
 				}
 			});
-		})
+		}).catch((error) => {
+			reject(error)
+		});
 	});
 }
 

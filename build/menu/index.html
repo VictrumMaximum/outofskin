@@ -11,6 +11,8 @@
                 src="https://code.jquery.com/jquery-3.2.1.min.js"
                 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
                 crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/nl.js"></script>
         <script src="script.js"></script>
 
         <title>Menu</title>
@@ -23,22 +25,32 @@
                     event <input id="eventName" class="textInput" />
                 </div>
                 <div class="tourInput">
+                    event link <input id="eventLink" class="textInput" />
+                </div>
+                <div class="tourInput">
                     city <input id="city" class="textInput" />
                 </div>
                 <div class="tourInput">
-                    begin date <input id="beginDate" class="textInput" />
+                    begin
+                    <input placeholder="dd" id="beginDay" class="dayInput" />
+                    <input placeholder="mm" id="beginMonth" class="monthInput" />
+                    <input placeholder="yyyy" id="beginYear" class="yearInput" />
+                    <input placeholder="hh" id="beginHour" class="hourInput" />
+                    <input placeholder="mm" id="beginMinute" class="minuteInput" />
                 </div>
                 <div class="tourInput">
-                    end date <input id="endDate" class="textInput" />
-                </div>
-                <div class="tourInput">
-                    begin time <input id="beginTime" class="textInput" />
-                </div>
-                <div class="tourInput">
-                    end time <input id="endTime" class="textInput" />
+                    end
+                    <input placeholder="dd" id="endDay" class="dayInput" />
+                    <input placeholder="mm" id="endMonth" class="monthInput" />
+                    <input placeholder="yyyy" id="endYear" class="yearInput" />
+                    <input placeholder="hh" id="endHour" class="hourInput" />
+                    <input placeholder="mm" id="endMinute" class="minuteInput" />
                 </div>
                 <div class="tourInput">
                     location <input id="location" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    location link <input id="locationLink" class="textInput" />
                 </div>
             </div>
             <div id="tourMenuButtons">

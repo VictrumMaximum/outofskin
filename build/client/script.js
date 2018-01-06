@@ -2,6 +2,7 @@ var slideIndex = 1;
 var slideTimer;
 
 $(document).ready(function() {
+	fetchAll();
 	addSelectButtons();
 	showSlides(slideIndex);
 	slideTimer = setInterval(nextSlide, 8000);
@@ -68,3 +69,61 @@ $(document).on('click', '.select', function() {
 	clearInterval(slideTimer);
 	slideTimer = setInterval(nextSlide, 8000);
 });
+
+function convertDatetime(sqlDate) {
+    const date = new Date(sqlDate);
+    return moment(sqlDate).format("DD MMMM HH:mm");
+}
+
+function addToursAsPrettyElement(tours) {
+    const targetDiv = $("#tours");
+    targetDiv.empty();
+    const results = [];
+    tours.forEach(function(tour) {
+        console.log(tour);
+        const tourTable = $("<table>");
+        tourTable.css("width", "100%")
+            .append($("<tbody>")
+                .append($("<tr>")
+                    .append($("<td>")
+                        .addClass("datum")
+                        .html(convertDatetime(tour.begin))
+                    )
+                )
+                .append($("<tr>")
+                    .append($("<td>")
+                        .append($("<a>")
+                            .html(tour.eventName)
+                            .attr("href", tour.eventLink)
+                            .attr("target", "_blank")
+                        )
+                    )
+                )
+                .append($("<tr>")
+                    .append($("<td>")
+                        .append($("<a>")
+                            .html(tour.location + ", " + tour.city)
+                            .attr("href", tour.locationLink)
+                            .attr("target", "_blank")
+                        )
+                    )
+                )
+            );
+        results.push(tourTable);
+    });
+    for (var i = 0; i < results.length; i++) {
+        targetDiv.append(results[i]);
+    }
+}
+const tourDataURL = "/tourData";
+function fetchAll() {
+    $.get(tourDataURL, function(response) {
+        const parsedResponse = JSON.parse(response);
+        console.log(parsedResponse);
+        if (parsedResponse.error) {
+            console.log(parsedResponse.error);
+        } else {
+            addToursAsPrettyElement(parsedResponse.data);
+        }
+    });
+}
