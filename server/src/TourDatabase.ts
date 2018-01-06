@@ -41,9 +41,10 @@ function getConnection(): any {
 		pool.getConnection((err, connection) => {
 			if (err) {
 				console.log("Getting connection from pool failed with error " + JSON.stringify(err, null, 2));
-				reject(err);
+				throw (err);
 			}
 			else {
+				console.log("Got connection");
 				resolve(connection);
 			}
 		});
@@ -53,25 +54,20 @@ function getConnection(): any {
 function queryDatabase(query: string): Promise<any> {
 	return new Promise((resolve, reject) => {
 		console.log("Executing query: " + query);
-		getConnection()
-			.then((connection) => {
-				console.log("got connection");
-				connection.query(query, function (error, results, fields) {
-					// make connection available for pool again, but doesn't destroy it.
-					connection.release();
-					if (error) {
-						console.log("Database query failed with error " + JSON.stringify(error, null, 2));
-						reject(error);
-					}
-					else {
-						console.log("Database query succeeded");
-						resolve(results);
-					}
-				});
-			}).catch((error) => {
-				// propagate the error
-				reject(error);
+		getConnection().then((connection) => {
+			connection.query(query, function (error, results, fields) {
+				// make connection available for pool again, but doesn't destroy it.
+				connection.release();
+				if (error) {
+					console.log("Database query failed with error " + JSON.stringify(error, null, 2));
+					throw (error);
+				}
+				else {
+					console.log("Database query succeeded");
+					resolve(results);
+				}
 			});
+		})
 	});
 }
 

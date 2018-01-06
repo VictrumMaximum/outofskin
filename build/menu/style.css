@@ -1,0 +1,6 @@
+div.tour {
+    border: 1px solid black;
+}
+span.tourField {
+    display: block;
+}

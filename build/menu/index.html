@@ -18,29 +18,35 @@
 
     <body>
         <div id="tourMenu">
-            <div class="tourInput">
-                event <input id="eventName" class="textInput" />
+            <div id="tourMenuFields">
+                <div class="tourInput">
+                    event <input id="eventName" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    city <input id="city" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    begin date <input id="beginDate" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    end date <input id="endDate" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    begin time <input id="beginTime" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    end time <input id="endTime" class="textInput" />
+                </div>
+                <div class="tourInput">
+                    location <input id="location" class="textInput" />
+                </div>
             </div>
-            <div class="tourInput">
-                city <input id="city" class="textInput" />
+            <div id="tourMenuButtons">
+                <button id="add">add</button>
+                <button id="fetchAll">fetch all</button>
             </div>
-            <div class="tourInput">
-                begin date <input id="beginDate" class="textInput" />
-            </div>
-            <div class="tourInput">
-                end date <input id="endDate" class="textInput" />
-            </div>
-            <div class="tourInput">
-                begin time <input id="beginTime" class="textInput" />
-            </div>
-            <div class="tourInput">
-                end time <input id="endTime" class="textInput" />
-            </div>
-            <div class="tourInput">
-                location <input id="location" class="textInput" />
-            </div>
-            <button id="add">add</button>
-            <button id="fetchAll">fetch all</button>
+        </div>
+        <div id="tours">
         </div>
     </body>
 </html>
