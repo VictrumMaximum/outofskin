@@ -9,7 +9,10 @@ const config = {
 	user     : 'root',
 	password : 'root',
 	database : 'oldsite',
-	dateStrings: true
+	dateStrings: true,
+	dialectOptions: {
+		socketPath: "/cloudsql/my-second-project-191112:europe-west1:outofskindb"
+	}
 };
 const pool = mysql.createPool(config);
 
