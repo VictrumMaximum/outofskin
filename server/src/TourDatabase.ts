@@ -42,7 +42,7 @@ function getConnection(): any {
 		pool.getConnection((err, connection) => {
 			if (err) {
 				console.log("Getting connection from pool failed with error " + JSON.stringify(err, null, 2));
-				throw (err);
+				reject (err);
 			}
 			else {
 				console.log("Got connection");
