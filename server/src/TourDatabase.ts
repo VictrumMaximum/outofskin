@@ -1,18 +1,21 @@
 import * as mysql from "mysql";
 import * as QueryBuilder from "querybuilder";
 import {Promise} from "es6-promise";
+const config = require("./config");
 
 
 const qb = new QueryBuilder("mysql");
-const config = {
-	host     : 'localhost',
-	user     : 'root',
-	password : 'root',
+const options = {
+	user     : config.get("MYSQL_USER"),
+	password : config.get("MYSQL_PASSWORD"),
 	database : 'oldsite',
 	dateStrings: true,
-	// socketPath: "/cloudsql/my-second-project-191112:europe-west1:outofskindb"
 };
-const pool = mysql.createPool(config);
+
+if (config.get("INSTANCE_CONNECTION_NAME") && config.get('NODE_ENV') === 'production') {
+	options['socketPath'] = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+}
+const pool = mysql.createPool(options);
 
 function add(query): Promise<any> {
 	const dbQuery = qb.insert({

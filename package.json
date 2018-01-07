@@ -24,6 +24,7 @@
     "es6-promise": "^4.2.2",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
+    "nconf": "^0.10.0",
     "querybuilder": "^1.1.0",
     "typescript": "^2.6.2"
   }
