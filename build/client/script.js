@@ -117,13 +117,22 @@ function addToursAsPrettyElement(tours) {
 }
 const tourDataURL = "/tourData";
 function fetchAll() {
-    $.get(tourDataURL, function(response) {
-        const parsedResponse = JSON.parse(response);
-        console.log(parsedResponse);
-        if (parsedResponse.error) {
-            console.log(parsedResponse.error);
-        } else {
-            addToursAsPrettyElement(parsedResponse.data);
+    const options = {};
+    options.limit = 5;
+    options.orderBy = "begin";
+    $.ajax({
+        url: tourDataURL,
+        type: 'GET',
+        contentType: 'application/json',
+        data: options,
+        success: function(response) {
+            const parsedResponse = JSON.parse(response);
+            console.log(parsedResponse);
+            if (parsedResponse.error) {
+                console.log(parsedResponse.error);
+            } else {
+                addToursAsPrettyElement(parsedResponse.data);
+            }
         }
     });
 }

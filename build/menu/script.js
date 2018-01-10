@@ -99,7 +99,6 @@ function search() {
         options.limit = parseInt(limit);
     }
     options.orderBy = $("#orderBy").val() + " " + $("#orderDirection").val();
-    console.log(options);
     $.ajax({
         url: tourDataURL,
         type: 'GET',
@@ -116,15 +115,6 @@ function search() {
             }
         }
     });
-    // $.get(tourDataURL, options, function(response) {
-    //     const parsedResponse = JSON.parse(response);
-    //     if (parsedResponse.error) {
-    //         console.log(parsedResponse.error);
-    //         alert("error");
-    //     } else {
-    //         addToursAsPrettyElement(parsedResponse.data);
-    //     }
-    // });
 }
 
 function getBegin() {
