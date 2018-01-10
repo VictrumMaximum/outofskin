@@ -53,10 +53,25 @@
                     location link <input id="locationLink" class="textInput" />
                 </div>
             </div>
-            <div id="tourMenuButtons">
-                <button id="add">add</button>
-                <button id="fetchAll">fetch all</button>
-            </div>
+            <button id="add">add</button>
+            <br>
+            Limit results (empty for all results) <input id="limit" placeholder="limit" />
+            <br>
+            Sort by
+            <select id="orderBy">
+                <option value="eventName">Event name</option>
+                <option value="city">City</option>
+                <option value="begin" selected >Begindate</option>
+                <option value="end">Enddate</option>
+                <option value="location">Location</option>
+            </select>
+            <br>
+            <select id="orderDirection">
+                <option value="ASC" selected >Ascending</option>
+                <option value="DESC">Descending</option>
+            </select>
+            <br>
+            <button id="search">Search</button>
         </div>
         <div id="tours">
         </div>

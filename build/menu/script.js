@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#fetchAll").click(fetchAll);
+    $("#search").click(search);
     $("#add").click(add);
 });
 
@@ -46,7 +46,6 @@ function addToursAsPrettyElement(tours) {
     targetDiv.empty();
     const results = [];
     tours.forEach(function(tour) {
-        console.log(tour);
         const tourTable = $("<table>");
         tourTable.css("width", "100%")
             .append($("<tbody>")
@@ -93,17 +92,39 @@ function addToursAsPrettyElement(tours) {
     }
 }
 
-function fetchAll() {
-    $.get(tourDataURL, function(response) {
-        const parsedResponse = JSON.parse(response);
-        console.log(parsedResponse);
-        if (parsedResponse.error) {
-            console.log(parsedResponse.error);
-            alert("error");
-        } else {
-            addToursAsPrettyElement(parsedResponse.data);
+function search() {
+    const options = {};
+    const limit = $("#limit").val();
+    if (limit.length > 0) {
+        options.limit = parseInt(limit);
+    }
+    options.orderBy = $("#orderBy").val() + " " + $("#orderDirection").val();
+    console.log(options);
+    $.ajax({
+        url: tourDataURL,
+        type: 'GET',
+        contentType: 'application/json',
+        data: options,
+        success: function(response) {
+            const parsedResponse = JSON.parse(response);
+            console.log(parsedResponse);
+            if (parsedResponse.error) {
+                console.log(parsedResponse.error);
+                alert("error");
+            } else {
+                addToursAsPrettyElement(parsedResponse.data);
+            }
         }
     });
+    // $.get(tourDataURL, options, function(response) {
+    //     const parsedResponse = JSON.parse(response);
+    //     if (parsedResponse.error) {
+    //         console.log(parsedResponse.error);
+    //         alert("error");
+    //     } else {
+    //         addToursAsPrettyElement(parsedResponse.data);
+    //     }
+    // });
 }
 
 function getBegin() {
@@ -138,7 +159,6 @@ function add() {
         begin: getBegin(),
         end: getEnd()
     };
-    console.log(tour);
     $.ajax({
         url: tourDataURL,
         type: 'POST',
@@ -150,15 +170,13 @@ function add() {
                 console.log(parsedResponse.error);
                 alert("error");
             } else {
-                console.log("success");
-                fetchAll();
+                search();
             }
         }
     });
 }
 
 function remove(id) {
-    console.log("removing tour " + id);
     $.ajax({
         url: tourDataURL,
         type: 'DELETE',
@@ -170,8 +188,7 @@ function remove(id) {
                 console.log(parsedResponse.error);
                 alert("error");
             } else {
-                console.log("success");
-                fetchAll();
+                search();
             }
         }
     });

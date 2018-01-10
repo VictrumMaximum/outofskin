@@ -1,11 +1,13 @@
 import tourDB from "./TourDatabase";
 import * as express from "express";
+const url = require('url');
 const app = express();
 const router = express.Router();
 
 router.get("/", (req, res) => {
 	console.log("Received request to show tours");
-	tourDB.fetchAll()
+	console.log(req.query);
+	tourDB.fetchAll(req.query)
 		.then((tours) => {
 			res.end(JSON.stringify({data: tours}));
 		}).catch((error) => {
@@ -16,7 +18,6 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 	console.log("Received request to add tour");
-	console.log(req.body);
 	tourDB.add(req.body)
 		.then(() => {res.end("{}");})
 		.catch((error) => {
@@ -27,7 +28,6 @@ router.post("/", (req, res) => {
 
 router.delete("/", (req, res) => {
 	console.log("Received request to delete tour");
-	console.log(req.body);
 	const id = req.body.id;
 	tourDB.remove(id)
 		.then(() => {res.end("{}");})
