@@ -16,8 +16,8 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 		return (
 			<div className={styles.tourComponent}>
 				<span>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</span><br/>
-				<span>{this.props.tour.event}</span><br/>
-				<span>{this.props.tour.establishment}, {this.props.tour.city}</span>
+				<span>{this.props.tour.eventName}</span><br/>
+				<span>{this.props.tour.location}, {this.props.tour.city}</span>
 			</div>
 		);
 	}
