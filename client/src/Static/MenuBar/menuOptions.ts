@@ -1,22 +1,27 @@
 export default {
 	home: {
 		title: "Home",
-		route: ""
+		route: "",
+		background: "tour.jpg"
 	},
 	bio: {
 		title: "Bio",
-		route: "bio"
+		route: "bio",
+		background: "normal_1080.jpg"
 	},
 	outOfSkin: {
 		title: "Out of Skin",
-		route: "outofskin"
+		route: "outofskin",
+		background: "normal_1080.jpg"
 	},
 	press: {
 		title: "Press",
-		route: "press"
+		route: "press",
+		background: "normal_1080.jpg"
 	},
 	contact: {
 		title: "Contact",
-		route: "contact"
+		route: "contact",
+		background: "normal_1080.jpg"
 	}
 };

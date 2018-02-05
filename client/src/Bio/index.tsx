@@ -1,7 +1,7 @@
 import * as React from "react";
 require("../../media/images/tour.jpg");
 
-export default class MainContainer extends React.Component<{}, {}> {
+export default class Bio extends React.Component<{}, {}> {
 	constructor(props) {
 		super(props);
 	}

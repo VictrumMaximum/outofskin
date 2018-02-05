@@ -1,26 +1,36 @@
 import * as React from "react";
-const styles = require("./generalStyles.less");
-import {HashRouter} from "react-router-dom";
-require("../media/images/tour.jpg");
-require("../media/fonts/mic-32regular.ttf");
-import {Route} from "react-router-dom";
+import { connect } from 'react-redux';
+import Static from "./Static";
 import Tour from "./Tour";
 import Bio from "./Bio";
+import Contact from "./Contact";
 import OutOfSkin from "./OutOfSkin";
 import Press from "./Press";
-import Contact from "./Contact";
-import Static from "./Static/index";
+const styles = require("./generalStyles.less");
+const tourBG = require("../media/images/tour.jpg");
+require("../media/images/normal_1080.jpg");
+require("../media/images/cover_1080.jpg");
+require("../media/images/weird_1080.jpg");
+require("../media/fonts/mic-32regular.ttf");
+import {Route, Redirect} from "react-router-dom";
+import {Switch, BrowserRouter} from "react-router-dom";
 
-export default class MainContainer extends React.Component<{}, {}> {
+interface MainContainerProps {
+	background: string;
+}
+
+class MainContainer extends React.Component<MainContainerProps, {}> {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		const backgroundUrl = "url('./images/"+this.props.background+"')";
+
 		return (
-			<HashRouter>
-				<div className={"container-fluid " + styles.background + " " + styles.defaultText} style={{backgroundImage: "url(./images/tour.jpg)"}}>
-					<div className="row justify-content-center" style={{height: "100vh", backgroundImage: ""}}>
+			<BrowserRouter>
+				<div className={"container-fluid " + styles.background + " " + styles.defaultText} style={{backgroundImage: backgroundUrl}}>
+					<div className="row justify-content-center" style={{height: "100vh"}}>
 						<div className="col-12">
 							<Static />
 							<Route exact path="/" component={Tour}/>
@@ -31,7 +41,17 @@ export default class MainContainer extends React.Component<{}, {}> {
 						</div>
 					</div>
 				</div>
-			</HashRouter>
+			</BrowserRouter>
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		background: state.background
+	};
+};
+
+export default connect(
+	mapStateToProps
+)(MainContainer);

@@ -9,7 +9,11 @@ interface TourState {
 	tours: Tour[];
 }
 
-export default class TourContainer extends React.Component<{}, TourState> {
+interface TourProps {
+	setBackground: (background) => void;
+}
+
+export default class TourContainer extends React.Component<TourProps, TourState> {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,7 +22,7 @@ export default class TourContainer extends React.Component<{}, TourState> {
 	}
 
 	componentDidMount() {
-		this.fetchTours();
+		// this.fetchTours();
 	}
 
 	fetchTours() {

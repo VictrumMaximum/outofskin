@@ -12,7 +12,11 @@ export default class MenuBar extends React.Component<{}, {}> {
         return (
 			<div className="row justify-content-center" style={{width: "100%"}}>
 				{Object.keys(options).map((option) => {
-					return <Option title={options[option].title} route={options[option].route}/>
+					return <Option
+						title={options[option].title}
+						route={options[option].route}
+						background={options[option].background}
+					/>
 				})}
 			</div>
         );
