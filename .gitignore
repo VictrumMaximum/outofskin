@@ -57,9 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
-# compiled server files
-build/*.js
+# build folder
+build/
 
 # intellij stuff
 .idea/
-build/config.json
+
+# backup config file
+config.json

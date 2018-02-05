@@ -4,7 +4,7 @@
     "module": "commonjs",
     "noEmitOnError": true,
     "noImplicitAny": false,
-    "outDir": "../build/",
+    "outDir": "../build/server/",
     "removeComments": true,
     "target": "es5"
   }
