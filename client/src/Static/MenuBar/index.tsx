@@ -1,7 +1,6 @@
 import * as React from "react";
 import Option from "./Option";
-
-const options = require("./menuOptions").default;
+import routes from "../../routes";
 
 export default class MenuBar extends React.Component<{}, {}> {
     constructor(props) {
@@ -11,11 +10,10 @@ export default class MenuBar extends React.Component<{}, {}> {
     render() {
         return (
 			<div className="row justify-content-center" style={{width: "100%"}}>
-				{Object.keys(options).map((option) => {
+				{Object.keys(routes).map((path) => {
 					return <Option
-						title={options[option].title}
-						route={options[option].route}
-						background={options[option].background}
+						title={routes[path].title}
+						path={path}
 					/>
 				})}
 			</div>

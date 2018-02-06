@@ -1,39 +1,36 @@
 import * as React from "react";
-import { connect } from 'react-redux';
 import Static from "./Static";
-import Tour from "./Tour";
-import Bio from "./Bio";
-import Contact from "./Contact";
-import OutOfSkin from "./OutOfSkin";
-import Press from "./Press";
 const styles = require("./generalStyles.less");
-const tourBG = require("../media/images/tour.jpg");
+require("../media/images/tour.jpg");
 require("../media/images/normal_1080.jpg");
 require("../media/images/cover_1080.jpg");
 require("../media/images/weird_1080.jpg");
 require("../media/fonts/mic-32regular.ttf");
-import {Route, Redirect} from "react-router-dom";
-import {Switch, BrowserRouter} from "react-router-dom";
+import {Route, BrowserRouter} from "react-router-dom";
+import routes from "./routes";
 
-const routes = [
-	{path: "/", component: Tour},
-	{path: "/bio", component: Bio},
-	{path: "/outofskin", component: OutOfSkin},
-	{path: "/press", component: Press},
-	{path: "/contact", component: Contact},
-];
-
-interface MainContainerProps {
+interface MainContainerState {
 	background: string;
 }
 
-class MainContainer extends React.Component<MainContainerProps, {}> {
+export default class MainContainer extends React.Component<{}, MainContainerState> {
 	constructor(props) {
 		super(props);
+		this.state = {
+			background: routes["/"+window.location.href.split("/")[3]].background
+		};
+		this.updateBackground = this.updateBackground.bind(this);
+	}
+
+	updateBackground() {
+		const background = routes["/"+window.location.href.split("/")[3]].background;
+		if (this.state.background !== background) {
+			this.setState({background})
+		}
 	}
 
 	render() {
-		const backgroundUrl = "url('./images/"+this.props.background+"')";
+		const backgroundUrl = "url('./images/"+this.state.background+"')";
 
 		return (
 			<BrowserRouter>
@@ -42,8 +39,16 @@ class MainContainer extends React.Component<MainContainerProps, {}> {
 						<div className="col-12">
 							<Static />
 							<div id={"content"}>
-								{routes.map(route => {
-									return <Route exact path={route.path} component={route.component}/>
+								{Object.keys(routes).map(path => {
+									return <Route
+										exact path={path}
+										render = {(routeProps) => {
+											// trigger background update for every path change
+											this.updateBackground();
+											// react syntax requires component names to start with capital letter
+											const Component = routes[path].component;
+											return <Component {...routeProps}/>
+										}}/>
 								})}
 							</div>
 						</div>
@@ -53,13 +58,3 @@ class MainContainer extends React.Component<MainContainerProps, {}> {
 		);
 	}
 }
-
-const mapStateToProps = (state) => {
-	return {
-		background: state.background
-	};
-};
-
-export default connect(
-	mapStateToProps
-)(MainContainer);
