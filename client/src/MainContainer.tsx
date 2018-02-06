@@ -15,6 +15,14 @@ require("../media/fonts/mic-32regular.ttf");
 import {Route, Redirect} from "react-router-dom";
 import {Switch, BrowserRouter} from "react-router-dom";
 
+const routes = [
+	{path: "/", component: Tour},
+	{path: "/bio", component: Bio},
+	{path: "/outofskin", component: OutOfSkin},
+	{path: "/press", component: Press},
+	{path: "/contact", component: Contact},
+];
+
 interface MainContainerProps {
 	background: string;
 }
@@ -33,11 +41,11 @@ class MainContainer extends React.Component<MainContainerProps, {}> {
 					<div className="row justify-content-center" style={{height: "100vh"}}>
 						<div className="col-12">
 							<Static />
-							<Route exact path="/" component={Tour}/>
-							<Route exact path="/bio" component={Bio}/>
-							<Route exact path="/outofskin" component={OutOfSkin}/>
-							<Route exact path="/press" component={Press}/>
-							<Route exact path="/contact" component={Contact}/>
+							<div id={"content"}>
+								{routes.map(route => {
+									return <Route exact path={route.path} component={route.component}/>
+								})}
+							</div>
 						</div>
 					</div>
 				</div>

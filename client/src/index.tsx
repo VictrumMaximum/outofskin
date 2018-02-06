@@ -13,4 +13,4 @@ render(
 
 			<MainContainer />
 	</Provider>,
-	document.getElementById("content"));
+	document.getElementById("container"));
