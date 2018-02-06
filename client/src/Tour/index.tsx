@@ -1,27 +1,29 @@
 import * as React from "react";
 import * as moment from "moment";
+import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import {Tour} from "../TourMenu/TourSchema";
 import TourComponent from "./TourComponent";
+import {setTours} from "../redux/actions/tours";
 const styles = require("./tourStyle.less");
 
-interface TourState {
+interface TourProps {
 	tours: Tour[];
+	setTours: (tours: Tour[]) => void
 }
 
 const tourDataURL = "/tourData";
 
-export default class TourContainer extends React.Component<{}, TourState> {
+class TourContainer extends React.Component<TourProps, {}> {
 	constructor(props) {
 		super(props);
-		this.state = {
-			tours: []
-		};
 	}
 
 
 	componentDidMount() {
-		this.fetchTours();
+		if (this.props.tours.length === 0) {
+			this.fetchTours();
+		}
 	}
 
 	fetchTours() {
@@ -32,9 +34,7 @@ export default class TourContainer extends React.Component<{}, TourState> {
 			}
 			else {
 				console.log(responseData.data);
-				this.setState({
-					tours: responseData.data
-				});
+				this.props.setTours(responseData.data);
 			}
 		});
 	}
@@ -59,7 +59,7 @@ export default class TourContainer extends React.Component<{}, TourState> {
 			<div className={"row"}>
 				TourContainer
 				<div id={styles.upcoming} className={"col-4 "}>
-					{this.getUpcomingTours(this.state.tours).map((tour) => {
+					{this.getUpcomingTours(this.props.tours).map((tour) => {
 						return <TourComponent tour={tour} />
 					})}
 				</div>
@@ -72,3 +72,20 @@ export default class TourContainer extends React.Component<{}, TourState> {
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		tours: state.tours
+	}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setTours: (tours) => dispatch(setTours(tours))
+	}
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TourContainer)

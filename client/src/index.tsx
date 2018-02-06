@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import MainContainer from "./MainContainer";
 import mainReducer from "./redux/reducers";
 
-let store = createStore(()=>{return {}});
+let store = createStore(mainReducer);
 
 render(
 	// Provider makes sure child components have access to store.
