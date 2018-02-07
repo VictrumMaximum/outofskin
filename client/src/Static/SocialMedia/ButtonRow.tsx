@@ -1,6 +1,6 @@
 import * as React from "react";
 import Button from "./Button";
-const styles = require("./styles/socialMedia.less");
+const styles = require("./styles.less");
 
 interface ButtonRowProps {
 	socialMedia: {

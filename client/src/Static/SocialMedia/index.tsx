@@ -1,7 +1,7 @@
 import * as React from "react";
 const socialMedias = require("./socialMedias").default;
 import ButtonRow from "./ButtonRow";
-const styles = require("./styles/socialMedia.less");
+const styles = require("./styles.less");
 require("./icons/facebook.png");
 require("./icons/youtube.png");
 require("./icons/instagram.png");

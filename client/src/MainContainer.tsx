@@ -1,6 +1,6 @@
 import * as React from "react";
 import Static from "./Static";
-const styles = require("./generalStyles.less");
+const styles = require("./styles.less");
 require("../media/images/tour.jpg");
 require("../media/images/normal_1080.jpg");
 require("../media/images/cover_1080.jpg");
@@ -8,6 +8,7 @@ require("../media/images/weird_1080.jpg");
 require("../media/fonts/mic-32regular.ttf");
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
+import Home from "./Home";
 
 interface MainContainerState {
 	background: string;
@@ -38,7 +39,8 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 					<div className="row justify-content-center" style={{height: "100vh"}}>
 						<div className="col-12">
 							<Static />
-							<div id={"content"}>
+							<div id={styles.content} className={"row "}>
+								<Route exact path={"/"} component={Home}/>
 								{Object.keys(routes).map(path => {
 									return <Route
 										exact path={path}

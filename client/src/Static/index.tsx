@@ -11,7 +11,7 @@ export default class Static extends React.Component<{}, {}> {
 		return (
 			<div style={{marginTop: "5em"}}>
 				<MenuBar />
-				{/*<SocialMedia/>*/}
+				<SocialMedia/>
 			</div>
 		);
 	}

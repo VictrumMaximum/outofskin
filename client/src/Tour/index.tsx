@@ -5,7 +5,8 @@ import axios, {AxiosResponse} from "axios";
 import {Tour} from "../TourMenu/TourSchema";
 import TourComponent from "./TourComponent";
 import {setTours} from "../redux/actions/tours";
-const styles = require("./tourStyle.less");
+import TourColumn from "./TourColumn";
+const styles = require("./styles.less");
 
 interface TourProps {
 	tours: Tour[];
@@ -33,7 +34,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 				console.log(JSON.stringify(responseData.error, null, 2));
 			}
 			else {
-				console.log(responseData.data);
+				console.log(JSON.stringify(responseData.data, null, 2));
 				this.props.setTours(responseData.data);
 			}
 		});
@@ -46,28 +47,21 @@ class TourContainer extends React.Component<TourProps, {}> {
 		});
 		return tours;
 	}
-	// getPastTours(tours: Tour[]): Tour[] {
-	// 	const now = moment();
-	// 	const filtered = tours.filter((tour) => {
-	// 		return (moment(tour.begin).isBefore(now));
-	// 	});
-	// 	return this.sortToursByEarliestFirst(filtered);
-	// }
+	getPastTours(tours: Tour[]): Tour[] {
+		const now = moment();
+		const filtered = tours.filter((tour) => {
+			return (moment(tour.begin).isBefore(now));
+		});
+		return tours;
+	}
 
 	render() {
 		return (
-			<div className={"row"}>
-				TourContainer
-				<div id={styles.upcoming} className={"col-4 "}>
-					{this.getUpcomingTours(this.props.tours).map((tour) => {
-						return <TourComponent tour={tour} />
-					})}
+			<div className={"offset-xl-3 offset-2 col-xl-8 col-10"}  >
+				<div className={"row"}>
+					<TourColumn tours={this.getUpcomingTours(this.props.tours)} header={"Upcoming"}/>
+					<TourColumn tours={this.getPastTours(this.props.tours)} header={"Past"}/>
 				</div>
-				{/*<div id={styles.past} className={"col-4 "}>*/}
-					{/*{this.getPastTours(this.state.tours).map((tour) => {*/}
-						{/*return <TourComponent tour={tour} />*/}
-					{/*})}*/}
-				{/*</div>*/}
 			</div>
 		);
 	}

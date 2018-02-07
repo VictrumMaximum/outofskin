@@ -1,4 +1,5 @@
 import * as React from "react";
+const styles = require("./styles.less");
 
 interface ButtonProps {
 	socialMedia: {
@@ -15,7 +16,7 @@ export default class Button extends React.Component<ButtonProps, {}> {
 	render() {
 		return (
 			<div className={"offset-11 col-1"}>
-				<img src={"./images/" + this.props.socialMedia.image} />
+				<img className={styles.socialButtonImage} src={"./images/" + this.props.socialMedia.image} />
 			</div>
 		);
 	}

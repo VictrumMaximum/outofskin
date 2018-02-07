@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
 	console.log("Received request to show tours");
 	console.log(req.query);
-	tourDB.fetchAll(req.query)
+	tourDB.fetchAll()
 		.then((tours) => {
 			res.end(JSON.stringify({data: tours}));
 		}).catch((error) => {

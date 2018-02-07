@@ -9,8 +9,9 @@ app.use("/tourData", tourRoutes);
 app.use("/", express.static(__dirname + "/client"));
 app.use("/bio", express.static(__dirname + "/client"));
 app.use("/outofskin", express.static(__dirname + "/client"));
-app.use("/press", express.static(__dirname + "/client"));
 app.use("/contact", express.static(__dirname + "/client"));
+app.use("/press", express.static(__dirname + "/client"));
+
 app.use("/menu", express.static(__dirname + "/menu/"));
 
 app.listen(port);
