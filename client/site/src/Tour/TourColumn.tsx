@@ -1,6 +1,6 @@
 import * as React from "react";
 import TourComponent from "./TourComponent";
-import {Tour} from "../TourMenu/TourSchema";
+import {Tour} from "../../../../schemas/TourSchema";
 const styles = require("./styles.less");
 
 interface TourColumnProps {

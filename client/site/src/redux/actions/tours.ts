@@ -1,4 +1,4 @@
-import {Tour} from "../../TourMenu/TourSchema";
+import {Tour} from "../../../../../schemas/TourSchema";
 
 export const setTours = (tours: Tour[]) => {
 	return {

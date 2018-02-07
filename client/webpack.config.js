@@ -5,25 +5,47 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
-module.exports = {
+const siteConfig = {
     context: path.join(__dirname),
-    entry: "./src/index.tsx",
+    entry: "./site/src/index.tsx",
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/../build/server/client/"
+        filename: "site.bundle.js",
+        path: __dirname + "/../build/server/client/site/"
     },
-
     plugins: [
         new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
         // new BundleAnalyzerPlugin(),
         new HTMLWebpackPlugin({
-            template: "./src/index.html"
+            template: "./site/src/index.html"
         }),
         new ExtractTextPlugin("style.css"),
         new webpack.ProvidePlugin({
             React: "React", react: "React", "window.react": "React", "window.React": "React"
         })
-    ],
+    ]
+};
+
+const menuConfig = {
+    context: path.join(__dirname),
+    entry: "./menu/src/index.tsx",
+    output: {
+        filename: "menu.bundle.js",
+        path: __dirname + "/../build/server/client/menu/"
+    },
+    plugins: [
+        new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+        // new BundleAnalyzerPlugin(),
+        new HTMLWebpackPlugin({
+            template: "./menu/src/index.html"
+        }),
+        new ExtractTextPlugin("style.css"),
+        new webpack.ProvidePlugin({
+            React: "React", react: "React", "window.react": "React", "window.React": "React"
+        })
+    ]
+};
+
+const config = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: "inline-source-map",
 
@@ -90,3 +112,8 @@ module.exports = {
         "react-dom": "ReactDOM"
     }
 };
+
+module.exports = [
+    Object.assign({}, config, siteConfig),
+    Object.assign({}, config, menuConfig)
+];

@@ -3,7 +3,7 @@
     "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": false,
-    "outDir": "../build/client/",
+    "outDir": "../build/client/menu/",
     "removeComments": true,
     "sourceMap": true,
     "target": "es5"

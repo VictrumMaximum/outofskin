@@ -1,10 +1,7 @@
 {
-  "metadata": {
-    "length": 5
-  },
-  "data": [
-    {
-      "id": 23,
+  "metadata": {},
+  "data": {
+    "23": {
       "eventName": "Eindronde Stadsdichtersverkiezing",
       "eventLink": "http://www.stadsdichtersgouda.nl",
       "begin": "2018-02-17 14:30:00",
@@ -13,8 +10,7 @@
       "location": "Chocoladefabriek",
       "locationLink": "https://www.ecosia.org/maps?q=klein+amerika+20+gouda"
     },
-    {
-      "id": 24,
+    "24": {
       "eventName": "Moo Sessions",
       "eventLink": "https://moosessions.nl/",
       "begin": "2018-06-23 20:00:00",
@@ -23,8 +19,7 @@
       "location": "De Woeste Wieven",
       "locationLink": "https://www.ecosia.org/maps?q=boerderij+de+woeste+wieven"
     },
-    {
-      "id": 25,
+    "25": {
       "eventName": "Moo Sessions",
       "eventLink": "https://moosessions.nl/",
       "begin": "2018-06-24 16:00:00",
@@ -33,8 +28,7 @@
       "location": "Het Tijdelijk Verblijf",
       "locationLink": "https://www.ecosia.org/maps?q=ijzerpad+17+rutten"
     },
-    {
-      "id": 30,
+    "30": {
       "eventName": "Leidse Hofjesconcerten",
       "eventLink": "http://www.leidsehofjesconcerten.nl",
       "begin": "2018-05-20 12:00:00",
@@ -43,8 +37,7 @@
       "location": "Centrum",
       "locationLink": ""
     },
-    {
-      "id": 31,
+    "31": {
       "eventName": "Leidse Hofjesconcerten",
       "eventLink": "http://www.leidsehofjesconcerten.nl",
       "begin": "2018-05-21 13:00:00",
@@ -53,5 +46,5 @@
       "location": "Centrum",
       "locationLink": ""
     }
-  ]
+  }
 }

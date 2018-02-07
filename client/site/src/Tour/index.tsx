@@ -2,7 +2,7 @@ import * as React from "react";
 import * as moment from "moment";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Tour} from "../TourMenu/TourSchema";
+import {Tour} from "../../../../schemas/TourSchema";
 import TourComponent from "./TourComponent";
 import {setTours} from "../redux/actions/tours";
 import TourColumn from "./TourColumn";
