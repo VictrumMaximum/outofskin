@@ -41,17 +41,17 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 
 	getUpcomingTours(tours: Tour[]): Tour[] {
-		const now = moment();
-		const filtered = tours.filter((tour) => {
-			return (moment(tour.begin).isAfter(now));
-		});
+		// const now = moment();
+		// const filtered = tours.filter((tour) => {
+		// 	return (moment(tour.begin).isAfter(now));
+		// });
 		return tours;
 	}
 	getPastTours(tours: Tour[]): Tour[] {
-		const now = moment();
-		const filtered = tours.filter((tour) => {
-			return (moment(tour.begin).isBefore(now));
-		});
+		// const now = moment();
+		// const filtered = tours.filter((tour) => {
+		// 	return (moment(tour.begin).isBefore(now));
+		// });
 		return tours;
 	}
 

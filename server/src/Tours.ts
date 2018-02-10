@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 	console.log("Received request to add tour");
+	console.log(req.body);
 	tourDB.add(req.body)
 		.then(() => {res.end("{}");})
 		.catch((error) => {
@@ -28,7 +29,7 @@ router.post("/", (req, res) => {
 
 router.delete("/", (req, res) => {
 	console.log("Received request to delete tour");
-	const id = req.body.id;
+	const id = req.query.id;
 	tourDB.remove(id)
 		.then(() => {res.end("{}");})
 		.catch((error) => {

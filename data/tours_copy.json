@@ -1,7 +1,6 @@
 {
   "metadata": {
-    "size": 5,
-    "maxKey": 37
+    "size": 5
   },
   "data": {
     "23": {
@@ -43,46 +42,6 @@
       "city": "Leiden",
       "location": "Centrum",
       "locationLink": ""
-    },
-    "33": {
-      "eventName": "testName",
-      "eventLink": "testEventLink",
-      "begin": "2018-01-01-10-00",
-      "city": "testCity",
-      "location": "testLocation",
-      "locationLink": "testLocationLink"
-    },
-    "34": {
-      "eventName": "testName",
-      "eventLink": "testEventLink",
-      "begin": "2018-01-01-10-00",
-      "city": "testCity",
-      "location": "testLocation",
-      "locationLink": "testLocationLink"
-    },
-    "35": {
-      "eventName": "testName",
-      "eventLink": "testEventLink",
-      "begin": "2018-01-01-10-00",
-      "city": "testCity",
-      "location": "testLocation",
-      "locationLink": "testLocationLink"
-    },
-    "36": {
-      "eventName": "testName",
-      "eventLink": "testEventLink",
-      "begin": "2018-01-01-10-00",
-      "city": "testCity",
-      "location": "testLocation",
-      "locationLink": "testLocationLink"
-    },
-    "37": {
-      "eventName": "testName",
-      "eventLink": "testEventLink",
-      "begin": "2018-01-01-10-00",
-      "city": "testCity",
-      "location": "testLocation",
-      "locationLink": "testLocationLink"
     }
   }
 }
