@@ -10,36 +10,37 @@ router.get("/", (req, res) => {
 	tourDB.fetchAll()
 		.then((tours) => {
 			res.end(JSON.stringify({data: tours}));
-		}).catch((error) => {
-		console.log("Fetching tours errored with error: " + JSON.stringify(error, null, 2));
-		res.end(JSON.stringify({error: error}));
-	});
+		}).catch((error) => {handleError(error, res)});
 });
 
 router.post("/", (req, res) => {
 	console.log("Received request to add tour");
-	console.log(req.body);
-	tourDB.add(req.body)
-		.then(() => {res.end("{}");})
-		.catch((error) => {
-			console.log("Adding tour errored with error " + JSON.stringify(error, null, 2));
-			res.end(JSON.stringify({error: error}));
-		});
+	const tour = req.body;
+	tourDB.add(tour)
+		.then(() => {res.end("{}")})
+		.catch((error) => {handleError(error, res)});
 });
 
 router.delete("/", (req, res) => {
 	console.log("Received request to delete tour");
 	const id = req.query.id;
 	tourDB.remove(id)
-		.then(() => {res.end("{}");})
-		.catch((error) => {
-			console.log("Deleting tour errored with error " + JSON.stringify(error, null, 2));
-			res.end(JSON.stringify({error: error}));
-	});
+		.then(() => {res.end("{}")})
+		.catch((error) => {handleError(error, res)});
 });
 
 router.patch("/", (req, res) => {
-	res.send("patch");
+	console.log("Received request to update tour");
+	const id = req.body.id;
+	const updates = req.body.updates;
+	tourDB.update(id, updates)
+		.then(() => {res.end("{}");})
+		.catch((error) => {handleError(error, res)});
 });
+
+const handleError =  (error, response) => {
+	console.log(JSON.stringify(error, null, 2));
+	response.end(JSON.stringify({error}));
+};
 
 export default router;

@@ -22,30 +22,39 @@ const fetchAll = () => {
 
 const add = (tour) => {
 	return new Promise((resolve, reject) => {
-		console.log("adding tour: " + tour);
+		// console.log("adding tour: " + tour);
 		const id = parseInt(tours.metadata.maxKey)+1;
 		if (tours.data.hasOwnProperty(id)) {
-			reject("Tried to overwrite tour with id " + id);
-		} else {
-			tours.data[id] = tour;
-			tours.metadata["maxKey"] = id;
-			return persist(sourceFile, tours);
+			throw ("Tried to overwrite tour with id " + id);
 		}
+		tours.data[id] = tour;
+		tours.metadata["maxKey"] = id;
+		return persist(sourceFile, tours);
 	});
 };
 
-const update = (id, tour) => {
-
+const update = (id, updates) => {
+	return new Promise((resolve, reject) => {
+		console.log("Updating tour: " + id);
+		if (!tours.hasOwnProperty(id)) {
+			throw ("Tour id " + id + " does not exist");
+		}
+		const toUpdate = tours.data[id];
+		const keysToUpdate = Object.keys(updates);
+		for (const key in keysToUpdate) {
+			toUpdate[key] = updates[key];
+		}
+		return persist(sourceFile, tours);
+	});
 };
 
 const persist = (fileName, obj) => {
 	return new Promise((resolve, reject) => {
 		fs.writeFile(fileName, JSON.stringify(obj, null, 2), (error) => {
 			if (error) {
-				reject("Error writing to " + fileName + ": " + JSON.stringify(obj, null, 2));
-			} else {
-				resolve();
+				throw ("Error writing to " + fileName + ": " + JSON.stringify(obj, null, 2));
 			}
+			resolve();
 		});
 	});
 };
@@ -53,35 +62,34 @@ const persist = (fileName, obj) => {
 const remove = (id) => {
 	return new Promise((resolve, reject) => {
 		console.log("removing tour " + id);
+		// check if id exists
 		if (!tours.data.hasOwnProperty(id)) {
-			reject("Cannot delete tour with id " + id + ": does not exist");
-		} else {
-			const toDelete = tours.data[id];
-			fs.readFile(deletedFile, "utf8", (err, data) => {
-				if (err) {
-					reject(err);
-				} else {
-					const deletedTours = JSON.parse(data);
-					if (deletedTours.data.hasOwnProperty(id)) {
-						reject("Tried to overwrite " + id + " in deleted file");
-					} else {
-						deletedTours.data[id] = toDelete;
-						console.log(deletedTours.data);
-						persist(deletedFile, deletedTours).then(() => {
-							delete tours.data[id];
-							return persist(sourceFile, tours);
-						}).catch((err) => {
-							reject(err)
-						});
-					}
-				}
-			});
+			throw ("Cannot delete tour with id " + id + ": does not exist");
 		}
+		const toDelete = tours.data[id];
+		fs.readFile(deletedFile, "utf8", (err, data) => {
+			if (err) throw (err);
+			const deletedTours = JSON.parse(data);
+			// check if this id does not have a duplicate in the deleted file
+			if (deletedTours.data.hasOwnProperty(id)) {
+				throw ("Tried to overwrite " + id + " in deleted file");
+			}
+			deletedTours.data[id] = toDelete;
+			persist(deletedFile, deletedTours).then(() => {
+				// delete from object when persist is done
+				delete tours.data[id];
+				// TODO: if the following persist fails, the tour will still appear in the deleted file
+				return persist(sourceFile, tours);
+			}).catch((err) => {
+				throw (err)
+			});
+		});
 	});
 };
 
 export default {
 	add,
 	remove,
-	fetchAll
+	fetchAll,
+	update
 };
