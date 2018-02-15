@@ -43,6 +43,9 @@ export default class TourView extends React.Component<{}, TourViewState> {
 			}
 			else {
 				console.log("Tour "+id+" deleted");
+				const tours = this.state.tours;
+				delete tours[id];
+				this.setState({tours});
 			}
 		});
 	}

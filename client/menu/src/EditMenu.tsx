@@ -1,57 +1,36 @@
 import * as React from "react";
-import InputField from "./InputField"
+import * as moment from "moment";
+import {Moment} from "moment";
 import axios, {AxiosResponse} from "axios";
-// import * as DateTime from "react-datetime";
 import {tourDataURL} from "./TourMenu";
+import {Tour} from "../../../schemas/TourSchema";
 
-interface InputMenuState {
-	eventName: "",
-	eventLink: "",
-	begin: Timestamp,
-	city: "",
-	location: "",
-	locationLink: ""
-}
-interface Timestamp {
-	day,
-	month,
-	year,
-	hours,
-	minutes
+interface EditMenuState {
+	eventName: string,
+	eventLink: string,
+	begin: Moment,
+	city: string,
+	location: string,
+	locationLink: string
 }
 
-const premade = {
-	eventName: "testName",
-	eventLink: "testEventLink",
-	begin: {
-		day: "01",
-		month: "01",
-		year: "2018",
-		hours: "10",
-		minutes: "00"
-	},
-	city: "testCity",
-	location: "testLocation",
-	locationLink: "testLocationLink"
-};
+interface EditMenuProps {
+	tour: Tour,
+	cancelEdit: () => void
+}
 
 
-export default class InputMenu extends React.Component<{}, InputMenuState> {
+export default class EditMenu extends React.Component<EditMenuProps, EditMenuState> {
     constructor(props) {
         super(props);
+        const tour = this.props.tour;
         this.state = {
-	        eventName: "",
-	        eventLink: "",
-	        begin: {
-		        day: "",
-		        month: "",
-		        year: "",
-		        hours: "",
-		        minutes: ""
-	        },
-	        city: "",
-	        location: "",
-	        locationLink: ""
+        	eventName: tour.eventName,
+			eventLink: tour.eventLink,
+			begin: moment(tour.begin),
+			city: tour.city,
+			location: tour.location,
+			locationLink: tour.locationLink
         };
         this.updateState = this.updateState.bind(this);
         this.updateBegin = this.updateBegin.bind(this);
@@ -69,34 +48,44 @@ export default class InputMenu extends React.Component<{}, InputMenuState> {
     updateBegin(event) {
 	    const key = event.target.id;
 	    const value = event.target.value;
+	    const begin = this.state.begin;
+	    switch (key) {
+			case "day":
+				begin.day(value);
+				break;
+			case "month":
+				begin.month(value);
+				break;
+			case "year":
+				begin.year(value);
+				break;
+			case "hours":
+				begin.hours(value);
+				break;
+			case "minutes":
+				begin.minutes(value);
+				break;
+		}
 	    this.setState({
-		    begin: {
-			    ...this.state.begin, ...{[key]: value}
-		    }
+		    begin
 	    });
-    }
-
-    extractDate(date) {
-    	return date.year+"-"
-		    +date.month+"-"
-		    +date.day+"-"
-		    +date.hours+"-"
-		    +date.minutes;
     }
 
     onSubmit(tour) {
     	const data = {
-		    ...tour, ...{begin: this.extractDate(tour.begin)}
+		    ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
 	    };
-	    axios.post(tourDataURL, data).then((response: AxiosResponse) => {
-		    const responseData = response.data;
-		    if (responseData.error) {
-			    console.log(JSON.stringify(responseData.error, null, 2));
-		    }
-		    else {
-			    console.log("success");
-		    }
-	    });
+    	console.log(data);
+    	console.log("not sent");
+	    // axios.post(tourDataURL, data).then((response: AxiosResponse) => {
+		 //    const responseData = response.data;
+		 //    if (responseData.error) {
+			//     console.log(JSON.stringify(responseData.error, null, 2));
+		 //    }
+		 //    else {
+			//     console.log("success");
+		 //    }
+	    // });
     }
 
     render() {
@@ -133,8 +122,7 @@ export default class InputMenu extends React.Component<{}, InputMenuState> {
 		            <td><input id={"locationLink"} value={this.state.locationLink} onChange={this.updateState} /></td>
 	            </tr>
 	            <tr>
-		            <td><button onClick={() => {this.onSubmit(this.state)}}>Add</button></td>
-		            <td><button onClick={() => {this.onSubmit(premade)}}>Add premade</button></td>
+		            <td><button onClick={this.props.cancelEdit}>cancel</button></td>
 	            </tr>
             </table>
         );

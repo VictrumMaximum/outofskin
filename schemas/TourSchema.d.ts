@@ -5,7 +5,6 @@ export interface Tour {
 	eventName: string;
 	eventLink: string;
 	begin: string;
-	end: string;
 	city: string;
 	location: string;
 	locationLink: string;

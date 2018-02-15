@@ -69,6 +69,7 @@ const remove = (id) => {
 		const toDelete = tours.data[id];
 		fs.readFile(deletedFile, "utf8", (err, data) => {
 			if (err) throw (err);
+			console.log("read deleteFile");
 			const deletedTours = JSON.parse(data);
 			// check if this id does not have a duplicate in the deleted file
 			if (deletedTours.data.hasOwnProperty(id)) {
@@ -76,6 +77,7 @@ const remove = (id) => {
 			}
 			deletedTours.data[id] = toDelete;
 			persist(deletedFile, deletedTours).then(() => {
+				console.log("persisted to deleteFile");
 				// delete from object when persist is done
 				delete tours.data[id];
 				// TODO: if the following persist fails, the tour will still appear in the deleted file

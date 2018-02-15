@@ -1,5 +1,5 @@
 import * as React from "react";
-import InputMenu from "./InputMenu";
+import InputMenu from "./AddMenu";
 import TourView from "./TourView";
 
 export const tourDataURL = "/tourData";

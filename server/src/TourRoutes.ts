@@ -25,7 +25,7 @@ router.delete("/", (req, res) => {
 	console.log("Received request to delete tour");
 	const id = req.query.id;
 	tourDB.remove(id)
-		.then(() => {res.end("{}")})
+		.then(() => {console.log("returning delete request");res.end("{}")})
 		.catch((error) => {handleError(error, res)});
 });
 
