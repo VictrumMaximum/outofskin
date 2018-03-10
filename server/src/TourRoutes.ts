@@ -6,9 +6,10 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
 	console.log("Received request to show tours");
-	console.log(req.query);
 	tourDB.fetchAll()
 		.then((tours) => {
+			// console.log("returning:");
+			// console.log(tours);
 			res.end(JSON.stringify({data: tours}));
 		}).catch((error) => {handleError(error, res)});
 });
@@ -29,14 +30,14 @@ router.delete("/", (req, res) => {
 		.catch((error) => {handleError(error, res)});
 });
 
-router.patch("/", (req, res) => {
-	console.log("Received request to update tour");
-	const id = req.body.id;
-	const updates = req.body.updates;
-	tourDB.update(id, updates)
-		.then(() => {res.end("{}");})
-		.catch((error) => {handleError(error, res)});
-});
+// router.patch("/", (req, res) => {
+// 	console.log("Received request to update tour");
+// 	const id = req.body.id;
+// 	const updates = req.body.updates;
+// 	tourDB.update(id, updates)
+// 		.then(() => {res.end("{}");})
+// 		.catch((error) => {handleError(error, res)});
+// });
 
 const handleError =  (error, response) => {
 	console.log(JSON.stringify(error, null, 2));

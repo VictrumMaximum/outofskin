@@ -98,6 +98,12 @@ export default class AddMenu extends React.Component<{}, AddMenuState> {
 	    });
     }
 
+    test() {
+		axios.get("/test").then((response: AxiosResponse) => {
+			console.log("success");
+		});
+	}
+
     render() {
         return (
             <table>
@@ -134,6 +140,7 @@ export default class AddMenu extends React.Component<{}, AddMenuState> {
 	            <tr>
 		            <td><button onClick={() => {this.onSubmit(this.state)}}>Add</button></td>
 		            <td><button onClick={() => {this.onSubmit(premade)}}>Add premade</button></td>
+					<td><button onClick={this.test}>test</button></td>
 	            </tr>
             </table>
         );

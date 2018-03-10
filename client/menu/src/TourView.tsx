@@ -29,6 +29,7 @@ export default class TourView extends React.Component<{}, TourViewState> {
 			}
 			else {
 				console.log("Fetched tours");
+				console.log(responseData);
 				this.setState({tours: responseData.data});
 			}
 		});
