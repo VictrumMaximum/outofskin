@@ -75,12 +75,42 @@ function convertDatetime(sqlDate) {
     return moment(sqlDate).format("DD MMMM HH:mm");
 }
 
+function filterTours(tours) {
+    const now = moment();
+    return tours.filter(function (tour) {
+        return now.isBefore(moment(tour.begin));
+    });
+}
+
+function sortTours(tours) {
+    const keys = Object.keys(tours);
+    const unsorted = [];
+    for (var i = 0; i < keys.length; i++) {
+        const tour = tours[keys[i]];
+        tour.id = keys[i];
+        unsorted.push(tour);
+    }
+    console.log(unsorted);
+    const sorted = [];
+    while (unsorted.length > 0) {
+        var minTourIndex = 0;
+        for (var i = 0; i < unsorted.length; i++) {
+            if (moment(unsorted[i].begin).isBefore(moment(unsorted[minTourIndex].begin))) {
+                minTourIndex = i;
+            }
+        }
+        sorted.push(unsorted[minTourIndex]);
+        unsorted.splice(minTourIndex, 1);
+    }
+    console.log(sorted);
+    return sorted;
+}
+
 function addToursAsPrettyElement(tours) {
     const targetDiv = $("#tours");
     targetDiv.empty();
     const results = [];
     tours.forEach(function(tour) {
-        console.log(tour);
         const tourTable = $("<table>");
         tourTable.css("width", "100%")
             .append($("<tbody>")
@@ -109,7 +139,7 @@ function addToursAsPrettyElement(tours) {
                     )
                 )
             );
-        results.push(tourTable);
+        results.push(tourTable.append($("<br>")));
     });
     for (var i = 0; i < results.length; i++) {
         targetDiv.append(results[i]);
@@ -131,7 +161,7 @@ function fetchAll() {
             if (parsedResponse.error) {
                 console.log(parsedResponse.error);
             } else {
-                addToursAsPrettyElement(parsedResponse.data);
+                addToursAsPrettyElement(filterTours(sortTours(parsedResponse.data)));
             }
         }
     });

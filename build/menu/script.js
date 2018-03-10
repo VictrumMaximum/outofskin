@@ -45,7 +45,8 @@ function addToursAsPrettyElement(tours) {
     const targetDiv = $("#tours");
     targetDiv.empty();
     const results = [];
-    tours.forEach(function(tour) {
+    Object.keys(tours).forEach(function(id) {
+        const tour = tours[id];
         const tourTable = $("<table>");
         tourTable.css("width", "100%")
             .append($("<tbody>")
@@ -80,9 +81,10 @@ function addToursAsPrettyElement(tours) {
             $("<button>")
                 .html("delete")
                 .addClass("delete")
-                .attr('id', tour.id)
+                .attr('id', id)
                 .click(function() {
-                    remove(tour.id);
+                    console.log("removing id: " + id);
+                    remove(id);
                 })
         );
         results.push(tourTable);
