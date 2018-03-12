@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 import {Promise} from "es6-promise";
+import Logger from "./Logs/Logger";
 
 const sourceFile = "./data/new-tours.json";
 const deletedFile = "./data/deleted_tours.json";
@@ -62,7 +63,7 @@ function add(tour) {
 
 function addToMemory(tour) {
 	return new Promise((resolve, reject) => {
-		console.log("adding tour to memory");
+		Logger.debug("adding tour to memory");
 		const toursMetadata = tourCache.metadata;
 		const tours = tourCache.data;
 		const id = toursMetadata.maxKey + 1;
@@ -77,7 +78,7 @@ function addToMemory(tour) {
 
 function removeFromMemory(id) {
 	return new Promise((resolve, reject) => {
-		console.log("removing tour from memory: " + id);
+		Logger.debug("removing tour from memory: " + id);
 		const tours = tourCache.data;
 		if (!tours.hasOwnProperty(id.toString())) {
 			throw ("Cannot remove tour " + id + " from cache: does not exist");
@@ -88,7 +89,7 @@ function removeFromMemory(id) {
 }
 
 function update(id, updates) {
-	console.log("updating tour: " + id);
+	Logger.debug("updating tour: " + id);
 	return updateInMemory(id, updates)
 		.then(() => {
 			return persist(sourceFile, tourCache);
@@ -97,7 +98,7 @@ function update(id, updates) {
 
 function updateInMemory(id, updates) {
 	return new Promise((resolve, reject) => {
-		console.log("Updating tour in memory");
+		Logger.debug("Updating tour in memory");
 		const tours = tourCache.data;
 		if (!tours.hasOwnProperty(id)) {
 			throw ("Tour id " + id + " does not exist");
@@ -113,7 +114,7 @@ function updateInMemory(id, updates) {
 
 function persist(fileName, obj) {
 	return new Promise((resolve, reject) => {
-		console.log("Persisting to " + fileName);
+        Logger.debug("Persisting to " + fileName);
 		fs.writeFile(fileName, JSON.stringify(obj, null, 2), (error) => {
 			if (error) {
 				throw ("Error writing to " + fileName + ": " + JSON.stringify(obj, null, 2));
@@ -124,14 +125,14 @@ function persist(fileName, obj) {
 }
 
 function remove(id) {
-	console.log("removing tour " + id);
+    Logger.debug("removing tour " + id);
 	const tours = tourCache.data;
 	// check if id exists
 	if (!tours.hasOwnProperty(id)) {
 		throw ("Cannot delete tour with id " + id + ": does not exist");
 	}
 	return addTourToDeleteFile(id).then(() => {
-		console.log("persisted to deleteFile");
+        Logger.debug("persisted to deleteFile");
 		// delete from object when persist is done
 		delete tours[id];
 		// TODO: if the following persist fails, the tour will still appear in the deleted file
@@ -144,7 +145,7 @@ function addTourToDeleteFile(id): Promise<any> {
 		const toDelete = tourCache.data[id];
 		fs.readFile(deletedFile, "utf8", (err, data) => {
 			if (err) throw (err);
-			console.log("read deleteFile");
+            Logger.debug("read deleteFile");
 			const deletedTours = JSON.parse(data);
 			// check if this id does not have a duplicate in the deleted file
 			if (deletedTours.data.hasOwnProperty(id)) {

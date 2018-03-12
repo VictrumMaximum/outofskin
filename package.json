@@ -23,6 +23,8 @@
     "@types/node": "^8.5.7",
     "es6-promise": "^4.2.2",
     "express": "^4.16.2",
-    "typescript": "^2.6.2"
+    "moment": "^2.21.0",
+    "typescript": "^2.6.2",
+    "winston": "2.3.0"
   }
 }
