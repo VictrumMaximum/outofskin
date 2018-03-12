@@ -60,6 +60,9 @@ typings/
 # compiled server files
 build/*.js
 
+# build files for menu
+build/menu/
+
 # intellij stuff
 .idea/
 build/config.json

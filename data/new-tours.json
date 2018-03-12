@@ -1,7 +1,7 @@
 {
   "metadata": {
     "size": 5,
-    "maxKey": 40
+    "maxKey": 45
   },
   "data": {
     "23": {
@@ -43,6 +43,14 @@
       "city": "Leiden",
       "location": "Centrum",
       "locationLink": ""
+    },
+    "45": {
+      "eventName": "awef",
+      "eventLink": "aergser",
+      "begin": "2018-03-12 10:11",
+      "city": "32",
+      "location": "afrag",
+      "locationLink": "agra"
     }
   }
 }
