@@ -67,3 +67,6 @@ build/menu/
 .idea/
 build/config.json
 outofskin.iml
+
+# data files
+data/

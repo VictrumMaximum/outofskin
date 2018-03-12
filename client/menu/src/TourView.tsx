@@ -69,7 +69,7 @@ export default class TourView extends React.Component<TourViewProps, {}> {
             })
 		}
         return (
-            <div>
+            <div style={{overflow: "auto", maxHeight: "100vh"}}>
                 {content}
             </div>
         );

@@ -41,10 +41,10 @@ export default class TourComponent extends React.Component<TourComponentProps, T
 			);
 		}
         return (
-            <table>
-				<tr>
-					<td>{id}</td>
-				</tr>
+            <table style={{marginTop: "0.5em"}}>
+				{/*<tr>*/}
+					{/*<td>{id}</td>*/}
+				{/*</tr>*/}
                 <tr>
 					<td>{tour.eventName}</td>
 				</tr>

@@ -36,11 +36,11 @@ export default class TourMenu extends React.Component<{}, TourMenuState> {
     }
     
     render() {
-        console.log("render menu");
-        console.log(Object.keys(this.state).length);
+        // pass fetchTours to children to refresh when adding/deleting/updating tours
         return (
             <div>
                 <AddMenu fetchTours={this.fetchTours}/>
+                <hr style={{border: "1px solid black"}}/>
                 <TourView tours={this.state.tours} fetchTours={this.fetchTours}/>
             </div>
         );
