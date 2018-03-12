@@ -31,14 +31,14 @@ router.delete("/", (req, res) => {
 		.catch((error) => {handleError(error, res)});
 });
 
-// router.patch("/", (req, res) => {
-// 	console.log("Received request to update tour");
-// 	const id = req.body.id;
-// 	const updates = req.body.updates;
-// 	tourDB.update(id, updates)
-// 		.then(() => {res.end("{}");})
-// 		.catch((error) => {handleError(error, res)});
-// });
+router.patch("/", (req, res) => {
+	Logger.debug("Received request to update tour");
+	const id = req.body.id;
+	const updates = req.body.updates;
+	tourDB.update(id, updates)
+		.then(() => {res.end("{}");})
+		.catch((error) => {handleError(error, res)});
+});
 
 const handleError =  (error, response) => {
     Logger.error(JSON.stringify(error, null, 2));

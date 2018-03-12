@@ -4,36 +4,25 @@ import TourComponent from "./TourComponent";
 import {AxiosResponse} from "axios";
 import {tourDataURL} from "./TourMenu";
 import axios from "axios";
+import * as moment from "moment";
 
-interface TourViewState {
-    tours: {
-        [id: string]: Tour
-    };
+interface TourViewProps {
+	tours: {
+		[id: string]: Tour
+    },
+	fetchTours: () => void
 }
 
-export default class TourView extends React.Component<{}, TourViewState> {
+export default class TourView extends React.Component<TourViewProps, {}> {
     constructor(props) {
         super(props);
-        this.state = {
-        	tours: {}
-        };
-        this.fetchTours = this.fetchTours.bind(this);
 	    this.deleteTour = this.deleteTour.bind(this);
+        this.updateTour = this.updateTour.bind(this);
     }
 
-	fetchTours() {
-		axios.get(tourDataURL, {params: {limit: 5}}).then((response: AxiosResponse) => {
-			const responseData = response.data;
-			if (responseData.error) {
-				console.log(JSON.stringify(responseData.error, null, 2));
-			}
-			else {
-				console.log("Fetched tours");
-				console.log(responseData);
-				this.setState({tours: responseData.data});
-			}
-		});
-	}
+    componentDidMount() {
+        this.props.fetchTours();
+    }
 
 	deleteTour(id) {
     	console.log("delete tour id " + id);
@@ -44,22 +33,44 @@ export default class TourView extends React.Component<{}, TourViewState> {
 			}
 			else {
 				console.log("Tour "+id+" deleted");
-				const tours = this.state.tours;
-				delete tours[id];
-				this.setState({tours});
+				this.props.fetchTours();
 			}
 		});
 	}
+
+    updateTour(id, tour, cancelEdit) {
+        const data = {
+            ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
+        };
+        axios.patch(tourDataURL, {id: id, updates: data}).then((response: AxiosResponse) => {
+            const responseData = response.data;
+            if (responseData.error) {
+                console.log(JSON.stringify(responseData.error, null, 2));
+                alert("Something went wrong, contact me");
+            }
+            else {
+                console.log("success");
+                cancelEdit();
+                this.props.fetchTours();
+            }
+        });
+    }
     
     render() {
+    	let content = [];
+    	if (this.props.tours) {
+            console.log(Object.keys(this.props.tours).length);
+    		content = Object.keys(this.props.tours).map((id) => {
+                const tour = this.props.tours[id];
+                tour.begin = moment(tour.begin);
+                return (
+                    <TourComponent id={id} tour={tour} updateTour={this.updateTour} deleteTour={this.deleteTour}/>
+                );
+            })
+		}
         return (
             <div>
-	            <button onClick={this.fetchTours}>Get all</button><br/>
-                {Object.keys(this.state.tours).map((id) => {
-                    return (
-                        <TourComponent id={id} tour={this.state.tours[id]} deleteTour={this.deleteTour}/>
-                    );
-                })}
+                {content}
             </div>
         );
     }

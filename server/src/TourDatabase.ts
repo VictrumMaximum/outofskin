@@ -103,9 +103,10 @@ function updateInMemory(id, updates) {
 		if (!tours.hasOwnProperty(id)) {
 			throw ("Tour id " + id + " does not exist");
 		}
-		const toUpdate = tours.data[id];
+		const toUpdate = tours[id];
 		const keysToUpdate = Object.keys(updates);
-		for (const key in keysToUpdate) {
+		for (let i = 0; i < keysToUpdate.length; i++) {
+			const key = keysToUpdate[i];
 			toUpdate[key] = updates[key];
 		}
 		resolve();
