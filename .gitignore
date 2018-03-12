@@ -63,3 +63,4 @@ build/*.js
 # intellij stuff
 .idea/
 build/config.json
+outofskin.iml
