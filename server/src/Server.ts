@@ -13,7 +13,7 @@ app.use("/bio", staticSiteFiles);
 app.use("/music", staticSiteFiles);
 app.use("/contact", staticSiteFiles);
 app.use("/press", staticSiteFiles);
-app.use("/menu", express.static(__dirname + "/menu/"));
+app.use("/25oktoberwouterdetrex", express.static(__dirname + "/menu/"));
 
 app.get("/test", (req, res) => {
 	console.log("Received request to test");
