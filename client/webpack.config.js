@@ -108,8 +108,13 @@ const config = {
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
     externals: {
+        "axios": "axios",
         "react": "React",
-        "react-dom": "ReactDOM"
+        "react-dom": "ReactDOM",
+        "react-redux": "react-redux",
+        "redux": "redux",
+        "moment": "moment",
+        "react-router-dom": "react-router-dom"
     }
 };
 

@@ -1,130 +1,42 @@
 import * as React from "react";
-import * as moment from "moment";
-import {Moment} from "moment";
-import axios, {AxiosResponse} from "axios";
-import {tourDataURL} from "./TourMenu";
 import {Tour} from "../../../schemas/TourSchema";
-
-interface EditMenuState {
-	eventName: string,
-	eventLink: string,
-	begin: Moment,
-	city: string,
-	location: string,
-	locationLink: string
-}
+import InputMenu from "./InputMenu";
 
 interface EditMenuProps {
+	id: string,
 	tour: Tour,
-	cancelEdit: () => void
+	cancelEdit: () => void,
+	onSubmit: (id, tour, cancelEdit: () => void) => void
 }
 
 
-export default class EditMenu extends React.Component<EditMenuProps, EditMenuState> {
+export default class EditMenu extends React.Component<EditMenuProps, Tour> {
     constructor(props) {
         super(props);
-        const tour = this.props.tour;
-        this.state = {
-        	eventName: tour.eventName,
-			eventLink: tour.eventLink,
-			begin: moment(tour.begin),
-			city: tour.city,
-			location: tour.location,
-			locationLink: tour.locationLink
-        };
-        this.updateState = this.updateState.bind(this);
-        this.updateBegin = this.updateBegin.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.state = this.props.tour;
+        this.onChange = this.onChange.bind(this);
     }
 
-    updateState(event) {
-    	const key = event.target.id;
-    	const value = event.target.value;
-    	this.setState({
-		    	[key]:value
-	    });
+    getButtons() {
+        return [
+            {
+                text: "save",
+                onClick: () => this.props.onSubmit(this.props.id, this.state, this.props.cancelEdit)
+            },
+            {
+                text: "cancel",
+                onClick: this.props.cancelEdit
+            }
+        ]
     }
 
-    updateBegin(event) {
-	    const key = event.target.id;
-	    const value = event.target.value;
-	    const begin = this.state.begin;
-	    switch (key) {
-			case "day":
-				begin.day(value);
-				break;
-			case "month":
-				begin.month(value);
-				break;
-			case "year":
-				begin.year(value);
-				break;
-			case "hours":
-				begin.hours(value);
-				break;
-			case "minutes":
-				begin.minutes(value);
-				break;
-		}
-	    this.setState({
-		    begin
-	    });
-    }
-
-    onSubmit(tour) {
-    	const data = {
-		    ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
-	    };
-    	console.log(data);
-    	console.log("not sent");
-	    // axios.post(tourDataURL, data).then((response: AxiosResponse) => {
-		 //    const responseData = response.data;
-		 //    if (responseData.error) {
-			//     console.log(JSON.stringify(responseData.error, null, 2));
-		 //    }
-		 //    else {
-			//     console.log("success");
-		 //    }
-	    // });
+    onChange(newState: Tour) {
+        this.setState(newState);
     }
 
     render() {
         return (
-            <table>
-	            <tr>
-		            <td>Event name</td>
-		            <td><input id={"eventName"} value={this.state.eventName} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Event link</td>
-		            <td><input id={"eventLink"} value={this.state.eventLink} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Begin</td>
-		            <td>
-			            <input id={"day"} onChange={this.updateBegin} placeholder="dd"/>
-			            <input id={"month"} placeholder="mm"/>
-			            <input id={"year"}  placeholder="yyyy"/>
-			            <input id={"hours"} placeholder="hh"/>
-			            <input id={"minutes"} placeholder="mm"/>
-		            </td>
-	            </tr>
-	            <tr>
-		            <td>City</td>
-		            <td><input id={"city"} value={this.state.city} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Location</td>
-		            <td><input id={"location"} value={this.state.location} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Location link</td>
-		            <td><input id={"locationLink"} value={this.state.locationLink} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td><button onClick={this.props.cancelEdit}>cancel</button></td>
-	            </tr>
-            </table>
+            <InputMenu initialState={this.props.tour} buttons={this.getButtons()} onChange={this.onChange}/>
         );
     }
 }

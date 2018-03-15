@@ -2,147 +2,87 @@ import * as React from "react";
 import axios, {AxiosResponse} from "axios";
 import {tourDataURL} from "./TourMenu";
 import {Moment} from "moment";
+import * as moment from "moment";
+import InputMenu from "./InputMenu";
 
 interface AddMenuState {
 	eventName: string,
 	eventLink: string,
-	begin: Timestamp,
+	begin: Moment,
 	city: string,
 	location: string,
 	locationLink: string
 }
-interface Timestamp {
-	day,
-	month,
-	year,
-	hours,
-	minutes
+
+interface AddMenuProps {
+    fetchTours: () => void
 }
 
 const premade = {
 	eventName: "testName",
 	eventLink: "testEventLink",
-	begin: {
-		day: "01",
-		month: "01",
-		year: "2018",
-		hours: "10",
-		minutes: "00"
-	},
+	begin: moment("2018-12-11 20:21"),
 	city: "testCity",
 	location: "testLocation",
 	locationLink: "testLocationLink"
 };
 
-
-export default class AddMenu extends React.Component<{}, AddMenuState> {
+export default class AddMenu extends React.Component<AddMenuProps, AddMenuState> {
     constructor(props) {
         super(props);
-        this.state = {
-	        eventName: "",
-	        eventLink: "",
-	        begin: {
-		        day: "",
-		        month: "",
-		        year: "",
-		        hours: "",
-		        minutes: ""
-	        },
-	        city: "",
-	        location: "",
-	        locationLink: ""
-        };
-        this.updateState = this.updateState.bind(this);
-        this.updateBegin = this.updateBegin.bind(this);
+        this.state = this.getInitialState();
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    updateState(event) {
-    	const key = event.target.id;
-    	const value = event.target.value;
-    	this.setState({
-		    	[key]:value
-	    });
+    getInitialState() {
+    	return {
+            eventName: "",
+            eventLink: "",
+            begin: moment(),
+            city: "",
+            location: "",
+            locationLink: ""
+        };
     }
 
-    updateBegin(event) {
-	    const key = event.target.id;
-	    const value = event.target.value;
-	    this.setState({
-		    begin: {
-			    ...this.state.begin, ...{[key]: value}
-		    }
-	    });
-    }
-
-    extractDate(date) {
-    	return date.year+"-"
-		    +date.month+"-"
-		    +date.day+"-"
-		    +date.hours+"-"
-		    +date.minutes;
+    getButtons() {
+    	return [
+			{
+				text: "Add",
+				onClick: () => this.onSubmit(this.state)
+			},
+			{
+				text: "Add premade",
+				onClick: () => this.onSubmit(premade)
+			}
+		]
     }
 
     onSubmit(tour) {
     	const data = {
-		    ...tour, ...{begin: this.extractDate(tour.begin)}
+		    ...tour, ...{begin: this.state.begin.format("YYYY-MM-DD HH:mm")}
 	    };
 	    axios.post(tourDataURL, data).then((response: AxiosResponse) => {
 		    const responseData = response.data;
 		    if (responseData.error) {
 			    console.log(JSON.stringify(responseData.error, null, 2));
+                alert("Something went wrong, contact me");
 		    }
 		    else {
 			    console.log("success");
+                this.props.fetchTours();
 		    }
 	    });
     }
 
-    test() {
-		axios.get("/test").then((response: AxiosResponse) => {
-			console.log("success");
-		});
+    onChange(newState: AddMenuState) {
+    	this.setState(newState);
 	}
 
     render() {
         return (
-            <table>
-	            <tr>
-		            <td>Event name</td>
-		            <td><input id={"eventName"} value={this.state.eventName} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Event link</td>
-		            <td><input id={"eventLink"} value={this.state.eventLink} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Begin</td>
-		            <td>
-			            <input id={"day"} onChange={this.updateBegin} placeholder="dd"/>
-			            <input id={"month"} placeholder="mm"/>
-			            <input id={"year"}  placeholder="yyyy"/>
-			            <input id={"hours"} placeholder="hh"/>
-			            <input id={"minutes"} placeholder="mm"/>
-		            </td>
-	            </tr>
-	            <tr>
-		            <td>City</td>
-		            <td><input id={"city"} value={this.state.city} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Location</td>
-		            <td><input id={"location"} value={this.state.location} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td>Location link</td>
-		            <td><input id={"locationLink"} value={this.state.locationLink} onChange={this.updateState} /></td>
-	            </tr>
-	            <tr>
-		            <td><button onClick={() => {this.onSubmit(this.state)}}>Add</button></td>
-		            <td><button onClick={() => {this.onSubmit(premade)}}>Add premade</button></td>
-					<td><button onClick={this.test}>test</button></td>
-	            </tr>
-            </table>
+        	<InputMenu initialState={this.getInitialState()} buttons={this.getButtons()} onChange={this.onChange}/>
         );
     }
 }

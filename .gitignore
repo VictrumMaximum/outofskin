@@ -60,8 +60,12 @@ typings/
 # build folder
 build/
 
+# build files for menu
+build/menu/
+
 # intellij stuff
 .idea/
+outofskin.iml
 
-# backup config file
-config.json
+# data files
+data/

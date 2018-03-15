@@ -2,9 +2,9 @@ import * as express from "express";
 const app = express();
 import tourRoutes from "./TourRoutes";
 import tourDB from "./TourDatabase";
-const port = 3000;
-
+const port = 3001;
 const staticSiteFiles = express.static(__dirname + "/client/site/");
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use("/tourData", tourRoutes);
@@ -13,7 +13,7 @@ app.use("/bio", staticSiteFiles);
 app.use("/music", staticSiteFiles);
 app.use("/contact", staticSiteFiles);
 app.use("/press", staticSiteFiles);
-app.use("/menu", express.static(__dirname + "/client/menu/"));
+app.use("/25oktoberwouterdetrex", express.static(__dirname + "/client/menu/"));
 
 app.get("/test", (req, res) => {
 	console.log("Received request to test");
