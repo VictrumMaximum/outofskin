@@ -42,10 +42,16 @@ export default class InputMenu extends React.Component<InputMenuProps, InputMenu
     updateBegin(event) {
 	    const key = event.target.id;
 	    const value = event.target.value;
+		if (value.length === 0) {
+			return;
+		}
         const begin = this.state.begin;
         switch (key) {
             case "day":
-                begin.date(value);
+				console.log("update day to " + value);
+				if (Number(value) <= begin.daysInMonth()) {
+					begin.date(value);
+				}
                 break;
             case "month":
                 begin.month(value);
@@ -54,12 +60,17 @@ export default class InputMenu extends React.Component<InputMenuProps, InputMenu
                 begin.year(value);
                 break;
             case "hours":
-                begin.hours(value);
+            	if (Number(value) <= 24) {
+					begin.hours(value);
+				}
                 break;
             case "minutes":
-                begin.minutes(value);
+				if (Number(value) <= 60) {
+					begin.minutes(value);
+				}
                 break;
         }
+        console.log(begin);
         this.setState({
             begin
         }, () => {
@@ -86,17 +97,21 @@ export default class InputMenu extends React.Component<InputMenuProps, InputMenu
                     Begin
                 </div>
                 <div className={"col-12"}>
-                    <input id={"day"} className={styles.twoDigitInput+" "+styles.centeredInput} value={this.state.begin.date()} onChange={this.updateBegin} placeholder="dd"/>
+                    <input id={"day"} className={styles.twoDigitInput+" "+styles.centeredInput}
+						   onChange={(event) => {
+                    			const value = event.target.value;
+                    			if (value.length !== 0 && Number(value) <= this.state.begin.daysInMonth())
+                    				{this.updateBegin(event)}}} placeholder="dd"/>
                     <select id={"month"} className={styles.monthSelect} onChange={this.updateBegin}>
                         {moment.months().map((month) => {
-                            return (<option value={month}>{month}</option>);
+							return (<option value={month} selected={(month === moment.months()[this.state.begin.month()])}>{month}</option>);
                         })};
                     </select>
-                    <input id={"year"} className={styles.fourDigitInput+" "+styles.centeredInput} value={this.state.begin.year()}  onChange={this.updateBegin} placeholder="yyyy"/>
+                    <input id={"year"} className={styles.fourDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="yyyy"/>
                 </div>
                 <div className={"col-12"}>
-                    <input id={"hours"} className={styles.twoDigitInput+" "+styles.centeredInput} value={this.state.begin.hours()} onChange={this.updateBegin} placeholder="hh"/>:
-                    <input id={"minutes"} className={styles.twoDigitInput+" "+styles.centeredInput} value={this.state.begin.minutes()} onChange={this.updateBegin} placeholder="mm"/>
+                    <input id={"hours"} className={styles.twoDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="hh"/>:
+                    <input id={"minutes"} className={styles.twoDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="mm"/>
                 </div>
                 <div className={"col-4"}>
                     Location

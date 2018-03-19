@@ -69,4 +69,4 @@ build/config.json
 outofskin.iml
 
 # data files
-data/
+data/*.json

@@ -4,40 +4,24 @@ const fs = require("fs");
 import {Promise} from "es6-promise";
 import Logger from "./Logs/Logger";
 
-const sourceFile = "./data/new-tours.json";
-const deletedFile = "./data/deleted_tours.json";
+let sourceFile = "./data/tours.json";
+let deletedFile = "./data/deletedTours.json";
 
 let tourCache;//: TourDB;
+// try live data
 fs.readFile(sourceFile, "utf8", (err, data) => {
-	if (err) throw err;
-	tourCache = JSON.parse(data);
-});
-
-function test() {
-	return testHelper()
-		.then(() => {
-			return testHelperHelper();
-		})
-		.then((msg) => {
-			console.log(msg);
-		})
-		.catch(() => {
-			throw ("errored in test");
+	if (err) {
+		// use test data instead
+		sourceFile = "./data/test/tours.json";
+		deletedFile = "./data/deletedTours.json";
+		fs.readFile(sourceFile, "utf8", (err, data) => {
+			if (err) throw err;
+			tourCache = JSON.parse(data);
 		});
-}
-
-function testHelper() {
-	return new Promise((resolve, reject) => {
-		console.log("testHelper");
-		resolve();
-	});
-}
-function testHelperHelper() {
-	return new Promise((resolve, reject) => {
-		console.log("testHelperHelper");
-		resolve("greetings from testhh");
-	});
-}
+	} else {
+		tourCache = JSON.parse(data);
+	}
+});
 
 const fetchAll = () => {
 	return new Promise((resolve, reject) => {
@@ -165,6 +149,5 @@ export default {
 	add,
 	remove,
 	fetchAll,
-	update,
-	test
+	update
 };
