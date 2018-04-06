@@ -1,7 +1,7 @@
 import * as express from "express";
 const app = express();
 import tourRoutes from "./TourRoutes";
-const port = 80;
+const port = 8080;
 
 const staticSiteFiles = express.static(__dirname + "/client/");
 app.use(express.json());
