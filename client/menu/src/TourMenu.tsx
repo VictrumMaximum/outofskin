@@ -4,7 +4,7 @@ import TourView from "./TourView";
 import axios, {AxiosResponse} from "axios";
 import {Tour} from "../../../schemas/TourSchema";
 
-export const tourDataURL = "/tourData";
+export const tourDataURL = "/tourData/menu";
 
 interface TourMenuState {
     tours: {

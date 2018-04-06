@@ -12,6 +12,7 @@ let tourCache;//: TourDB;
 fs.readFile(sourceFile, "utf8", (err, data) => {
 	if (err) {
 		// use test data instead
+		Logger.warn("Using test data!");
 		sourceFile = "./data/test/tours.json";
 		deletedFile = "./data/deletedTours.json";
 		fs.readFile(sourceFile, "utf8", (err, data) => {

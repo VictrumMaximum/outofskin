@@ -5,14 +5,26 @@ const url = require('url');
 const app = express();
 const router = express.Router();
 
+// for main site
 router.get("/", (req, res) => {
-	Logger.debug("Received request to show tours");
+	Logger.debug((req.headers['x-forwarded-for'] || req.connection.remoteAddress) + "," + req.headers['user-agent']);
 	tourDB.fetchAll()
 		.then((tours) => {
 			// console.log("returning:");
 			// console.log(tours);
 			res.end(JSON.stringify({data: tours}));
 		}).catch((error) => {handleError(error, res)});
+});
+
+// for menu
+router.get("/menu", (req, res) => {
+    Logger.debug("Received request to show tours");
+    tourDB.fetchAll()
+        .then((tours) => {
+            // console.log("returning:");
+            // console.log(tours);
+            res.end(JSON.stringify({data: tours}));
+        }).catch((error) => {handleError(error, res)});
 });
 
 router.post("/", (req, res) => {
