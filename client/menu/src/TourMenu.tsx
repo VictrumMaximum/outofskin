@@ -4,7 +4,7 @@ import TourView from "./TourView";
 import axios, {AxiosResponse} from "axios";
 import {Tour} from "../../../schemas/TourSchema";
 
-export const tourDataURL = "/tourData/menu";
+export const tourDataURL = "/tourData";
 
 interface TourMenuState {
     tours: {
@@ -22,7 +22,7 @@ export default class TourMenu extends React.Component<{}, TourMenuState> {
     }
 
     fetchTours() {
-        axios.get(tourDataURL, {params: {limit: 5}}).then((response: AxiosResponse) => {
+        axios.get(tourDataURL+"/menu", {params: {limit: 5}}).then((response: AxiosResponse) => {
             const responseData = response.data;
             if (responseData.error) {
                 console.log(JSON.stringify(responseData.error, null, 2));
