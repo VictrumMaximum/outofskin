@@ -1,6 +1,7 @@
 import * as express from "express";
 const app = express();
 import tourRoutes from "./TourRoutes";
+import Logger from "./Logs/Logger";
 const port = 8080;
 
 const staticSiteFiles = express.static(__dirname + "/client/");
@@ -15,4 +16,4 @@ app.use("/press", staticSiteFiles);
 app.use("/25oktoberwouterdetrex", express.static(__dirname + "/menu/"));
 
 app.listen(port);
-console.log("Server started on port " + port);
+Logger.info("Server started on port " + port);
