@@ -8,7 +8,7 @@
     "tsc": "tsc --project ./server/",
     "webpack": "webpack --progress --color --display-error-details --config client/webpack.config.js",
     "webpack-deploy": "webpack --progress --color --display-error-details --config client/webpack.deploy.config.js",
-    "watch": "webpack-dev-server --config client/webpack.config.js --progress --color --content-base build/server/client/site/ --inline --hot",
+    "watch": "webpack-dev-server --config client/webpack.dev.server.config.js --progress --color --content-base build/ --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
