@@ -17,7 +17,7 @@ export default class Option extends React.Component<OptionProps, {}> {
         return (
 			<div className={"col-2 " + style.optionDiv}>
 				<h3>
-					<Link exact to={this.props.path}
+					<Link to={this.props.path}
 						className={style.optionLink}>
 						{this.props.title}
 						</Link>

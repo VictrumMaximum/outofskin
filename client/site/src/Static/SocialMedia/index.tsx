@@ -16,7 +16,7 @@ export default class SocialMedia extends React.Component<{}, {}> {
 			<div id="socialMedia" className={"row"}>
 				<div className={"col-12"}>
 					{socialMedias.map((socialMedia) => {
-						return <ButtonRow socialMedia={socialMedia}/>
+						return <ButtonRow key={socialMedia.name} socialMedia={socialMedia}/>
 					})}
 				</div>
 			</div>
