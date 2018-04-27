@@ -23,6 +23,7 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 		this.updateBackground = this.updateBackground.bind(this);
 	}
 
+	// updates background when route changes
 	updateBackground() {
 		const background = routes["/"+window.location.href.split("/")[3]].background;
 		if (this.state.background !== background) {
@@ -40,9 +41,10 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 						<div className="col-12">
 							<Static />
 							<div id={styles.content} className={"row "}>
-								<Route exact path={"/"} component={Home}/>
+								{/*<Route exact path={"/"} component={Home}/>*/}
 								{Object.keys(routes).map(path => {
 									return <Route
+										key={path}
 										exact path={path}
 										render = {(routeProps) => {
 											// trigger background update for every path change
