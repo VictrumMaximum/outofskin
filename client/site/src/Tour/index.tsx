@@ -1,16 +1,14 @@
 import * as React from "react";
-import * as moment from "moment";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Tour} from "../../../../schemas/TourSchema";
-import TourComponent from "./TourComponent";
+import {Tours} from "../../../../schemas/TourSchema";
 import {setTours} from "../redux/actions/tours";
 import TourColumn from "./TourColumn";
 const styles = require("./styles.less");
 
 interface TourProps {
-	tours: Tour[];
-	setTours: (tours: Tour[]) => void
+	tours: Tours;
+	setTours: (tours: Tours) => void
 }
 
 const tourDataURL = "/tourData";
@@ -22,7 +20,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 
 
 	componentDidMount() {
-		if (this.props.tours.length === 0) {
+		if (Object.keys(this.props.tours).length === 0) {
 			this.fetchTours();
 		}
 	}
@@ -34,20 +32,21 @@ class TourContainer extends React.Component<TourProps, {}> {
 				console.log(JSON.stringify(responseData.error, null, 2));
 			}
 			else {
-				console.log(JSON.stringify(responseData.data, null, 2));
+				console.log("Received " + Object.keys(responseData.data).length + " tours");
+				console.log(responseData.data);
 				this.props.setTours(responseData.data);
 			}
 		});
 	}
 
-	getUpcomingTours(tours: Tour[]): Tour[] {
+	getUpcomingTours(tours: Tours): Tours {
 		// const now = moment();
 		// const filtered = tours.filter((tour) => {
 		// 	return (moment(tour.begin).isAfter(now));
 		// });
 		return tours;
 	}
-	getPastTours(tours: Tour[]): Tour[] {
+	getPastTours(tours: Tours): Tours {
 		// const now = moment();
 		// const filtered = tours.filter((tour) => {
 		// 	return (moment(tour.begin).isBefore(now));
@@ -75,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setTours: (tours) => dispatch(setTours(tours))
+		setTours: (tours: Tours) => dispatch(setTours(tours))
 	}
 };
 

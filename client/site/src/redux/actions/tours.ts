@@ -1,6 +1,6 @@
-import {Tour} from "../../../../../schemas/TourSchema";
+import {Tours} from "../../../../../schemas/TourSchema";
 
-export const setTours = (tours: Tour[]) => {
+export const setTours = (tours: Tours) => {
 	return {
 		type: "SET_TOURS",
 		tours

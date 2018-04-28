@@ -1,7 +1,10 @@
 import {Moment} from "moment";
 
+export interface Tours {
+	[id: string]: Tour
+}
+
 export interface Tour {
-    id: number;
     eventName: string;
     eventLink: string;
     begin: Moment;

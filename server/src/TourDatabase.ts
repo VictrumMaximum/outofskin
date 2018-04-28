@@ -1,4 +1,4 @@
-// import {TourDB} from "../../schemas/TourDBSchema";
+import {TourDB} from "../../schemas/TourDBSchema";
 
 const fs = require("fs");
 import {Promise} from "es6-promise";
@@ -7,7 +7,7 @@ import Logger from "./Logs/Logger";
 let sourceFile = "./data/tours.json";
 let deletedFile = "./data/deletedTours.json";
 
-let tourCache;//: TourDB;
+let tourCache: TourDB;
 // try live data
 fs.readFile(sourceFile, "utf8", (err, data) => {
 	if (err) {
