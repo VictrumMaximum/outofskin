@@ -21,7 +21,8 @@ const siteConfig = {
         new ExtractTextPlugin("style.css"),
         new webpack.ProvidePlugin({
             React: "React", react: "React", "window.react": "React", "window.React": "React"
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin({})
     ]
 };
 
