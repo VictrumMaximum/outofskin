@@ -1,13 +1,14 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Tours} from "../../../../schemas/TourSchema";
+import {Tour, Tours} from "../../../../schemas/TourSchema";
 import {setTours} from "../redux/actions/tours";
 import TourColumn from "./TourColumn";
 const styles = require("./styles.less");
 
 interface TourProps {
-	tours: Tours;
+	pastTours: Tour[];
+	upcomingTours: Tour[]
 	setTours: (tours: Tours) => void
 }
 
@@ -20,7 +21,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 
 
 	componentDidMount() {
-		if (Object.keys(this.props.tours).length === 0) {
+		if (this.props.pastTours.length === 0 && this.props.upcomingTours.length === 0) {
 			this.fetchTours();
 		}
 	}
@@ -34,32 +35,17 @@ class TourContainer extends React.Component<TourProps, {}> {
 			else {
 				console.log("Received " + Object.keys(responseData.data).length + " tours");
 				console.log(responseData.data);
+				// setTours also sorts and splits. Details are in the action file for tours.
 				this.props.setTours(responseData.data);
 			}
 		});
 	}
-
-	getUpcomingTours(tours: Tours): Tours {
-		// const now = moment();
-		// const filtered = tours.filter((tour) => {
-		// 	return (moment(tour.begin).isAfter(now));
-		// });
-		return tours;
-	}
-	getPastTours(tours: Tours): Tours {
-		// const now = moment();
-		// const filtered = tours.filter((tour) => {
-		// 	return (moment(tour.begin).isBefore(now));
-		// });
-		return tours;
-	}
-
 	render() {
 		return (
 			<div className={"offset-xl-3 offset-2 col-xl-8 col-10"}  >
 				<div className={"row"}>
-					<TourColumn tours={this.getUpcomingTours(this.props.tours)} header={"Upcoming"}/>
-					<TourColumn tours={this.getPastTours(this.props.tours)} header={"Past"}/>
+					<TourColumn tours={this.props.upcomingTours} header={"Upcoming"}/>
+					<TourColumn tours={this.props.pastTours} header={"Past"}/>
 				</div>
 			</div>
 		);
@@ -68,7 +54,8 @@ class TourContainer extends React.Component<TourProps, {}> {
 
 const mapStateToProps = (state) => {
 	return {
-		tours: state.tours
+		pastTours: state.tours.past,
+		upcomingTours: state.tours.upcoming
 	}
 };
 
