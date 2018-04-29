@@ -3,7 +3,7 @@ const app = express();
 import tourRoutes from "./TourRoutes";
 const staticSiteFiles = express.static(__dirname + "/client/site/");
 import Logger from "./Logs/Logger";
-const port = 8080;
+const port = 3000;
 
 // to support JSON-encoded bodies
 app.use(express.json());
