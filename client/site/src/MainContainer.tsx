@@ -9,49 +9,30 @@ require("../media/fonts/mic-32regular.ttf");
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
 import Home from "./Home";
+import ContentFixator from "./Templates/ContentFixator";
 
-interface MainContainerState {
-	background: string;
-}
-
-export default class MainContainer extends React.Component<{}, MainContainerState> {
+export default class MainContainer extends React.Component<{}, {}> {
 	constructor(props) {
 		super(props);
-		this.state = {
-			background: routes["/"+window.location.href.split("/")[3]].background
-		};
-		this.updateBackground = this.updateBackground.bind(this);
-	}
-
-	// updates background when route changes
-	updateBackground() {
-		const background = routes["/"+window.location.href.split("/")[3]].background;
-		if (this.state.background !== background) {
-			this.setState({background})
-		}
 	}
 
 	render() {
-		const backgroundUrl = "url('./images/"+this.state.background+"')";
-
 		return (
 			<BrowserRouter>
 				{/*router may only have 1 child element*/}
-				<div >
+				<div>
 					<Static />
 					{/*<Route exact path={"/"} component={Home}/>*/}
 					{Object.keys(routes).map(path => {
 						return (
-							<div style={{position: "relative", top: "15em"}}>
+							<div>
 								<Route
 									key={path}
 									exact path={path}
 									render = {(routeProps) => {
-										// trigger background update for every path change
-										this.updateBackground();
 										// react syntax requires component names to start with capital letter
 										const Component = routes[path].component;
-										return <Component background={"url('./images/"+routes[path].background+"')"} {...routeProps}/>
+										return <ContentFixator content={<Component background={"url('./images/"+routes[path].background+"')"} {...routeProps}/>}/>
 									}}/>
 							</div>);
 					})}
