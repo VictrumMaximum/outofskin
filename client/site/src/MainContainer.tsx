@@ -36,27 +36,25 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 
 		return (
 			<BrowserRouter>
-				<div className={"container-fluid " + styles.background + " " + styles.defaultText} style={{backgroundImage: backgroundUrl}}>
-					<div className="row justify-content-center" style={{height: "100vh"}}>
-						<div className="col-12">
-							<Static />
-							<div id={styles.content} className={"row "}>
-								{/*<Route exact path={"/"} component={Home}/>*/}
-								{Object.keys(routes).map(path => {
-									return <Route
-										key={path}
-										exact path={path}
-										render = {(routeProps) => {
-											// trigger background update for every path change
-											this.updateBackground();
-											// react syntax requires component names to start with capital letter
-											const Component = routes[path].component;
-											return <Component {...routeProps}/>
-										}}/>
-								})}
-							</div>
-						</div>
-					</div>
+				{/*router may only have 1 child element*/}
+				<div >
+					<Static />
+					{/*<Route exact path={"/"} component={Home}/>*/}
+					{Object.keys(routes).map(path => {
+						return (
+							<div style={{position: "relative", top: "15em"}}>
+								<Route
+									key={path}
+									exact path={path}
+									render = {(routeProps) => {
+										// trigger background update for every path change
+										this.updateBackground();
+										// react syntax requires component names to start with capital letter
+										const Component = routes[path].component;
+										return <Component background={"url('./images/"+routes[path].background+"')"} {...routeProps}/>
+									}}/>
+							</div>);
+					})}
 				</div>
 			</BrowserRouter>
 		);

@@ -15,7 +15,7 @@ export default class Button extends React.Component<ButtonProps, {}> {
 
 	render() {
 		return (
-			<div className={"offset-11 col-1"}>
+			<div style={{marginTop: "0.5em", marginBottom: "0.5em"}}>
 				<img className={styles.socialButtonImage} src={"./images/" + this.props.socialMedia.image} />
 			</div>
 		);

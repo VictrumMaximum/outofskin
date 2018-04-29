@@ -4,6 +4,7 @@ require("../../media/images/tour.jpg");
 export default class Bio extends React.Component<{}, {}> {
 	constructor(props) {
 		super(props);
+		document.documentElement.style.backgroundImage = props.background;
 	}
 
 	render() {

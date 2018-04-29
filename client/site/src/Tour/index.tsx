@@ -7,6 +7,7 @@ import TourColumn from "./TourColumn";
 const styles = require("./styles.less");
 
 interface TourProps {
+	background: string;
 	pastTours: Tour[];
 	upcomingTours: Tour[]
 	setTours: (tours: Tours) => void
@@ -17,6 +18,7 @@ const tourDataURL = "/tourData";
 class TourContainer extends React.Component<TourProps, {}> {
 	constructor(props) {
 		super(props);
+		document.documentElement.style.backgroundImage = props.background;
 	}
 
 
@@ -42,11 +44,9 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 	render() {
 		return (
-			<div className={"offset-xl-3 offset-2 col-xl-8 col-10"}  >
-				<div className={"row"}>
-					<TourColumn tours={this.props.upcomingTours} header={"Upcoming"}/>
-					<TourColumn tours={this.props.pastTours} header={"Past"}/>
-				</div>
+			<div style={{width: "100%", textAlign: "center"}}>
+				<TourColumn tours={this.props.upcomingTours} header={"Upcoming"}/>
+				<TourColumn tours={this.props.pastTours} header={"Past"}/>
 			</div>
 		);
 	}

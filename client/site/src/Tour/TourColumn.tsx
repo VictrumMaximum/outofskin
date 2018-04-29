@@ -15,7 +15,7 @@ export default class TourColumn extends React.Component<TourColumnProps, {}> {
 
 	render() {
 		return (
-			<div id={styles.upcoming} className={"offset-2 col-8 "}>
+			<div id={styles.upcoming} style={{display: "inline-block", paddingLeft: "2em", paddingRight: "2em", textAlign: "left"}}>
 				<h3>{this.props.header}</h3>
 				{this.props.tours.map((tour) => {
 					return <TourComponent tour={tour} />

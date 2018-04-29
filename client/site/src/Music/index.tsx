@@ -8,6 +8,7 @@ require("../../media/images/tour.jpg");
 export default class MusicContainer extends React.Component<{}, {}> {
 	constructor(props) {
 		super(props);
+		document.documentElement.style.backgroundImage = props.background;
 	}
 
 	mapToColumnOfVideos(video) {

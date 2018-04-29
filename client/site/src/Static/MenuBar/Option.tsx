@@ -15,7 +15,7 @@ export default class Option extends React.Component<OptionProps, {}> {
     
     render() {
         return (
-			<div className={"col-2 " + style.optionDiv}>
+			<div className={style.optionDiv} style={{marginLeft: "2em", marginRight: "2em"}}>
 				<h3>
 					<Link to={this.props.path}
 						className={style.optionLink}>

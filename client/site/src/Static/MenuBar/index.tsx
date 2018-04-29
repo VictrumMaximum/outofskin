@@ -9,7 +9,7 @@ export default class MenuBar extends React.Component<{}, {}> {
     
     render() {
         return (
-			<div className="row justify-content-center" style={{width: "100%"}}>
+			<div style={{width: "100%", textAlign: "center", position: "fixed", top: "5em"}}>
 				{Object.keys(routes).map((path) => {
 					return <Option
 						key={path}

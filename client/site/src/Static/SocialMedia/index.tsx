@@ -1,6 +1,6 @@
 import * as React from "react";
 const socialMedias = require("./socialMedias").default;
-import ButtonRow from "./ButtonRow";
+import Button from "./Button";
 const styles = require("./styles.less");
 require("./icons/facebook.png");
 require("./icons/youtube.png");
@@ -13,12 +13,10 @@ export default class SocialMedia extends React.Component<{}, {}> {
 
 	render() {
 		return (
-			<div id="socialMedia" className={"row"}>
-				<div className={"col-12"}>
-					{socialMedias.map((socialMedia) => {
-						return <ButtonRow key={socialMedia.name} socialMedia={socialMedia}/>
-					})}
-				</div>
+			<div id="socialMedia" style={{position: "fixed", right: "1em", top: "10em"}}>
+				{socialMedias.map((socialMedia) => {
+					return <Button key={socialMedia.name} socialMedia={socialMedia}/>
+				})}
 			</div>
 		);
 	}

@@ -9,7 +9,7 @@ export default class Static extends React.Component<{}, {}> {
 
 	render() {
 		return (
-			<div style={{marginTop: "5em"}}>
+			<div>
 				<MenuBar />
 				<SocialMedia/>
 			</div>
