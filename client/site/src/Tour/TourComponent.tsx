@@ -16,17 +16,19 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 		return (
 			<div className={styles.tourComponent}>
 				<table>
-					<tr>
-						<td style={{width: "16em"}}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
-					</tr>
-					<tr>
-						<td>{this.props.tour.eventName}</td>
-						<td><div className={styles.boxLink}>Tickets</div></td>
-					</tr>
-					<tr>
-						<td>{this.props.tour.location}, {this.props.tour.city}</td>
-						<td><div className={styles.boxLink}>Maps</div></td>
-					</tr>
+					<tbody>
+						<tr>
+							<td style={{width: "16em"}}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
+						</tr>
+						<tr>
+							<td>{this.props.tour.eventName}</td>
+							<td><div className={styles.boxLink}>Tickets</div></td>
+						</tr>
+						<tr>
+							<td>{this.props.tour.location}, {this.props.tour.city}</td>
+							<td><div className={styles.boxLink}>Maps</div></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		);

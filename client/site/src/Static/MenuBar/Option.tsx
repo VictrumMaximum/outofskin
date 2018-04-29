@@ -16,12 +16,12 @@ export default class Option extends React.Component<OptionProps, {}> {
     render() {
         return (
 			<div className={style.optionDiv} style={{marginLeft: "2%", marginRight: "2%"}}>
-				<h3>
+				<h1>
 					<Link to={this.props.path}
 						className={style.optionLink}>
 						{this.props.title}
 						</Link>
-				</h3>
+				</h1>
 			</div>
         );
     }

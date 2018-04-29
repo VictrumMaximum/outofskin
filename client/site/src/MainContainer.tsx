@@ -25,7 +25,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 					{/*<Route exact path={"/"} component={Home}/>*/}
 					{Object.keys(routes).map(path => {
 						return (
-							<div>
+							<div key={path}>
 								<Route
 									key={path}
 									exact path={path}

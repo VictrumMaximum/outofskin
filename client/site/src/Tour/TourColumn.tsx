@@ -18,7 +18,7 @@ export default class TourColumn extends React.Component<TourColumnProps, {}> {
 			<div className={styles.tourColumn}>
 				<h3>{this.props.header}</h3>
 				{this.props.tours.map((tour) => {
-					return <TourComponent tour={tour} />
+					return <TourComponent key={tour.begin.format("DD MMMM HH:mm")} tour={tour} />
 				})}
 			</div>
 		);
