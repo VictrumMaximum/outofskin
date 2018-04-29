@@ -15,10 +15,19 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 	render() {
 		return (
 			<div className={styles.tourComponent}>
-				<span>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</span>
-				<span> {this.props.tour.eventName}</span>
-				<span> {this.props.tour.location}, {this.props.tour.city} </span>
-				<span style={{border: "1px solid black"}}>tickets</span>
+				<table>
+					<tr>
+						<td style={{width: "16em"}}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
+					</tr>
+					<tr>
+						<td>{this.props.tour.eventName}</td>
+						<td><div className={styles.boxLink}>Tickets</div></td>
+					</tr>
+					<tr>
+						<td>{this.props.tour.location}, {this.props.tour.city}</td>
+						<td><div className={styles.boxLink}>Maps</div></td>
+					</tr>
+				</table>
 			</div>
 		);
 	}
