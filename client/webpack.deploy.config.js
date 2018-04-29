@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// TODO: THIS CONFIG IS NOT CORRECT YET
-
->>>>>>> master
 const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -10,15 +5,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
-<<<<<<< HEAD
-module.exports = {
+const siteConfig = {
     context: path.join(__dirname),
-    entry: "./src/index.tsx",
+    entry: "./site/src/index.tsx",
     output: {
-        filename: "bundle.min.js",
-        path: __dirname + "/../build/server/client/"
+        filename: "site.bundle.js",
+        path: __dirname + "/../build/server/client/site/"
     },
-
     plugins: [
         new webpack.DefinePlugin({ // <-- key to reducing React's size
             'process.env': {
@@ -30,40 +23,13 @@ module.exports = {
         new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
         // new BundleAnalyzerPlugin(),
         new HTMLWebpackPlugin({
-            template: "./src/index.html"
-=======
-const optimizePlugins = [
-    new webpack.DefinePlugin({ // <-- key to reducing React's size
-        'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-        }
-    }),
-    new webpack.optimize.UglifyJsPlugin(), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
-    new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-    // new BundleAnalyzerPlugin(),
-    new webpack.ProvidePlugin({
-        React: "React", react: "React", "window.react": "React", "window.React": "React"
-    })
-];
-
-const siteConfig = {
-    context: path.join(__dirname),
-    entry: "./site/src/index.tsx",
-    output: {
-        filename: "site.bundle.js",
-        path: __dirname + "/../build/server/client/site/"
-    },
-    plugins: [
-        // new BundleAnalyzerPlugin(),
-        new HTMLWebpackPlugin({
             template: "./site/src/index.html"
         }),
         new ExtractTextPlugin("style.css"),
         new webpack.ProvidePlugin({
             React: "React", react: "React", "window.react": "React", "window.React": "React"
         })
-    ].concat(optimizePlugins)
+    ]
 };
 
 const menuConfig = {
@@ -71,33 +37,32 @@ const menuConfig = {
     entry: "./menu/src/index.tsx",
     output: {
         filename: "menu.bundle.js",
-        path: __dirname + "/../build/menu/"
+        path: __dirname + "/../build/server/client/menu/"
     },
     plugins: [
+        new webpack.DefinePlugin({ // <-- key to reducing React's size
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin(), //minify everything
+        new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
+        new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
         // new BundleAnalyzerPlugin(),
         new HTMLWebpackPlugin({
             template: "./menu/src/index.html"
->>>>>>> master
         }),
         new ExtractTextPlugin("style.css"),
         new webpack.ProvidePlugin({
             React: "React", react: "React", "window.react": "React", "window.React": "React"
         })
-<<<<<<< HEAD
-    ],
-=======
-    ].concat(optimizePlugins)
+    ]
 };
 
 const config = {
->>>>>>> master
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "inline-source-map",
-
     resolve: {
         extensions: [".tsx", ".ts", ".js", ".json", ".css"]
     },
-
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
@@ -121,14 +86,14 @@ const config = {
                         loader: 'less-loader'
                     }]
                 })
-			},
-			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					'css-loader'
-					]
-			},
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.(jpe?g|png|svg|ico)$/,
                 loader: 'file-loader',
@@ -139,9 +104,9 @@ const config = {
             {
                 test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader',
-				options: {
-					name: './fonts/[name].[ext]'
-				}
+                options: {
+                    name: './fonts/[name].[ext]'
+                }
             }
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
@@ -153,19 +118,12 @@ const config = {
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
     externals: {
-        "react": "React",
-<<<<<<< HEAD
-        "react-dom": "ReactDOM"
-    }
-};
-=======
-        "react-dom": "ReactDOM",
+        "axios": "axios",
         "moment": "moment"
     }
 };
 
 module.exports = [
-    // Object.assign({}, config, siteConfig),
+    Object.assign({}, config, siteConfig),
     Object.assign({}, config, menuConfig)
 ];
->>>>>>> master
