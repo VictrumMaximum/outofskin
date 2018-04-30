@@ -6,11 +6,10 @@ const staticSiteFiles = express.static(__dirname + "/client/site/");
 import Logger from "./Logs/Logger";
 const port = 3000;
 
-// log visitors
-app.use((req, res, next) => {
+const logVisitor = (req, res, next) => {
 	Logger.debug((req.headers['x-forwarded-for'] || req.connection.remoteAddress) + "," + req.headers['user-agent']);
 	next();
-});
+};
 
 // to support JSON-encoded bodies
 app.use(express.json());
@@ -24,6 +23,11 @@ app.use("/music", staticSiteFiles);
 app.use("/contact", staticSiteFiles);
 app.use("/press", staticSiteFiles);
 app.use("/25oktoberwouterdetrex", express.static(__dirname + "/client/menu/"));
+
+// log visitors
+// this needs to be after setting the static middleware stuff
+// https://stackoverflow.com/questions/44695187/express-middleware-getting-called-many-times
+app.use(logVisitor);
 
 app.listen(port);
 Logger.info("Server started on port " + port);
