@@ -1,5 +1,4 @@
 import * as React from "react";
-import Static from "./Static";
 const styles = require("./styles.less");
 require("../media/images/tour.jpg");
 require("../media/images/normal_1080.jpg");
@@ -10,6 +9,8 @@ import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
 import Home from "./Home";
 import ContentFixator from "./Templates/ContentFixator";
+import MenuBar from "./MenuBar";
+import SocialMedia from "./SocialMedia";
 
 export default class MainContainer extends React.Component<{}, {}> {
 	constructor(props) {
@@ -21,7 +22,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 			<BrowserRouter>
 				{/*router may only have 1 child element*/}
 				<div>
-					<Static />
+					<MenuBar />
 					{/*<Route exact path={"/"} component={Home}/>*/}
 					{Object.keys(routes).map(path => {
 						return (
@@ -36,6 +37,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 									}}/>
 							</div>);
 					})}
+					<SocialMedia/>
 				</div>
 			</BrowserRouter>
 		);
