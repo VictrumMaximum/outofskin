@@ -71,7 +71,19 @@ class Editor extends React.Component<EditorProps, EditorState> {
 	}
 
 	addMarkup(type, start, end) {
-		const str = this.state.text.substring(start, end);
+		let str = this.state.text.substring(start, end);
+		console.log(str[str.length - 1] == " ");
+		console.log(str[str.length - 1]);
+		// let s = start;
+		// let e = end;
+		while (str[str.length - 1] === " ") {
+			end = end - 1;
+			str = this.state.text.substring(start, end);
+		}
+		while (str[0] === " ") {
+			start = start + 1;
+			str = this.state.text.substring(start, end);
+		}
 		const symbol = markupMap[type];
 		const markupString = symbol + str + symbol;
 		const before = this.state.text.substring(0, start);
