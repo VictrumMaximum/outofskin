@@ -13,7 +13,7 @@ export default class SocialMedia extends React.Component<{}, {}> {
 
 	render() {
 		return (
-			<div id="socialMedia" style={{position: "fixed", right: "1em", top: "10em"}}>
+			<div id={styles.socialMedia}>
 				{socialMedias.map((socialMedia) => {
 					return <Button key={socialMedia.name} socialMedia={socialMedia}/>
 				})}

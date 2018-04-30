@@ -18,7 +18,7 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 				<table>
 					<tbody>
 						<tr>
-							<td style={{width: "16em"}}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
+							<td className={styles.tourCell}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
 						</tr>
 						<tr>
 							<td>{this.props.tour.eventName}</td>

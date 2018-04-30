@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
 
-const style = require("./menuBar.less");
+const style = require("./styles.less");
 
 interface OptionProps {
     title: string;
@@ -15,7 +15,7 @@ export default class Option extends React.Component<OptionProps, {}> {
     
     render() {
         return (
-			<div className={style.optionDiv} style={{marginLeft: "2%", marginRight: "2%"}}>
+			<div className={style.optionDiv}>
 				<h1>
 					<Link to={this.props.path}
 						className={style.optionLink}>

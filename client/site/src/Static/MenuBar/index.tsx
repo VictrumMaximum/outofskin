@@ -1,6 +1,7 @@
 import * as React from "react";
 import Option from "./Option";
 import routes from "../../routes";
+const styles = require("./styles.less");
 
 export default class MenuBar extends React.Component<{}, {}> {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class MenuBar extends React.Component<{}, {}> {
     
     render() {
         return (
-			<div style={{width: "100%", textAlign: "center", position: "fixed", top: "0em"}}>
+			<div className={styles.menuBar}>
 				{Object.keys(routes).map((path) => {
 					return <Option
 						key={path}
