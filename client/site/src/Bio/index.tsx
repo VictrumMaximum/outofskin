@@ -12,7 +12,11 @@ export default class Bio extends React.Component<{}, {}> {
 		const fullBackgroundPath = "url(" + backgroundPath + ")";
 
 		return (
-			<div className={"offset-xl-3 offset-2 col-xl-6 col-8"}>
+			<div style={{
+				width: "60%",
+				textAlign: "left",
+				display: "inline-block"
+			}}>
 				<em><strong>Een optreden van Out Of Skin is ruimtelijk, ongrijpbaar en ontvouwt zich gedurende de show van verstild naar expressief.</strong></em><br/><br/>
 				Wouter Mol (zang/gitaar), Maartje Gilissen (harp) en Margot Kersing (viool) wonnen in november de SENA Grote Prijs Van Rotterdam 2016
 				in de categorie Singer-Songwriter. Waar Wouter eerst alleen was, heeft Out Of Skin zich nu ontwikkeld tot een driekoppig performance team.<br/>
