@@ -2,7 +2,7 @@ const fs = require("fs");
 import {Promise} from "es6-promise";
 import Logger from "../Logs/Logger";
 
-let sourceFile = "./data/bio.json";
+let sourceFile = "./data/bio.md";
 
 let bioCache: string;
 // try live data
@@ -10,7 +10,7 @@ fs.readFile(sourceFile, "utf8", (err, data) => {
 	if (err) {
 		// use test data instead
 		Logger.warn("Using test bio!--------------------------------------------");
-		sourceFile = "./data/test/bio.json";
+		sourceFile = "./data/test/bio.md";
 		fs.readFile(sourceFile, "utf8", (err, data) => {
 			if (err) throw err;
 			bioCache = data;

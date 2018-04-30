@@ -29,7 +29,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 
 	fetchTours() {
-		axios.get(tourDataURL, {params: {limit: 5}}).then((response: AxiosResponse) => {
+		axios.get(tourDataURL).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));
