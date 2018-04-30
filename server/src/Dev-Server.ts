@@ -9,7 +9,8 @@ new WebpackDevServer(webpack(config), {
 	inline: true,
 	hot: true,
 	proxy: {
-		"/tourData": "http://localhost:3000"
+		"/tourData": "http://localhost:3000",
+		"/bioData": "http://localhost:3000",
 	}
 }).listen(port);
 console.log('Listening at port: ' + port);

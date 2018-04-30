@@ -16,7 +16,7 @@ app.use(express.json());
 // to support URL-encoded bodies
 app.use(express.urlencoded({extended: true}));
 app.use("/tourData", tourRoutes);
-app.use("bioData", bioRoutes);
+app.use("/bioData", bioRoutes);
 app.use("/", staticSiteFiles);
 app.use("/bio", staticSiteFiles);
 app.use("/music", staticSiteFiles);
