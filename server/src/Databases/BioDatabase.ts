@@ -31,10 +31,8 @@ const fetch = () => {
 };
 
 function update(newBio) {
-	return new Promise((resolve, reject) => {
-		bioCache = newBio;
-		return persist(sourceFile, newBio);
-	});
+	bioCache = newBio;
+	return persist(sourceFile, newBio);
 }
 
 function persist(fileName, obj) {

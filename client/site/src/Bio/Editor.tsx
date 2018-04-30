@@ -28,10 +28,10 @@ class Editor extends React.Component<EditorProps, EditorState> {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.addMarkup = this.addMarkup.bind(this);
+		this.updateBio = this.updateBio.bind(this);
 	}
 
 	componentDidMount() {
-		console.log("component mounted");
 		if (this.props.bio.length === 0) {
 			this.fetchBio();
 		}
@@ -46,6 +46,21 @@ class Editor extends React.Component<EditorProps, EditorState> {
 			this.setState({
 				text: bio
 			});
+		});
+	}
+
+	updateBio() {
+		console.log("Updating bio");
+		axios.patch(bioURL, {newBio: this.state.text}).then((response: AxiosResponse) => {
+			const responseData = response.data;
+			if (responseData.error) {
+				console.log(JSON.stringify(responseData.error, null, 2));
+				alert("Something went wrong, contact me");
+			}
+			else {
+				console.log("success");
+				this.props.setBio(this.state.text);
+			}
 		});
 	}
 
@@ -71,7 +86,8 @@ class Editor extends React.Component<EditorProps, EditorState> {
 			<div>
 				<MarkdownInput text={this.state.text}
 							   handleChange={this.handleChange}
-								addMarkup={this.addMarkup}/>
+								addMarkup={this.addMarkup}
+								update={this.updateBio}/>
 				<MarkdownPreview text={this.state.text}/>
 			</div>
 		);

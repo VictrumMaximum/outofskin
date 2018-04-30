@@ -15,7 +15,7 @@ router.patch("/", (req, res) => {
 	Logger.debug("Received request to update bio");
 	const newBio = req.body.newBio;
 	bioDB.update(newBio)
-		.then(() => {res.end("{}");})
+		.then(() => {Logger.debug("done updating"); res.end("{}");})
 		.catch((error) => {handleError(error, res)});
 });
 
