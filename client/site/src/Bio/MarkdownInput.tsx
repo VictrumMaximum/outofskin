@@ -10,6 +10,10 @@ interface MarkdownInputProps {
 export default class MarkdownInput extends React.Component<MarkdownInputProps, {}> {
 	constructor(props) {
 		super(props);
+		this.state = {
+			selectionStart: 0,
+			selectionEnd: 0
+		};
 		this.handleClick = this.handleClick.bind(this);
 	}
 
@@ -21,7 +25,7 @@ export default class MarkdownInput extends React.Component<MarkdownInputProps, {
 	render() {
 		return (
 			<div>
-				<input id={"bioInput"} value={this.props.text} onChange={this.props.handleChange}/>
+				<textarea id={"bioInput"} style={{width: "100%", height: "20em"}} value={this.props.text} onChange={this.props.handleChange}/>
 				<button onClick={() => {this.handleClick("bold")}}>B</button>
 				<button onClick={() => {this.handleClick("italics")}}>I</button>
 				<button onClick={this.props.update}>Update</button>
