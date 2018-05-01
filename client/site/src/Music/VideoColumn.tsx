@@ -16,9 +16,9 @@ export default class VideoColumn extends React.Component<VideoColumnProps, {}> {
 		return (
 			<div className={styles.videoColumn}>
 				<h3>{this.props.header}</h3>
-				{this.props.videos.map((url) => {
+				{this.props.videos.map((videoId) => {
 					return (
-						<Video url={url}/>
+						<Video videoId={videoId}/>
 					);
 				})}
 			</div>
