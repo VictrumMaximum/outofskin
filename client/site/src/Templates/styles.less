@@ -1,16 +1,20 @@
+.contentFixator {
+  text-align: center;
+  height: 100%;
+}
+
+// https://stackoverflow.com/questions/19038240/media-query-styles-not-overriding-original-styles
+
 @media (min-width: 50em) {
   .contentFixator {
-    text-align: center;
     position: fixed;
     top: 8em;
     left: 0;
     right: 0;
-    height: calc(100% - 8em); // https://stackoverflow.com/questions/7357818/how-can-an-html-element-fill-out-100-of-the-remaining-screen-height-using-css fucking legend
+    // these fucking legends
+    // https://stackoverflow.com/questions/7357818/how-can-an-html-element-fill-out-100-of-the-remaining-screen-height-using-css
+    // https://stackoverflow.com/questions/36950151/the-calc-returns-percentage-not-pixels
+    height: ~"calc(100% - 8em);";
     overflow: auto
   }
-}
-
-.contentFixator {
-  text-align: center;
-  height: 100%;
 }
