@@ -1,9 +1,9 @@
 import * as React from "react";
 const styles = require("./styles.less");
 require("../media/images/tour.jpg");
-require("../media/images/normal_1080.jpg");
-require("../media/images/cover_1080.jpg");
-require("../media/images/weird_1080.jpg");
+require("../media/images/normal_1080(low).jpg");
+require("../media/images/cover_1080(low).jpg");
+require("../media/images/weird_1080(low).jpg");
 require("../media/fonts/mic-32regular.ttf");
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";

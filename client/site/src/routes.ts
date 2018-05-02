@@ -5,30 +5,34 @@ import Tour from "./Tour";
 import Bio from "./Bio";
 import Home from "./Home";
 
+const cover = "cover_1080(low).jpg";
+const normal = "normal_1080(low).jpg";
+const weird = "weird_1080(low).jpg";
+
 export default {
 	"/": {
 		component: Tour,
-		background: "cover_1080.jpg",
+		background: cover,
 		title: "Tour"
 	},
 	"/bio": {
 		component: Bio,
-		background: "normal_1080.jpg",
+		background: normal,
 		title: "Bio"
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: "cover_1080.jpg",
+		background: cover,
 		title: "Music"
 	},
 	"/press": {
 		component: Press,
-		background: "normal_1080.jpg",
+		background: normal,
 		title: "Press"
 	},
 	"/contact": {
 		component: Contact,
-		background: "normal_1080.jpg",
+		background: normal,
 		title: "Contact"
 	}
 };
