@@ -1,5 +1,14 @@
 import * as React from "react";
 import { render } from 'react-dom'
-import TourMenu from "./TourMenu";
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import MainContainer from "./MainContainer";
+import mainReducer from "./redux/reducers/";
 
-render(<TourMenu />, document.getElementById("container"));
+const store = createStore(mainReducer);
+
+render(
+	<Provider store={store}>
+		<MainContainer />
+	</Provider>,
+	document.getElementById("container"));

@@ -41,19 +41,20 @@ export default class TourComponent extends React.Component<TourComponentProps, T
 			);
 		}
         return (
-            <table style={{marginTop: "0.5em"}}>
-				{/*<tr>*/}
-					{/*<td>{id}</td>*/}
-				{/*</tr>*/}
-                <tr>
-					<td>{tour.eventName}</td>
-				</tr>
-				<tr>
-					<td>{tour.begin.format("DD MMMM HH:mm")}</td>
-				</tr>
-	            <button onClick={() => {this.props.deleteTour(id)}}>delete</button>
+        	<div>
+				<table style={{marginTop: "0.5em"}}>
+					<tbody>
+						<tr>
+							<td>{tour.eventName}</td>
+						</tr>
+						<tr>
+							<td>{tour.begin.format("DD MMMM HH:mm")}</td>
+						</tr>
+					</tbody>
+				</table>
+				<button onClick={() => {this.props.deleteTour(id)}}>delete</button>
 				<button onClick={this.startEdit}>edit</button>
-            </table>
+			</div>
         );
     }
 }

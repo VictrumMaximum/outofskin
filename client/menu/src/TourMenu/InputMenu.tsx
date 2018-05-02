@@ -104,7 +104,7 @@ export default class InputMenu extends React.Component<InputMenuProps, InputMenu
                     				{this.updateBegin(event)}}} placeholder="dd"/>
                     <select id={"month"} className={styles.monthSelect} onChange={this.updateBegin}>
                         {moment.months().map((month) => {
-							return (<option value={month} selected={(month === moment.months()[this.state.begin.month()])}>{month}</option>);
+							return (<option key={month} value={month} selected={(month === moment.months()[this.state.begin.month()])}>{month}</option>);
                         })};
                     </select>
                     <input id={"year"} className={styles.fourDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="yyyy"/>
@@ -127,7 +127,7 @@ export default class InputMenu extends React.Component<InputMenuProps, InputMenu
                 </div>
                 <div className={"col-12"}>
                     {this.props.buttons.map((button) => {
-                        return (<td><button onClick={button.onClick}>{button.text}</button></td>);
+                        return (<button key={button.text} onClick={button.onClick}>{button.text}</button>);
                     })}
                 </div>
 			</div>

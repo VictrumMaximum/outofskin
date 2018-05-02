@@ -64,7 +64,7 @@ export default class TourView extends React.Component<TourViewProps, {}> {
                 const tour = this.props.tours[id];
                 tour.begin = moment(tour.begin);
                 return (
-                    <TourComponent id={id} tour={tour} updateTour={this.updateTour} deleteTour={this.deleteTour}/>
+                    <TourComponent key={id} id={id} tour={tour} updateTour={this.updateTour} deleteTour={this.deleteTour}/>
                 );
             })
 		}

@@ -26,6 +26,26 @@ const siteConfig = {
     ]
 };
 
+const menuConfig = {
+    context: path.join(__dirname),
+    entry: "./menu/src/index.tsx",
+    output: {
+        filename: "menu.bundle.js",
+        path: __dirname + "/../build/server/client/menu/"
+    },
+    plugins: [
+        new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+        // new BundleAnalyzerPlugin(),
+        new HTMLWebpackPlugin({
+            template: "./menu/src/index.html"
+        }),
+        new ExtractTextPlugin("style.css"),
+        new webpack.ProvidePlugin({
+            React: "React", react: "React", "window.react": "React", "window.React": "React"
+        })
+    ]
+};
+
 const config = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: "inline-source-map",
@@ -94,4 +114,4 @@ const config = {
     }
 };
 
-module.exports = Object.assign({}, config, siteConfig);
+module.exports = Object.assign({}, config, menuConfig);
