@@ -1,10 +1,18 @@
 .videoColumn {
-  width: 40%;
+  width: 100%;
   display: inline-block;
   text-align: left;
-  min-width: 30em;
-  padding-left: 3em;
-  padding-right: 3em;
+}
+
+@media (min-width: 50em) {
+  .videoColumn {
+    width: 40%;
+    display: inline-block;
+    text-align: left;
+    min-width: 30em;
+    padding-left: 3em;
+    padding-right: 3em;
+  }
 }
 
 .videoWrapper {
