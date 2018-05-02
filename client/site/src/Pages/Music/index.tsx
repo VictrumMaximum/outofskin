@@ -2,7 +2,6 @@ import * as React from "react";
 import {live, clips} from "./videos";
 import {connect} from "react-redux";
 import VideoColumn from "./VideoColumn";
-require("../../media/images/tour.jpg");
 
 export default class MusicContainer extends React.Component<{}, {}> {
 	constructor(props) {
