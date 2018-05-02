@@ -24,12 +24,12 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 						<tr>
 							<td>{this.props.tour.eventName}</td>
 							{this.props.showTicketLink ?
-								(<td><div className={styles.boxLink}>Tickets</div></td>) :
+								(<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.eventLink)}}>Tickets</div></td>) :
 								(<td/>)}
 						</tr>
 						<tr>
 							<td>{this.props.tour.location}, {this.props.tour.city}</td>
-							<td><div className={styles.boxLink}>Maps</div></td>
+							<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.locationLink)}}>Maps</div></td>
 						</tr>
 					</tbody>
 				</table>
