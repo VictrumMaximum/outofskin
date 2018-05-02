@@ -45,8 +45,8 @@ class TourContainer extends React.Component<TourProps, {}> {
 	render() {
 		return (
 			<div>
-				<TourColumn tours={this.props.upcomingTours} header={"Upcoming"}/>
-				<TourColumn tours={this.props.pastTours} header={"Past"}/>
+				<TourColumn tours={this.props.upcomingTours} header={"Upcoming"} showTicketLink={true} sortAscending={true}/>
+				<TourColumn tours={this.props.pastTours} header={"Past"} showTicketLink={false} sortAscending={false}/>
 			</div>
 		);
 	}

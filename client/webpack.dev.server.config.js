@@ -114,4 +114,4 @@ const config = {
     }
 };
 
-module.exports = Object.assign({}, config, menuConfig);
+module.exports = Object.assign({}, config, siteConfig);

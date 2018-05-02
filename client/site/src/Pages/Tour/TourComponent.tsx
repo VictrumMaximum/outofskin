@@ -5,6 +5,7 @@ const styles = require("./styles.less");
 
 interface TourProps {
 	tour: Tour;
+	showTicketLink: boolean
 }
 
 export default class TourComponent extends React.Component<TourProps, {}> {
@@ -22,7 +23,9 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 						</tr>
 						<tr>
 							<td>{this.props.tour.eventName}</td>
-							<td><div className={styles.boxLink}>Tickets</div></td>
+							{this.props.showTicketLink ?
+								(<td><div className={styles.boxLink}>Tickets</div></td>) :
+								(<td/>)}
 						</tr>
 						<tr>
 							<td>{this.props.tour.location}, {this.props.tour.city}</td>
