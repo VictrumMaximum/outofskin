@@ -1,6 +1,6 @@
 import * as React from "react";
-import Editor from "./Editor";
-require("../../media/images/tour.jpg");
+import Editor from "../../../../menu/src/Editor/index";
+require("../../../media/images/tour.jpg");
 const styles = require("./styles.less");
 
 export default class Bio extends React.Component<{}, {}> {

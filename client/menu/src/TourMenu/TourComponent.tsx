@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Tour} from "../../../schemas/TourSchema";
+import {Tour} from "../../../../schemas/TourSchema";
 import EditMenu from "./EditMenu";
 
 interface TourComponentProps {

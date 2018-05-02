@@ -2,7 +2,7 @@ import * as React from "react";
 import AddMenu from "./AddMenu";
 import TourView from "./TourView";
 import axios, {AxiosResponse} from "axios";
-import {Tour} from "../../../schemas/TourSchema";
+import {Tour} from "../../../../schemas/TourSchema";
 
 export const tourDataURL = "/tourData";
 

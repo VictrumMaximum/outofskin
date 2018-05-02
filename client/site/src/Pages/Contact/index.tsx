@@ -1,6 +1,6 @@
 import * as React from "react";
-import Menu from "../MenuBar/index";
-require("../../media/images/tour.jpg");
+import Menu from "../../Static/MenuBar/index";
+require("../../../media/images/tour.jpg");
 
 export default class MainContainer extends React.Component<{}, {}> {
 	constructor(props) {

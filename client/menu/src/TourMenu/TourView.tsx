@@ -1,8 +1,8 @@
 import * as React from "react";
-import {Tour} from "../../../schemas/TourSchema";
+import {Tour} from "../../../../schemas/TourSchema";
 import TourComponent from "./TourComponent";
 import {AxiosResponse} from "axios";
-import {tourDataURL} from "./TourMenu";
+import {tourDataURL} from "./";
 import axios from "axios";
 import * as moment from "moment";
 

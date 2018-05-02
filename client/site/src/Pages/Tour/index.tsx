@@ -1,8 +1,8 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Tour, Tours} from "../../../../schemas/TourSchema";
-import {setTours} from "../redux/actions/tours";
+import {Tour, Tours} from "../../../../../schemas/TourSchema";
+import {setTours} from "../../redux/actions/tours";
 import TourColumn from "./TourColumn";
 const styles = require("./styles.less");
 

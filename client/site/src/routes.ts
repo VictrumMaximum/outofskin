@@ -1,9 +1,9 @@
-import OutOfSkin from "./Music";
-import Press from "./Press";
-import Contact from "./Contact";
-import Tour from "./Tour";
-import Bio from "./Bio";
-import Home from "./Home";
+import OutOfSkin from "./Pages/Music";
+import Press from "./Pages/Press";
+import Contact from "./Pages/Contact";
+import Tour from "./Pages/Tour";
+import Bio from "./Pages/Bio";
+import Home from "./Pages/Home";
 
 const cover = "cover_1080(low).jpg";
 const normal = "normal_1080(low).jpg";

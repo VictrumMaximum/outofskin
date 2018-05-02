@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios, {AxiosResponse} from "axios";
-import {tourDataURL} from "./TourMenu";
+import {tourDataURL} from "./index";
 import {Moment} from "moment";
 import * as moment from "moment";
 import InputMenu from "./InputMenu";

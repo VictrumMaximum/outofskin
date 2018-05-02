@@ -7,10 +7,10 @@ require("../media/images/weird_1080(low).jpg");
 require("../media/fonts/mic-32regular.ttf");
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
-import Home from "./Home";
-import ContentFixator from "./Templates/ContentFixator";
-import MenuBar from "./MenuBar";
-import SocialMedia from "./SocialMedia";
+import Home from "./Pages/Home";
+import ContentFixator from "./Pages/ContentFixator";
+import MenuBar from "./Static/MenuBar";
+import SocialMedia from "./Static/SocialMedia";
 
 export default class MainContainer extends React.Component<{}, {}> {
 	constructor(props) {

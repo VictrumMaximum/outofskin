@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {setBio} from "../redux/actions/bio";
+import {setBio} from "../../../site/src/redux/actions/bio";
 import MarkdownInput from "./MarkdownInput";
 import MarkdownPreview from "./MarkdownPreview";
 
