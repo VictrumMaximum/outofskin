@@ -1,4 +1,6 @@
 import * as React from "react";
+import LeftColumn from "./LeftColumn";
+import RightColumn from "./RightColumn";
 
 export default class MainContainer extends React.Component<{}, {}> {
 	constructor(props) {
@@ -9,7 +11,8 @@ export default class MainContainer extends React.Component<{}, {}> {
 	render() {
 		return (
 			<div>
-				Press
+				<LeftColumn/>
+				<RightColumn/>
 			</div>
 		);
 	}
