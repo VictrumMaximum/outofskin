@@ -69,3 +69,5 @@ outofskin.iml
 
 # data files
 data/*.json
+
+package-lock.json

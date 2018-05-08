@@ -18,7 +18,8 @@ const tourDataURL = "/tourData";
 class TourContainer extends React.Component<TourProps, {}> {
 	constructor(props) {
 		super(props);
-		document.documentElement.style.backgroundImage = props.background;
+
+		//eventually initialize state here	
 	}
 
 
@@ -26,6 +27,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 		if (this.props.pastTours.length === 0 && this.props.upcomingTours.length === 0) {
 			this.fetchTours();
 		}
+		document.documentElement.style.backgroundImage = this.props.background;
 	}
 
 	fetchTours() {
