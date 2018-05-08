@@ -3,10 +3,18 @@ import {live, clips} from "./videos";
 import {connect} from "react-redux";
 import VideoColumn from "./VideoColumn";
 
-export default class MusicContainer extends React.Component<{}, {}> {
+interface MusicProps {
+	background: string;	
+}
+
+export default class MusicContainer extends React.Component<MusicProps, {}> {
 	constructor(props) {
 		super(props);
-		document.documentElement.style.backgroundImage = props.background;
+		//document.documentElement.style.backgroundImage = props.background;
+	}
+
+	componentDidMount() {
+		document.documentElement.style.backgroundImage = this.props.background;
 	}
 
 	render() {
