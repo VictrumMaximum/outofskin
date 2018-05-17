@@ -16,7 +16,8 @@ export default class Quote extends React.Component<QuoteProps, {}> {
         return (
 	        <div className={styles.quote}>
 		        <div>{this.props.quote}</div>
-		        <a href={this.props.link}>{this.props.author}</a>
+				- <strong>{this.props.author}</strong>
+				<div className={styles.boxLink} onClick={() => {window.open(this.props.link)}}>Bron</div>
 	        </div>
         );
     }
