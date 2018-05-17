@@ -1,9 +1,13 @@
 import * as React from "react";
-import {left} from "./quotes";
+import QuoteSchema from "../../../../../schemas/QuoteSchema";
 import Quote from "./Quote";
 const styles = require("./styles.less");
 
-export default class LeftColumn extends React.Component<{}, {}> {
+interface PressColumnProps {
+	quotes: QuoteSchema[]
+}
+
+export default class PressColumn extends React.Component<PressColumnProps, {}> {
     constructor(props) {
         super(props);
     }
@@ -11,9 +15,9 @@ export default class LeftColumn extends React.Component<{}, {}> {
     render() {
         return (
             <div className={styles.pressColumn}>
-                {left.map((x) => {
+                {this.props.quotes.map((x) => {
                     return (
-                        <Quote author={x.author} quote={x.quote} link={x.link}/>
+                        <Quote author={x.author} quote={x.text} link={x.link}/>
                     );
                 })}
             </div>
