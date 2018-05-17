@@ -45,7 +45,8 @@ class Bio extends React.Component<BioProps, {}> {
 					<strong>
 				Wie ben je als je uit je schulp kruipt?
 					</strong>
-				De driekoppige band Out Of Skin wil het hele spectrum van het menselijke zijn een stem geven.
+					<br/>
+					De driekoppige band Out Of Skin wil het hele spectrum van het menselijke zijn een stem geven.
 				Ze spelen daarom letterlijk en figuurlijk met de theatrale ruimte via hun moderne,
 				alternatieve popmuziek over de psyche van de mens.
 				Overweldigende harp, ijle tot ruige vioolstreken, slaggitaar en veelzijdige zang.
