@@ -15,8 +15,6 @@ const logVisitor = (req, res, next) => {
 app.use(express.json());
 // to support URL-encoded bodies
 app.use(express.urlencoded({extended: true}));
-app.use("/tourData", tourRoutes);
-app.use("/bioData", bioRoutes);
 app.use("/", staticSiteFiles);
 app.use("/bio", staticSiteFiles);
 app.use("/music", staticSiteFiles);
@@ -28,6 +26,9 @@ app.use("/25oktoberwouterdetrex", express.static(__dirname + "/client/menu/"));
 // this needs to be after setting the static middleware stuff
 // https://stackoverflow.com/questions/44695187/express-middleware-getting-called-many-times
 app.use(logVisitor);
+
+app.use("/tourData", tourRoutes);
+app.use("/bioData", bioRoutes);
 
 app.listen(port);
 Logger.info("Server started on port " + port);
