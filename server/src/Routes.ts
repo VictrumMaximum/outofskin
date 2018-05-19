@@ -7,7 +7,7 @@ const sendSiteIndex = (req, res) => {
     res.sendFile(__dirname + "/client/site/index.html");
 };
 
-router.get("/", );
+router.get("/", sendSiteIndex);
 
 router.get("/bio", sendSiteIndex);
 
