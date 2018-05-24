@@ -15,11 +15,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-	Logger.debug("Add subscriber");
-    // const newBio = req.body.newBio;
-    // subscribersDB.add(newBio)
-		// .then(() => {Logger.debug("done updating"); res.end("{}");})
-		// .catch((error) => {handleError(error, res)});
+	const email = req.body.email;
+	Logger.debug("Adding subscriber: " + email + " ...");
+    db.addSubscriber(email)
+		.then(() => {Logger.debug("Subscriber " + email + " added!"); res.end("{}");})
+		.catch((error) => {handleError(error, res)});
 });
 
 const handleError =  (error, response) => {

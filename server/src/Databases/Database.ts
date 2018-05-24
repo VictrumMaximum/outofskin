@@ -6,6 +6,16 @@ import {Promise} from "es6-promise";
 const dataFolder = "./data/";
 const testDataFolder = "./data/test/";
 
+/**
+ * The general structure of the datafiles is
+ * {
+ * 		metadata: object 			(optional)
+ * 		deletedX: array | object	(optional)
+ * 		data: array | object
+ * }
+ *
+ */
+
 export default class Database {
 
     protected cache;
