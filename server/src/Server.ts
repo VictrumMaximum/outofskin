@@ -5,6 +5,7 @@ import tourRouter from "./DataRouters/TourRouter";
 import bioRouter from "./DataRouters/BioRouter";
 import subscribersRouter from "./DataRouters/SubscribersRouter";
 import musicRouter from "./DataRouters/MusicRouter";
+import pressRouter from "./DataRouters/PressRouter";
 import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
 const port = 3000;
@@ -20,6 +21,7 @@ app.use(dataRoutes.tourDataRoute, tourRouter);
 app.use(dataRoutes.bioDataRoute, bioRouter);
 app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
+app.use(dataRoutes.pressDataRoute, pressRouter);
 app.use(express.static(__dirname + "/client/site/"));
 app.use(express.static(__dirname + "/client/menu/"));
 
