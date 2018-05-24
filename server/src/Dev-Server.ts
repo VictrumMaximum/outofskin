@@ -11,6 +11,7 @@ new WebpackDevServer(webpack(config), {
 	proxy: {
 		"/tourData": "http://localhost:3000",
 		"/bioData": "http://localhost:3000",
+		"/subscribersData": "http://localhost:3000",
 	}
 }).listen(port);
 console.log('Listening at port: ' + port);

@@ -1,17 +1,44 @@
 import * as React from "react";
-import Menu from "../../Static/MenuBar";
-require("../../../media/images/tour.jpg");
+import {AxiosResponse} from "axios";
+import axios from "axios";
 
-export default class MainContainer extends React.Component<{}, {}> {
+const subscribersDataURL = "/subscribersData";
+
+interface ContactState {
+	email: string
+}
+
+export default class Contact extends React.Component<{}, ContactState> {
 	constructor(props) {
 		super(props);
 		document.documentElement.style.backgroundImage = props.background;
+		this.state = {
+			email: ""
+		};
+		this.handleClick = this.handleClick.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleClick() {
+		axios.post(subscribersDataURL, {email: this.state.email}).then((response: AxiosResponse) => {
+			const responseData = response.data;
+			if (responseData.error) {
+				console.log(JSON.stringify(responseData.error, null, 2));
+			}
+			else {
+				console.log("success");
+			}
+		});
+	}
+
+	handleChange(event) {
+		console.log("ahandleChange");
+		this.setState({
+			email: event.target.value
+		});
 	}
 
 	render() {
-		const backgroundPath = "../../media/images/tour.jpg";
-		const fullBackgroundPath = "url(" + backgroundPath + ")";
-
 		const breaks = [];
 		for (let i = 0; i < 70; i++) {
 			breaks.push((<br/>))
@@ -19,9 +46,8 @@ export default class MainContainer extends React.Component<{}, {}> {
 
 		return (
 			<div>
-				hello1
-				{breaks}
-				hello2
+				<input value={this.state.email} onChange={this.handleChange}/>
+				<button onClick={this.handleClick}>subscribe</button>
 			</div>
 		);
 	}

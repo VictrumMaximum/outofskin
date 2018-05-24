@@ -1,5 +1,7 @@
 {
-    "data": [
-        "test@test.nl"
-    ]
+  "data": {
+    "aaa@gmail.com": {
+      "joinDate": "2018-05-24T17:42:29.698Z"
+    }
+  }
 }

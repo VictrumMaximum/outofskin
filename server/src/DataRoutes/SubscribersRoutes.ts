@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 	const email = req.body.email;
-	Logger.debug("Adding subscriber: " + email + " ...");
+	Logger.debug("Adding subscriber: " + email);
     db.addSubscriber(email)
 		.then(() => {Logger.debug("Subscriber " + email + " added!"); res.end("{}");})
 		.catch((error) => {handleError(error, res)});
