@@ -4,8 +4,7 @@ import axios, {AxiosResponse} from "axios";
 import {setBio} from "../redux/actions/bio";
 import MarkdownInput from "./MarkdownInput";
 import MarkdownPreview from "./MarkdownPreview";
-
-const bioURL = "/bioData";
+import {bioDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 
 const markupMap = {
 	"italics": "*",
@@ -39,7 +38,7 @@ class Editor extends React.Component<EditorProps, EditorState> {
 
 	fetchBio() {
 		console.log("Fetching bio");
-		axios.get(bioURL).then((response: AxiosResponse) => {
+		axios.get(bioDataRoute).then((response: AxiosResponse) => {
 			const bio = response.data.data;
 			this.props.setBio(bio);
 			this.setState({
@@ -50,7 +49,7 @@ class Editor extends React.Component<EditorProps, EditorState> {
 
 	updateBio() {
 		console.log("Updating bio");
-		axios.patch(bioURL, {newBio: this.state.text}).then((response: AxiosResponse) => {
+		axios.patch(bioDataRoute, {newBio: this.state.text}).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));

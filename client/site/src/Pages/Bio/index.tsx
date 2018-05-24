@@ -4,9 +4,9 @@ import axios, {AxiosResponse} from "axios";
 import {setBio} from "../../redux/actions/bio";
 import * as showdown from "showdown";
 import MarkdownPreview from "../../../../menu/src/Editor/MarkdownPreview";
+import {bioDataRoute} from "../../../../../server/src/DataRouters/dataRoutes";
 const styles = require("./styles.less");
 
-const bioURL = "/bioData";
 
 interface BioProps {
 	bio: string,
@@ -29,7 +29,7 @@ class Bio extends React.Component<BioProps, {}> {
 	}
 
 	fetchBio() {
-		axios.get(bioURL).then((response: AxiosResponse) => {
+		axios.get(bioDataRoute).then((response: AxiosResponse) => {
 			const bio = response.data.data;
 			this.props.setBio(bio);
 			this.setState({

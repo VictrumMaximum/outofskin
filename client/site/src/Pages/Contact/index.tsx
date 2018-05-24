@@ -1,8 +1,7 @@
 import * as React from "react";
 import {AxiosResponse} from "axios";
 import axios from "axios";
-
-const subscribersDataURL = "/subscribersData";
+import {subscribersDataRoute} from "../../../../../server/src/DataRouters/dataRoutes";
 
 interface ContactState {
 	email: string
@@ -20,7 +19,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 	}
 
 	handleClick() {
-		axios.post(subscribersDataURL, {email: this.state.email}).then((response: AxiosResponse) => {
+		axios.post(subscribersDataRoute, {email: this.state.email}).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));

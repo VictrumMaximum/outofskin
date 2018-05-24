@@ -4,6 +4,7 @@ import axios, {AxiosResponse} from "axios";
 import {Tour, Tours} from "../../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
 import TourColumn from "./TourColumn";
+import {tourDataRoute} from "../../../../../server/src/DataRouters/dataRoutes";
 const styles = require("./styles.less");
 
 interface TourProps {
@@ -12,8 +13,6 @@ interface TourProps {
 	upcomingTours: Tour[]
 	setTours: (tours: Tours) => void
 }
-
-const tourDataURL = "/tourData";
 
 class TourContainer extends React.Component<TourProps, {}> {
 	constructor(props) {
@@ -31,7 +30,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 
 	fetchTours() {
-		axios.get(tourDataURL).then((response: AxiosResponse) => {
+		axios.get(tourDataRoute).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));

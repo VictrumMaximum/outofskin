@@ -3,8 +3,7 @@ import AddMenu from "./AddMenu";
 import TourView from "./TourView";
 import axios, {AxiosResponse} from "axios";
 import {Tour} from "../../../../schemas/TourSchema";
-
-export const tourDataURL = "/tourData";
+import {tourDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 
 interface TourMenuState {
     tours: {
@@ -22,7 +21,7 @@ export default class TourMenu extends React.Component<{}, TourMenuState> {
     }
 
     fetchTours() {
-        axios.get(tourDataURL).then((response: AxiosResponse) => {
+        axios.get(tourDataRoute).then((response: AxiosResponse) => {
             const responseData = response.data;
             if (responseData.error) {
                 console.log(JSON.stringify(responseData.error, null, 2));

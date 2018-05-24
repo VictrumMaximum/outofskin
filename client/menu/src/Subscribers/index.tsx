@@ -1,7 +1,6 @@
 import * as React from "react";
 import axios, {AxiosResponse} from "axios";
-
-export const subscribersDataURL = "/subscribersData";
+import {subscribersDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 
 interface SubscribersState {
 	subscribers: string[]
@@ -22,7 +21,7 @@ export default class Subscribers extends React.Component<{}, SubscribersState> {
 	}
 
 	fetchSubscribers() {
-		axios.get(subscribersDataURL).then((response: AxiosResponse) => {
+		axios.get(subscribersDataRoute).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));
