@@ -3,7 +3,7 @@ import * as path from "path";
 const app = express();
 import tourRoutes from "./DataRoutes/TourRoutes";
 import bioRoutes from "./DataRoutes/BioRoutes";
-import subscribersRoutes from "./DataRoutes/SubScribersRoutes";
+import subscribersRoutes from "./DataRoutes/SubscribersRoutes";
 import routes from "./Routes";
 import Logger from "./Logs/Logger";
 const port = 3000;
