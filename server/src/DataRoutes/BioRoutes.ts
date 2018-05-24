@@ -10,7 +10,8 @@ router.get("/", (req, res) => {
     Logger.debug("Received request to show bio");
     db.fetch()
         .then((bio) => {
-            res.end(JSON.stringify({bio}));
+        	// Logger.debug(bio);
+            res.end(JSON.stringify({data: bio}));
         }).catch((error) => {handleError(error, res)});
 });
 

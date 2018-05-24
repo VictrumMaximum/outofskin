@@ -40,8 +40,7 @@ class Editor extends React.Component<EditorProps, EditorState> {
 	fetchBio() {
 		console.log("Fetching bio");
 		axios.get(bioURL).then((response: AxiosResponse) => {
-			console.log("Received bio");
-			const bio = response.data.bio;
+			const bio = response.data.data;
 			this.props.setBio(bio);
 			this.setState({
 				text: bio

@@ -62,10 +62,10 @@ export default class Database {
 
     // completely replaces the cache
     public update(data) {
-        const oldCache = this.cache;
-        this.cache = data;
+        const oldData = this.cache.data;
+        this.cache.data = data;
         return this.persist().catch((error) => {
-            this.cache = oldCache;
+            this.cache = oldData;
             throw error;
         });
     }

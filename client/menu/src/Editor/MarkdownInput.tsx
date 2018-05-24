@@ -26,8 +26,6 @@ export default class MarkdownInput extends React.Component<MarkdownInputProps, {
 		return (
 			<div>
 				<textarea id={"bioInput"} style={{width: "100%", height: "20em"}} value={this.props.text} onChange={this.props.handleChange}/>
-				<button onClick={() => {this.handleClick("bold")}}>B</button>
-				<button onClick={() => {this.handleClick("italics")}}>I</button>
 				<button onClick={this.props.update}>Update</button>
 			</div>
 		);
