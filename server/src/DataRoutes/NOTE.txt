@@ -1,0 +1,4 @@
+Convention: send data back as:
+{
+    data: [the data]
+}

@@ -9,8 +9,8 @@ const router = express.Router();
 router.get("/", (req, res) => {
     Logger.debug("Fetch subscribers");
     db.fetch()
-        .then((bio) => {
-            res.end(JSON.stringify({bio}));
+        .then((subscribers) => {
+            res.end(JSON.stringify({data: subscribers}));
         }).catch((error) => {handleError(error, res)});
 });
 

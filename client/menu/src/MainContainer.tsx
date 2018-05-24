@@ -21,13 +21,24 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 	}
 
 	render() {
+		console.log(styles);
 		const Component = menuOptions[this.state.selected];
 		return (
 			<div>
 				{Object.keys(menuOptions).map((menuOption) => {
-					let style = {};
+					const style = {
+						display: "inline-block",
+						padding: "0 0.5em 0 0.5em",
+						borderLeft: "0.5px",
+						borderRight: "0.5px",
+						borderTop: "0",
+						borderBottom: "1px",
+						borderColor: "black",
+						borderStyle: "solid",
+						cursor: "pointer"
+					};
 					if (this.state.selected === menuOption) {
-						style = {fontWeight: "bold"};
+						style["fontWeight"] = "bold";
 					}
 					return (<div key={menuOption} style={style} className={styles.menuOption} onClick={() => {
 						this.handleClick(menuOption)
