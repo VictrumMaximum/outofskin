@@ -1,154 +1,86 @@
-import {TourDB} from "../../../schemas/TourDBSchema";
-
-const fs = require("fs");
 import {Promise} from "es6-promise";
 import Logger from "../Logs/Logger";
+import Database from "./Database";
 
-let sourceFile = "./data/tours.json";
-let deletedFile = "./data/deletedTours.json";
+export default class TourDatabase extends Database {
 
-let tourCache: TourDB;
-// try live data
-fs.readFile(sourceFile, "utf8", (err, data) => {
-	if (err) {
-		// use test data instead
-		Logger.warn("Using test tours!----------------------------------------");
-		sourceFile = "./data/test/tours.json";
-		deletedFile = "./data/deletedTours.json";
-		fs.readFile(sourceFile, "utf8", (err, data) => {
-			if (err) throw err;
-			tourCache = JSON.parse(data);
+    public addTour(tour) {
+		return new Promise(() => {
+            const toursMetadata = this.cache.metadata;
+            const tours = this.cache.data;
+            // get next id
+            const id = toursMetadata.maxKey + 1;
+            // check if id already exists (should never happen!)
+            if (tours.hasOwnProperty(id.toString())) {
+                throw ("Tried to overwrite tour with id " + id);
+            }
+            // update cache
+            tours[id] = tour;
+            toursMetadata.maxKey = id;
+            return this.persist().catch((error) => {
+            	// if persisting went wrong, undo updating cache
+            	delete tours[id];
+            	toursMetadata.maxKey--;
+            	// propagate error
+            	throw error;
+			});
 		});
-	} else {
-		tourCache = JSON.parse(data);
-	}
-});
+    }
 
-const fetchAll = () => {
-	return new Promise((resolve, reject) => {
-		if (tourCache && tourCache.data) {
-			const tours = tourCache.data;
-			resolve(tours);
-		} else {
-			reject("Tours not loaded");
-		}
-	});
-};
+    public updateTour(id, updates) {
+        return new Promise((resolve, reject) => {
+            Logger.debug("Updating tour: " + id);
+            const tours = this.cache.data;
 
-function add(tour) {
-	return addToMemory(tour)
-		.then((id) => {
-			return persist(sourceFile, tourCache)
-		})
-		// .catch((err) => {
-		// 		removeFromMemory(id);
-		// 		throw err;
-		// 	});
-}
+            // check if id exists
+            if (!tours.hasOwnProperty(id)) {
+                throw ("Tour id " + id + " does not exist");
+            }
 
-function addToMemory(tour) {
-	return new Promise((resolve, reject) => {
-		Logger.debug("adding tour to memory");
-		const toursMetadata = tourCache.metadata;
-		const tours = tourCache.data;
-		const id = toursMetadata.maxKey + 1;
-		if (tours.hasOwnProperty(id.toString())) {
-			throw ("Tried to overwrite tour with id " + id);
-		}
-		tours[id] = tour;
-		toursMetadata.maxKey = id;
-		resolve();
-	});
-}
+            const toUpdate = tours[id];
+            const keysToUpdate = Object.keys(updates);
+            // old values used to undo change in case of persist fail
+            const oldValues = {};
 
-function removeFromMemory(id) {
-	return new Promise((resolve, reject) => {
-		Logger.debug("removing tour from memory: " + id);
-		const tours = tourCache.data;
-		if (!tours.hasOwnProperty(id.toString())) {
-			throw ("Cannot remove tour " + id + " from cache: does not exist");
-		}
+            for (let i = 0; i < keysToUpdate.length; i++) {
+                const key = keysToUpdate[i];
+                // first copy old value
+                oldValues[key] = toUpdate[key];
+                // then update value
+                toUpdate[key] = updates[key];
+            }
+
+            return this.persist().catch((error) => {
+            	// revert changes
+                for (let i = 0; i < keysToUpdate.length; i++) {
+                    const key = keysToUpdate[i];
+                    toUpdate[key] = oldValues[key];
+                }
+                // propagate error
+				throw error;
+			});
+        });
+
+    }
+
+    public removeTour(id) {
+        Logger.debug("Removing tour " + id);
+        const tours = this.cache.data;
+        // check if id exists
+        if (!tours.hasOwnProperty(id)) {
+            throw ("Cannot delete tour with id " + id + ": does not exist");
+        }
+        const deletedTours = this.cache.deletedTours;
+        // first copy to deletedTours
+        deletedTours[id] = tours[id];
+        // then delete in the object
 		delete tours[id];
-		resolve();
-	});
-}
-
-function update(id, updates) {
-	Logger.debug("updating tour: " + id);
-	return updateInMemory(id, updates)
-		.then(() => {
-			return persist(sourceFile, tourCache);
+		return this.persist().catch((error) => {
+			// undo delete
+			tours[id] = deletedTours[id];
+			delete deletedTours[id];
+			// propagate error
+			throw error
 		});
+    }
 }
-
-function updateInMemory(id, updates) {
-	return new Promise((resolve, reject) => {
-		Logger.debug("Updating tour in memory");
-		const tours = tourCache.data;
-		if (!tours.hasOwnProperty(id)) {
-			throw ("Tour id " + id + " does not exist");
-		}
-		const toUpdate = tours[id];
-		const keysToUpdate = Object.keys(updates);
-		for (let i = 0; i < keysToUpdate.length; i++) {
-			const key = keysToUpdate[i];
-			toUpdate[key] = updates[key];
-		}
-		resolve();
-	});
-}
-
-function persist(fileName, obj) {
-	return new Promise((resolve, reject) => {
-        Logger.debug("Persisting to " + fileName);
-		fs.writeFile(fileName, JSON.stringify(obj, null, 2), (error) => {
-			if (error) {
-				throw ("Error writing to " + fileName + ": " + JSON.stringify(obj, null, 2));
-			}
-			resolve();
-		});
-	});
-}
-
-function remove(id) {
-    Logger.debug("removing tour " + id);
-	const tours = tourCache.data;
-	// check if id exists
-	if (!tours.hasOwnProperty(id)) {
-		throw ("Cannot delete tour with id " + id + ": does not exist");
-	}
-	return addTourToDeleteFile(id).then(() => {
-        Logger.debug("persisted to deleteFile");
-		// delete from object when persist is done
-		delete tours[id];
-		// TODO: if the following persist fails, the tour will still appear in the deleted file
-		return persist(sourceFile, tourCache);
-	});
-}
-
-function addTourToDeleteFile(id): Promise<any> {
-	const promise = new Promise((resolve, reject) => {
-		const toDelete = tourCache.data[id];
-		fs.readFile(deletedFile, "utf8", (err, data) => {
-			if (err) throw (err);
-            Logger.debug("read deleteFile");
-			const deletedTours = JSON.parse(data);
-			// check if this id does not have a duplicate in the deleted file
-			if (deletedTours.data.hasOwnProperty(id)) {
-				throw ("Tried to overwrite " + id + " in deleted file");
-			}
-			deletedTours.data[id] = toDelete;
-			resolve(deletedTours);
-		});
-	});
-	return promise.then((deletedTours) => {
-		return persist(deletedFile, deletedTours);
-	}).catch((err) => {throw err});
-}
-
-export default {
-	add,
-	remove,
-	fetchAll,
-	update
-};

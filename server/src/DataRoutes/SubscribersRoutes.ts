@@ -1,25 +1,25 @@
-import BioDatabase from "../Databases/BioDatabase";
-const fileName = "bio.json";
-const db = new BioDatabase(fileName);
+import SubscribersDatabase from "../Databases/SubscribersDatabase";
+const fileName = "subscribers.json";
+const db = new SubscribersDatabase(fileName);
 
 import * as express from "express";
 import Logger from "../Logs/Logger";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    Logger.debug("Received request to show bio");
+    Logger.debug("Fetch subscribers");
     db.fetch()
         .then((bio) => {
             res.end(JSON.stringify({bio}));
         }).catch((error) => {handleError(error, res)});
 });
 
-router.patch("/", (req, res) => {
-	Logger.debug("Received request to update bio");
-	const newBio = req.body.newBio;
-	db.update(newBio)
-		.then(() => {Logger.debug("done updating"); res.end("{}");})
-		.catch((error) => {handleError(error, res)});
+router.post("/", (req, res) => {
+	Logger.debug("Add subscriber");
+    // const newBio = req.body.newBio;
+    // subscribersDB.add(newBio)
+		// .then(() => {Logger.debug("done updating"); res.end("{}");})
+		// .catch((error) => {handleError(error, res)});
 });
 
 const handleError =  (error, response) => {

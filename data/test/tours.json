@@ -1,6 +1,5 @@
 {
   "metadata": {
-    "size": 5,
     "maxKey": 46
   },
   "data": {
@@ -97,5 +96,6 @@
       "location": "Den Hoorn",
       "locationLink": "https://www.google.com/maps/search/?q=harnasdreef+9%2C+den+hoorn"
     }
-  }
+  },
+  "deletedTours": {}
 }
