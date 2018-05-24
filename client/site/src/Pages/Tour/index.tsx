@@ -38,7 +38,6 @@ class TourContainer extends React.Component<TourProps, {}> {
 			}
 			else {
 				console.log("Received " + Object.keys(responseData.data).length + " tours");
-				console.log(responseData.data);
 				// setTours also sorts and splits. Details are in the action file for tours.
 				this.props.setTours(responseData.data);
 			}

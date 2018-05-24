@@ -1,21 +1,25 @@
 import * as express from "express";
 import * as path from "path";
 const app = express();
-import tourRoutes from "./DataRoutes/TourRoutes";
-import bioRoutes from "./DataRoutes/BioRoutes";
-import subscribersRoutes from "./DataRoutes/SubscribersRoutes";
-import routes from "./Routes";
+import tourRouter from "./DataRouters/TourRouter";
+import bioRouter from "./DataRouters/BioRouter";
+import subscribersRouter from "./DataRouters/SubscribersRouter";
+import musicRouter from "./DataRouters/MusicRouter";
+import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
 const port = 3000;
+
+import * as dataRoutes from "./DataRouters/dataRoutes";
 
 // to support JSON-encoded bodies
 app.use(express.json());
 // to support URL-encoded bodiesW
 app.use(express.urlencoded({extended: true}));
-app.use(routes);
-app.use("/tourData", tourRoutes);
-app.use("/bioData", bioRoutes);
-app.use("/subscribersData", subscribersRoutes);
+app.use(mainRouter);
+app.use(dataRoutes.tourDataRoute, tourRouter);
+app.use(dataRoutes.bioDataRoute, bioRouter);
+app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
+app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(express.static(__dirname + "/client/site/"));
 app.use(express.static(__dirname + "/client/menu/"));
 

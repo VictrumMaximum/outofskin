@@ -21,7 +21,6 @@ export default class TourColumn extends React.Component<TourColumnProps, {}> {
 			// create a new array as reverse of tours
 			tours = [];
 			for (let i = this.props.tours.length - 1; i >= 0; i--) {
-				console.log(i);
 				tours.push(this.props.tours[i]);
 			}
 		}
@@ -29,7 +28,6 @@ export default class TourColumn extends React.Component<TourColumnProps, {}> {
 			<div className={styles.tourColumn}>
 				<h3>{this.props.header}</h3>
 				{tours.map((tour) => {
-					console.log(tour);
 					return <TourComponent key={tour.begin.format("DD MMMM HH:mm")} showTicketLink={this.props.showTicketLink} tour={tour} />
 				})}
 			</div>
