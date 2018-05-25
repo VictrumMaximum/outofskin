@@ -22,8 +22,8 @@ app.use(dataRoutes.bioDataRoute, bioRouter);
 app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(dataRoutes.pressDataRoute, pressRouter);
-app.use(express.static(__dirname + "/src/client/site/"));
-app.use(express.static(__dirname + "/srcclient/menu/"));
+app.use(express.static(__dirname + "/client/site/"));
+app.use(express.static(__dirname + "/client/menu/"));
 
 app.listen(port);
 Logger.info("Server started on port " + port);
