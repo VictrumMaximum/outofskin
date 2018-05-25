@@ -1,7 +1,7 @@
 {
   "data": {
     "left": {
-      "title": "Live",
+      "header": "Live",
       "videos": [
         "_ZX8hXCM5t0",
         "xaCTzwfVWM8",
@@ -9,7 +9,7 @@
       ]
     },
     "right": {
-      "title" : "Clips",
+      "header" : "Clips",
       "videos": [
         "ea3K-HJbwqM",
         "4iaEzNXOmAI"

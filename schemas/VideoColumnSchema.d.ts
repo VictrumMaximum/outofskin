@@ -1,4 +1,4 @@
 export default interface VideoColumnSchema {
-	title: string;
+	header: string;
 	videos: string[]
 }
