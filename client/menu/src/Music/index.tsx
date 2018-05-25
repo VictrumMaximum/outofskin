@@ -78,6 +78,9 @@ export default class Music extends React.Component<{}, MusicState> {
 	render() {
 		return (
 			<div>
+				HEY wouter.<br/>
+				Je kunt gewoon de volle youtube link plakken, hij wordt vanzelf verkort ;)<br/>
+				Vergeet niet op update te klikken als je klaar bent.
 				<EditColumn
 					header={this.state.left.header}
 					videos={this.state.left.videos}

@@ -21,7 +21,15 @@ export default class EditColumn extends React.Component<EditColumnProps, {}> {
 
 	handleVideoChange(index, event) {
 		const videos = this.props.videos;
-		videos[index] = event.target.value;
+		// remove left part if full youtube link is pasted
+		let video = event.target.value;
+		const splitted = video.split("watch?v=");
+		console.log(splitted);
+		if (splitted.length === 2) {
+			video = splitted[1];
+		}
+		videos[index] = video;
+
 		this.props.handleChange({
 			header: this.props.header,
 			videos
@@ -57,6 +65,7 @@ export default class EditColumn extends React.Component<EditColumnProps, {}> {
 				{this.props.videos.map((video, index) => {
 					return (<div key={index}>
 						<input
+							className={styles.video}
 							value={video}
 							onChange={this.handleVideoChange.bind(this, index)}/>
 						<button onClick={this.handleRemoveVideo.bind(this, index)}>Remove</button>
