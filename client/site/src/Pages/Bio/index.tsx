@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import {setBio} from "../../redux/actions/bio";
 import * as showdown from "showdown";
-import MarkdownPreview from "../../../../menu/src/Editor/MarkdownPreview";
+import MarkdownPreview from "../../../../menu/src/Bio/MarkdownPreview";
 import {bioDataRoute} from "../../../../../server/src/DataRouters/dataRoutes";
 const styles = require("./styles.less");
 

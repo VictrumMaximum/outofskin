@@ -16,8 +16,7 @@ router.get("/", (req, res) => {
 
 router.patch("/", (req, res) => {
 	Logger.debug("Update quotes");
-	const newQuotes = req.body.newQuotes;
-	db.update(newQuotes)
+	db.update(req.body)
 		.then(() => {Logger.debug("done updating"); res.end("{}");})
 		.catch((error) => {handleError(error, res)});
 });

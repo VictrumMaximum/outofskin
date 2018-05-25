@@ -1,28 +1,23 @@
 import * as React from "react";
-import {musicDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
+import {pressDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 import {AxiosResponse} from "axios";
 import axios from "axios";
 import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
 import EditColumn from "./EditColumn";
 import {connect} from "react-redux";
+import Quote from "../../../../schemas/QuoteSchema";
 
-interface MusicState {
-	left: VideoColumnSchema,
-	right: VideoColumnSchema,
+interface PressState {
+	left: Quote[],
+	right: Quote[],
 }
 
-export default class Music extends React.Component<{}, MusicState> {
+export default class Press extends React.Component<{}, PressState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-			left: {
-				header: "",
-				videos: []
-			},
-			right: {
-				header: "",
-				videos: []
-			}
+			left: [],
+			right: []
 		};
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.handleLeftChange = this.handleLeftChange.bind(this);
@@ -30,11 +25,11 @@ export default class Music extends React.Component<{}, MusicState> {
 	}
 
 	componentDidMount() {
-		this.fetchVideos();
+		this.fetchQuotes();
 	}
 
-	fetchVideos() {
-		axios.get(musicDataRoute).then((response: AxiosResponse) => {
+	fetchQuotes() {
+		axios.get(pressDataRoute).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));
@@ -51,7 +46,7 @@ export default class Music extends React.Component<{}, MusicState> {
 
 	handleUpdate() {
 		const newMusic = {left: this.state.left, right: this.state.right};
-		axios.patch(musicDataRoute, newMusic).then((response: AxiosResponse) => {
+		axios.patch(pressDataRoute, newMusic).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));
@@ -79,15 +74,13 @@ export default class Music extends React.Component<{}, MusicState> {
 		return (
 			<div>
 				<EditColumn
-					header={this.state.left.header}
-					videos={this.state.left.videos}
+					header={"Left"}
+					quotes={this.state.left}
 					handleChange={this.handleLeftChange}/>
 				<EditColumn
-					header={this.state.right.header}
-					videos={this.state.right.videos}
+					header={"Right"}
+					quotes={this.state.right}
 					handleChange={this.handleRightChange}/>
-				<br/>
-				<br/>
 				<button onClick={this.handleUpdate}>Update</button>
 			</div>
 		);
