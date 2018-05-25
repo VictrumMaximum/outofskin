@@ -80,7 +80,7 @@ export default class Music extends React.Component<{}, MusicState> {
 			<div>
 				HEY wouter.<br/>
 				Je kunt gewoon de volle youtube link plakken, hij wordt vanzelf verkort ;)<br/>
-				Vergeet niet op update te klikken als je klaar bent.
+				Vergeet niet op update te klikken als je klaar bent.<br/>
 				<EditColumn
 					header={this.state.left.header}
 					videos={this.state.left.videos}

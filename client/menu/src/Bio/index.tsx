@@ -92,8 +92,16 @@ class Editor extends React.Component<EditorProps, EditorState> {
 	}
 
 	render() {
+		const p = "<p>";
+		const pClose = "<p/>";
+		const br = "<br>";
 		return (
 			<div>
+				yo,<br/>
+				Voor elke alinea moet je een {p} plaatsen<br/>
+				Na elke alinea doe je {pClose}<br/>
+				Om een nieuwe regel te forceren doe je {br}
+
 				<MarkdownInput text={this.state.text}
 							   handleChange={this.handleChange}
 								addMarkup={this.addMarkup}
