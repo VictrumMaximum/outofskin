@@ -2,9 +2,9 @@ import * as React from "react";
 import {Tour} from "../../../../schemas/TourSchema";
 import TourComponent from "./TourComponent";
 import {AxiosResponse} from "axios";
-import {tourDataURL} from "./";
 import axios from "axios";
 import * as moment from "moment";
+import {tourDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 
 interface TourViewProps {
 	tours: {
@@ -26,7 +26,7 @@ export default class TourView extends React.Component<TourViewProps, {}> {
 
 	deleteTour(id) {
     	console.log("delete tour id " + id);
-		axios.delete(tourDataURL, {params: {id: id}}).then((response: AxiosResponse) => {
+		axios.delete(tourDataRoute, {params: {id: id}}).then((response: AxiosResponse) => {
 			const responseData = response.data;
 			if (responseData.error) {
 				console.log(JSON.stringify(responseData.error, null, 2));
@@ -42,7 +42,7 @@ export default class TourView extends React.Component<TourViewProps, {}> {
         const data = {
             ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
         };
-        axios.patch(tourDataURL, {id: id, updates: data}).then((response: AxiosResponse) => {
+        axios.patch(tourDataRoute, {id: id, updates: data}).then((response: AxiosResponse) => {
             const responseData = response.data;
             if (responseData.error) {
                 console.log(JSON.stringify(responseData.error, null, 2));

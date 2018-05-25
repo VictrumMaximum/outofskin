@@ -1,9 +1,9 @@
 import * as React from "react";
 import axios, {AxiosResponse} from "axios";
-import {tourDataURL} from "./index";
 import {Moment} from "moment";
 import * as moment from "moment";
 import InputMenu from "./InputMenu";
+import {tourDataRoute} from "../../../../server/src/DataRouters/dataRoutes";
 
 interface AddMenuState {
 	eventName: string,
@@ -63,7 +63,7 @@ export default class AddMenu extends React.Component<AddMenuProps, AddMenuState>
     	const data = {
 		    ...tour, ...{begin: this.state.begin.format("YYYY-MM-DD HH:mm")}
 	    };
-	    axios.post(tourDataURL, data).then((response: AxiosResponse) => {
+	    axios.post(tourDataRoute, data).then((response: AxiosResponse) => {
 		    const responseData = response.data;
 		    if (responseData.error) {
 			    console.log(JSON.stringify(responseData.error, null, 2));

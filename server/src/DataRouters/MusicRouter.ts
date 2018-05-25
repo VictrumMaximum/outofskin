@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
 
 router.patch("/", (req, res) => {
 	Logger.debug("Update music");
-	const newMusic = req.body.newMusic;
-	db.update(newMusic)
+	const newMusic = req.body;
+	db.update(req.body)
 		.then(() => {Logger.debug("done updating"); res.end("{}");})
 		.catch((error) => {handleError(error, res)});
 });
