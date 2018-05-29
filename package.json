@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node build/server/Server.js",
     "tsc": "tsc --project ./src/server/",
-    "webpack": "webpack --progress --color --display-error-details --config ./src/client/webpack.config.js",
     "webpack-deploy": "webpack --progress --color --display-error-details --config ./src/client/webpack.deploy.config.js",
     "watch": "webpack --progress --color --display-error-details --watch --config ./src/client/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"

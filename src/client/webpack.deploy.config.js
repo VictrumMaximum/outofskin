@@ -11,7 +11,7 @@ const siteConfig = {
     entry: "./site/index.tsx",
     output: {
         filename: "site.bundle.js",
-        path: __dirname + "/../build/server/client/site/"
+        path: __dirname + "/../../build/server/client/site/"
     },
     plugins: [
         new webpack.DefinePlugin({ // <-- key to reducing React's size
@@ -38,7 +38,7 @@ const menuConfig = {
     entry: "./menu/index.tsx",
     output: {
         filename: "menu.bundle.js",
-        path: __dirname + "/../build/server/client/menu/"
+        path: __dirname + "/../../build/server/client/menu/"
     },
     plugins: [
         new webpack.DefinePlugin({ // <-- key to reducing React's size
