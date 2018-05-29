@@ -7,9 +7,6 @@ require("./icons/youtube.png");
 require("./icons/instagram.png");
 
 export default class SocialMedia extends React.Component<{}, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (

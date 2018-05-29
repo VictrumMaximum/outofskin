@@ -11,9 +11,6 @@ interface TourColumnProps {
 }
 
 export default class TourColumn extends React.Component<TourColumnProps, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		let tours = this.props.tours;

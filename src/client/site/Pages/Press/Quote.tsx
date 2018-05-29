@@ -8,10 +8,7 @@ interface QuoteProps {
 }
 
 export default class Quote extends React.Component<QuoteProps, {}> {
-    constructor(props) {
-        super(props);
-    }
-    
+
     render() {
         return (
 	        <div className={styles.quote}>

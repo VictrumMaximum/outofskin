@@ -8,7 +8,6 @@ import {AxiosResponse} from "axios";
 import axios from "axios";
 
 interface PressContainerProps {
-	background: string;
 	left: Quote[],
 	right: Quote[],
 	setQuotes
@@ -17,7 +16,6 @@ interface PressContainerProps {
 class PressContainer extends React.Component<PressContainerProps, {}> {
 
 	componentDidMount() {
-		document.documentElement.style.backgroundImage = this.props.background;
 		this.fetchQuotes();
 	}
 

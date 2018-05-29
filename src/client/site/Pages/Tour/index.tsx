@@ -8,25 +8,17 @@ import {tourDataRoute} from "../../../../server/DataRouters/dataRoutes";
 const styles = require("./styles.less");
 
 interface TourProps {
-	background: string;
 	pastTours: Tour[];
 	upcomingTours: Tour[]
 	setTours: (tours: Tours) => void
 }
 
 class TourContainer extends React.Component<TourProps, {}> {
-	constructor(props) {
-		super(props);
-
-		//eventually initialize state here	
-	}
-
 
 	componentDidMount() {
 		if (this.props.pastTours.length === 0 && this.props.upcomingTours.length === 0) {
 			this.fetchTours();
 		}
-		document.documentElement.style.backgroundImage = this.props.background;
 	}
 
 	fetchTours() {

@@ -9,10 +9,7 @@ interface OptionProps {
 }
 
 export default class Option extends React.Component<OptionProps, {}> {
-    constructor(props) {
-        super(props);
-    }
-    
+
     render() {
         return (
 			<div className={style.optionDiv}>

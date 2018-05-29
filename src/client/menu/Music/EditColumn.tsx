@@ -8,9 +8,6 @@ interface EditColumnProps {
 }
 
 export default class EditColumn extends React.Component<EditColumnProps, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	handleHeaderChange(event) {
 		this.props.handleChange({

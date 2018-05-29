@@ -8,7 +8,6 @@ import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
 import {setVideos} from "../../redux/actions/music";
 
 interface MusicProps {
-	background: string;
 	setVideos,
 	left: VideoColumnSchema,
 	right: VideoColumnSchema
@@ -17,7 +16,6 @@ interface MusicProps {
 class MusicContainer extends React.Component<MusicProps, {}> {
 
 	componentDidMount() {
-		document.documentElement.style.backgroundImage = this.props.background;
 		this.fetchVideos();
 	}
 

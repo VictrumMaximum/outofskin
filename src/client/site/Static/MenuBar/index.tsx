@@ -4,10 +4,7 @@ import routes from "../../routes";
 const styles = require("./styles.less");
 
 export default class MenuBar extends React.Component<{}, {}> {
-    constructor(props) {
-        super(props);
-    }
-    
+
     render() {
         return (
 			<div className={styles.menuBar}>

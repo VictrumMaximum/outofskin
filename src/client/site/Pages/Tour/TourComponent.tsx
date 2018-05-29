@@ -9,9 +9,6 @@ interface TourProps {
 }
 
 export default class TourComponent extends React.Component<TourProps, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (

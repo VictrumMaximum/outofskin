@@ -3,11 +3,13 @@ const styles = require("./styles.less");
 
 interface ContentFixatorProps {
 	content: JSX.Element;
+	background: string;
 }
 
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
-	constructor(props) {
-		super(props);
+
+	componentDidMount() {
+		document.documentElement.style.backgroundImage = this.props.background;
 	}
 
 	render() {

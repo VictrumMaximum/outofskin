@@ -19,7 +19,6 @@ class Bio extends React.Component<BioProps, {}> {
 	constructor(props) {
 		super(props);
 		this.converter = new showdown.Converter();
-		document.documentElement.style.backgroundImage = props.background;
 	}
 
 	componentDidMount() {

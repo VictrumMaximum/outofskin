@@ -10,7 +10,6 @@ interface ContactState {
 export default class Contact extends React.Component<{}, ContactState> {
 	constructor(props) {
 		super(props);
-		document.documentElement.style.backgroundImage = props.background;
 		this.state = {
 			email: ""
 		};

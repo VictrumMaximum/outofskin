@@ -8,9 +8,6 @@ interface VideoColumnProps {
 }
 
 export default class VideoColumn extends React.Component<VideoColumnProps, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (

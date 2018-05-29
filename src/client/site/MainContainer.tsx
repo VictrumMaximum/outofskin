@@ -13,9 +13,6 @@ import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
 
 export default class MainContainer extends React.Component<{}, {}> {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (
@@ -33,7 +30,9 @@ export default class MainContainer extends React.Component<{}, {}> {
 									render = {(routeProps) => {
 										// react syntax requires component names to start with capital letter
 										const Component = routes[path].component;
-										return <ContentFixator content={<Component background={"url('./images/"+routes[path].background+"')"} {...routeProps}/>}/>
+										return <ContentFixator
+											content={<Component {...routeProps}/>}
+											background={"url('./images/"+routes[path].background+"')"}/>
 									}}/>
 							</div>);
 					})}

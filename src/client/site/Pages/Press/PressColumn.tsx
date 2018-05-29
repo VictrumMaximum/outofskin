@@ -8,10 +8,7 @@ interface PressColumnProps {
 }
 
 export default class PressColumn extends React.Component<PressColumnProps, {}> {
-    constructor(props) {
-        super(props);
-    }
-    
+
     render() {
         return (
             <div className={styles.pressColumn}>
