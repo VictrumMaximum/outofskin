@@ -1,8 +1,6 @@
-const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 const modulesConfig = require("./webpack.modules.config");
@@ -16,7 +14,6 @@ const siteConfig = {
     },
     plugins: [
         new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        new BundleAnalyzerPlugin(),
         new HTMLWebpackPlugin({
             template: "./site/index.html"
         }),
@@ -36,7 +33,6 @@ const menuConfig = {
     },
     plugins: [
         new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        new BundleAnalyzerPlugin(),
         new HTMLWebpackPlugin({
             template: "./menu/index.html"
         }),
