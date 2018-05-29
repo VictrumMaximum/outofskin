@@ -1,5 +1,4 @@
 import * as express from "express";
-import * as path from "path";
 const app = express();
 import tourRouter from "./DataRouters/TourRouter";
 import bioRouter from "./DataRouters/BioRouter";
@@ -22,8 +21,8 @@ app.use(dataRoutes.bioDataRoute, bioRouter);
 app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(dataRoutes.pressDataRoute, pressRouter);
-app.use(express.static(__dirname + "/client/site/"));
-app.use(express.static(__dirname + "/client/menu/"));
+app.use("/", express.static(__dirname + "/client/site/"));
+app.use("/25oktoberwouterdetrex", express.static(__dirname + "/client/menu/"));
 
 app.listen(port);
 Logger.info("Server started on port " + port);

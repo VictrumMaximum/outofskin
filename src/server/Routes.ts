@@ -8,17 +8,9 @@ const sendSiteIndex = (req, res) => {
 };
 
 router.get("/", sendSiteIndex);
-
 router.get("/bio", sendSiteIndex);
-
 router.get("/music", sendSiteIndex);
-
 router.get("/press", sendSiteIndex);
-
 router.get("/contact", sendSiteIndex);
-
-router.get("/25oktoberwouterdetrex", (req, res) => {
-    res.sendFile(__dirname + "/client/menu/index.html");
-});
 
 export default router;
