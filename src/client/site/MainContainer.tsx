@@ -1,5 +1,6 @@
 import * as React from "react";
-const styles = require("./styles.css");
+import "./styles.less";
+import "./fontStyle.css";
 require("./media/images/tour.jpg");
 require("./media/images/normal_1080(low).jpg");
 require("./media/images/cover_1080(low).jpg");

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as moment from "moment";
 import {Tour} from "../../../../schemas/TourSchema";
-const styles = require("./styles.less");
+import styles from "./styles.less";
 
 interface TourProps {
 	tour: Tour;

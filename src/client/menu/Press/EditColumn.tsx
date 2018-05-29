@@ -1,6 +1,6 @@
 import * as React from "react";
 import Quote from "../../../schemas/QuoteSchema";
-const styles = require("./styles.less");
+import styles from "./styles.less";
 
 interface EditColumnProps {
 	header: string;
