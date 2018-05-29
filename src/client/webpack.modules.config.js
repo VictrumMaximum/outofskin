@@ -1,52 +1,6 @@
-const path = require("path");
-const webpack = require("webpack");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
-const siteConfig = {
-    context: path.join(__dirname),
-    entry: "./site/src/index.tsx",
-    output: {
-        filename: "site.bundle.js",
-        path: __dirname + "/../build/server/client/site/"
-    },
-    plugins: [
-        new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        // new BundleAnalyzerPlugin(),
-        new HTMLWebpackPlugin({
-            template: "./site/src/index.html"
-        }),
-        new ExtractTextPlugin("style.css"),
-        new webpack.ProvidePlugin({
-            React: "React", react: "React", "window.react": "React", "window.React": "React"
-        }),
-        new webpack.HotModuleReplacementPlugin({})
-    ]
-};
-
-const menuConfig = {
-    context: path.join(__dirname),
-    entry: "./menu/src/index.tsx",
-    output: {
-        filename: "menu.bundle.js",
-        path: __dirname + "/../build/server/client/menu/"
-    },
-    plugins: [
-        new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        // new BundleAnalyzerPlugin(),
-        new HTMLWebpackPlugin({
-            template: "./menu/src/index.html"
-        }),
-        new ExtractTextPlugin("style.css"),
-        new webpack.ProvidePlugin({
-            React: "React", react: "React", "window.react": "React", "window.React": "React"
-        })
-    ]
-};
-
-const config = {
+module.exports = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: "inline-source-map",
 
@@ -77,14 +31,14 @@ const config = {
                         loader: 'less-loader'
                     }]
                 })
-			},
-			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					'css-loader'
-					]
-			},
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.(jpe?g|png|svg|ico)$/,
                 loader: 'file-loader',
@@ -95,9 +49,9 @@ const config = {
             {
                 test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader',
-				options: {
-					name: './fonts/[name].[ext]'
-				}
+                options: {
+                    name: './fonts/[name].[ext]'
+                }
             }
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
@@ -113,5 +67,3 @@ const config = {
         "moment": "moment"
     }
 };
-
-module.exports = Object.assign({}, config, siteConfig);

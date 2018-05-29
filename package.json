@@ -8,7 +8,7 @@
     "tsc": "tsc --project ./src/server/",
     "webpack": "webpack --progress --color --display-error-details --config ./src/client/webpack.config.js",
     "webpack-deploy": "webpack --progress --color --display-error-details --config ./src/client/webpack.deploy.config.js",
-    "watch": "node build/server/Dev-Server.js",
+    "watch": "webpack --progress --color --display-error-details --watch --config ./src/client/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -49,6 +49,7 @@
     "winston": "2.3.0"
   },
   "devDependencies": {
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-dev-server": "^2.11.1"
   }
 }
