@@ -7,7 +7,7 @@ import Logger from "../Logs/Logger";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    Logger.debug("Received request to show bio");
+    Logger.debug("Fetch bio");
     db.fetch()
         .then((bio) => {
         	// Logger.debug(bio);
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/", (req, res) => {
-	Logger.debug("Received request to update bio");
+	Logger.debug("Update bio");
 	const newBio = req.body.newBio;
 	db.update(newBio)
 		.then(() => {Logger.debug("done updating"); res.end("{}");})

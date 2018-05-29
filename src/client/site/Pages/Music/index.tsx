@@ -16,7 +16,9 @@ interface MusicProps {
 class MusicContainer extends React.Component<MusicProps, {}> {
 
 	componentDidMount() {
-		this.fetchVideos();
+		if (this.props.left.videos.length === 0 && this.props.right.videos.length === 0) {
+			this.fetchVideos();
+		}
 	}
 
 	fetchVideos() {

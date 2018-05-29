@@ -7,7 +7,7 @@ import Logger from "../Logs/Logger";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    Logger.debug("Received request to show tours");
+    Logger.debug("Fetch tours");
     db.fetch()
         .then((tours) => {
             res.end(JSON.stringify({data: tours}));
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    Logger.debug("Received request to add tour");
+    Logger.debug("Add tour");
 	const tour = req.body;
 	db.addTour(tour)
 		.then(() => {res.end("{}")})
@@ -23,15 +23,15 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/", (req, res) => {
-    Logger.debug("Received request to delete tour");
 	const id = req.query.id;
+	Logger.debug("Delete tour " + id);
 	db.removeTour(id)
-		.then(() => {console.log("returning delete request");res.end("{}")})
+		.then(() => {res.end("{}")})
 		.catch((error) => {handleError(error, res)});
 });
 
 router.patch("/", (req, res) => {
-	Logger.debug("Received request to update tour");
+	Logger.debug("Update tour");
 	const id = req.body.id;
 	const updates = req.body.updates;
 	db.updateTour(id, updates)

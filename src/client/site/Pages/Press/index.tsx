@@ -16,7 +16,9 @@ interface PressContainerProps {
 class PressContainer extends React.Component<PressContainerProps, {}> {
 
 	componentDidMount() {
-		this.fetchQuotes();
+		if (this.props.left.length === 0 && this.props.right.length === 0) {
+			this.fetchQuotes();
+		}
 	}
 
 	fetchQuotes() {
