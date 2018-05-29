@@ -5,7 +5,7 @@ import {Tour, Tours} from "../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
 import TourColumn from "./TourColumn";
 import {tourDataRoute} from "../../../../server/DataRouters/dataRoutes";
-import styles from "./styles.less";
+const styles = require("./styles.less");
 
 interface TourProps {
 	pastTours: Tour[];

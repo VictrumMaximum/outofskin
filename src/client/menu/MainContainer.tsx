@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./styles.less";
+const styles = require("./styles.less");
 import menuOptions from "./menuOptions";
 
 interface MainContainerState {

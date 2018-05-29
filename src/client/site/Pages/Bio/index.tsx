@@ -5,7 +5,7 @@ import {setBio} from "../../redux/actions/bio";
 import * as showdown from "showdown";
 import MarkdownPreview from "../../../menu/Bio/MarkdownPreview";
 import {bioDataRoute} from "../../../../server/DataRouters/dataRoutes";
-import styles from "./styles.less";
+const styles = require("./styles.less");
 
 
 interface BioProps {

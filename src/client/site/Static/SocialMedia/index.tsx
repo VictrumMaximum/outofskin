@@ -1,7 +1,7 @@
 import * as React from "react";
 const socialMedias = require("./socialMedias").default;
 import Button from "./Button";
-import styles from "./styles.less";
+const styles = require("./styles.less");
 require("./icons/facebook.png");
 require("./icons/youtube.png");
 require("./icons/instagram.png");
