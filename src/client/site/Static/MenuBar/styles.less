@@ -1,20 +1,4 @@
-@media (min-width: 50em) {
-  .menuBar {
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    top: 0;
-  }
-
-  .optionLink:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  .optionLink:visited {
-    color: rgba(14, 6, 0, 0.88);
-  }
-}
+@import "../../../variables.less";
 
 .menuBar {
   width: 100%;
@@ -37,7 +21,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
   text-decoration: none;
-  color: rgba(0, 5, 95, 0.85);
+  color: @menu-color;
 }
 
 .optionLink:hover {
@@ -46,5 +30,12 @@
 }
 
 .optionLink:visited {
-  color: rgba(14, 6, 0, 0.88);
+  color: @menu-color;
+}
+
+@media (min-width: @min-width) {
+  .menuBar {
+    position: fixed;
+    top: 0;
+  }
 }
