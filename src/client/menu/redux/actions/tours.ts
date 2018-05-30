@@ -40,9 +40,10 @@ export const stopEdit = (id: string) => {
 	};
 };
 
-export const addTour = (newTour: TourWithoutID) => {
+export const addTour = (id: string, newTour: TourWithoutID) => {
 	return {
 		type: "ADD",
+		id,
 		newTour
 	};
 };

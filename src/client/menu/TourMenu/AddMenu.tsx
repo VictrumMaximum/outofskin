@@ -9,7 +9,7 @@ import {TourWithoutID} from "../../../schemas/TourSchema";
 import {addTour} from "../redux/actions/tours";
 
 interface AddMenuProps {
-    addTour: (tour: TourWithoutID) => void
+    addTour: (id: string, tour: TourWithoutID) => void
 }
 
 const premade = {
@@ -55,8 +55,10 @@ class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
 
     onSubmit(tour) {
     	const data = {
-		    ...tour, ...{begin: this.state.begin.format("YYYY-MM-DD HH:mm")}
+		    ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
 	    };
+    	console.log(tour);
+    	console.log(data);
 	    axios.post(tourDataRoute, data).then((response: AxiosResponse) => {
 		    const responseData = response.data;
 		    if (responseData.error) {
@@ -64,8 +66,8 @@ class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
                 alert("Something went wrong, contact me");
 		    }
 		    else {
-			    console.log("success");
-                this.props.addTour(tour);
+			    const id = responseData.data;
+                this.props.addTour(id, tour);
 		    }
 	    });
     }
@@ -87,7 +89,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addTour: (tour: TourWithoutID) => dispatch(addTour(tour))
+		addTour: (id: string, tour: TourWithoutID) => dispatch(addTour(id, tour))
 	}
 };
 

@@ -40,7 +40,6 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
         const begin = this.state.begin;
         switch (key) {
             case "day":
-				console.log("update day to " + value);
 				if (Number(value) <= begin.daysInMonth()) {
 					begin.date(value);
 				}
@@ -62,7 +61,6 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
 				}
                 break;
         }
-        console.log(begin);
         this.setState({
             begin
         }, () => {

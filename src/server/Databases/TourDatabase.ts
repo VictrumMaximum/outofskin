@@ -5,23 +5,27 @@ import Database from "./Database";
 export default class TourDatabase extends Database {
 
     public addTour(tour) {
-		const toursMetadata = this.cache.metadata;
-		const tours = this.cache.data;
-		// get next id
-		const id = toursMetadata.maxKey + 1;
-		// check if id already exists (should never happen!)
-		if (tours.hasOwnProperty(id.toString())) {
-			throw ("Tried to overwrite tour with id " + id);
-		}
-		// update cache
-		tours[id] = tour;
-		toursMetadata.maxKey = id;
-		return this.persist().catch((error) => {
-			// if persisting went wrong, undo updating cache
-			delete tours[id];
-			toursMetadata.maxKey--;
-			// propagate error
-			throw error;
+    	return new Promise((resolve, reject) => {
+			const toursMetadata = this.cache.metadata;
+			const tours = this.cache.data;
+			// get next id
+			const id = toursMetadata.maxKey + 1;
+			// check if id already exists (should never happen!)
+			if (tours.hasOwnProperty(id.toString())) {
+				throw ("Tried to overwrite tour with id " + id);
+			}
+			// update cache
+			tours[id] = tour;
+			toursMetadata.maxKey = id;
+			return this.persist()
+				.then(() => {resolve(toursMetadata.maxKey)})
+				.catch((error) => {
+					// if persisting went wrong, undo updating cache
+					delete tours[id];
+					toursMetadata.maxKey--;
+					// propagate error
+					throw error;
+				});
 		});
     }
 

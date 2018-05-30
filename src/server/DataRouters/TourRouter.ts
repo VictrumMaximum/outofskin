@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
     Logger.debug("Add tour");
 	const tour = req.body;
 	db.addTour(tour)
-		.then(() => {res.end("{}")})
+		.then((id) => {res.end(JSON.stringify({data: id}))})
 		.catch((error) => {handleError(error, res)});
 });
 
