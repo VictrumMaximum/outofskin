@@ -1,24 +1,29 @@
 import * as React from "react";
+import {connect} from "react-redux";
 import AddMenu from "./AddMenu";
 import TourView from "./TourView";
 import axios, {AxiosResponse} from "axios";
-import {Tour} from "../../../schemas/TourSchema";
+import {TourJSON, TourWithID} from "../../../schemas/TourSchema";
 import {tourDataRoute} from "../../../server/DataRouters/dataRoutes";
+import {setTours} from "../redux/actions/tours";
 
-interface TourMenuState {
-    tours: {
-        [id: string]: Tour
-    }
+interface TourMenuProps {
+    pastTours: TourWithID[],
+	upcomingTours: TourWithID[]
+	setTours: (tours: TourJSON) => void
 }
 
-export default class TourMenu extends React.Component<{}, TourMenuState> {
+class TourMenu extends React.Component<TourMenuProps, {}> {
     constructor(props) {
         super(props);
-        this.state = {
-            tours: {}
-        };
         this.fetchTours = this.fetchTours.bind(this);
     }
+
+    componentDidMount() {
+    	if (this.props.pastTours.length === 0 && this.props.upcomingTours.length === 0) {
+    		this.fetchTours();
+		}
+	}
 
     fetchTours() {
         axios.get(tourDataRoute).then((response: AxiosResponse) => {
@@ -29,7 +34,7 @@ export default class TourMenu extends React.Component<{}, TourMenuState> {
             else {
                 console.log("Fetched tours");
                 console.log(responseData);
-                this.setState({tours: responseData.data});
+                this.props.setTours(responseData.data);
             }
         });
     }
@@ -38,10 +43,29 @@ export default class TourMenu extends React.Component<{}, TourMenuState> {
         // pass fetchTours to children to refresh when adding/deleting/updating tours
         return (
             <div>
-                <AddMenu fetchTours={this.fetchTours}/>
+                <AddMenu/>
                 <hr style={{border: "1px solid black"}}/>
-                <TourView tours={this.state.tours} fetchTours={this.fetchTours}/>
+                <TourView tours={this.props.pastTours}/>
+				<TourView tours={this.props.upcomingTours}/>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+	return {
+		pastTours: state.tours.past,
+		upcomingTours: state.tours.upcoming
+	}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setTours: (tours: TourJSON) => dispatch(setTours(tours))
+	}
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TourMenu)

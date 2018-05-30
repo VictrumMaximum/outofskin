@@ -1,43 +1,43 @@
 import * as React from "react";
-import {Tour} from "../../../schemas/TourSchema";
+import {connect} from "react-redux";
+import {TourWithID} from "../../../schemas/TourSchema";
 import EditMenu from "./EditMenu";
+import {deleteTour, startEdit, updateTour} from "../redux/actions/tours";
+import axios, {AxiosResponse} from "axios";
+import {tourDataRoute} from "../../../server/DataRouters/dataRoutes";
 
 interface TourComponentProps {
-	id: string,
-	tour: Tour,
-	deleteTour: (id) => void,
-	updateTour: (id, tour, cancelEdit: () => void) => void
+	tour: TourWithID,
+	deleteTour: (id: string) => void,
+	startEdit: (id: string) => void
 }
 
-interface TourComponentState {
-	edit: boolean
-}
-
-export default class TourComponent extends React.Component<TourComponentProps, TourComponentState> {
+class TourComponent extends React.Component<TourComponentProps, {}> {
     constructor(props) {
         super(props);
-        this.state = {
-        	edit: false
-		};
-        this.startEdit = this.startEdit.bind(this);
-		this.cancelEdit = this.cancelEdit.bind(this);
+		this.deleteTour = this.deleteTour.bind(this);
+		// this.updateTour = this.updateTour.bind(this);
     }
 
-    cancelEdit() {
-    	this.setState({edit: false});
+	deleteTour(id) {
+		axios.delete(tourDataRoute, {params: {id: id}}).then((response: AxiosResponse) => {
+			const responseData = response.data;
+			if (responseData.error) {
+				console.log(JSON.stringify(responseData.error, null, 2));
+			}
+			else {
+				console.log("Tour "+id+" deleted");
+				this.props.deleteTour(id);
+			}
+		});
 	}
 
-	startEdit() {
-    	this.setState({edit: true});
-	}
-
-	// TODO: add confirmation/cancel buttons when deleting
     render() {
     	const tour = this.props.tour;
-    	const id = this.props.id;
-    	if (this.state.edit) {
+    	const id = tour.id;
+    	if (tour.edit) {
     		return (
-    			<EditMenu id={this.props.id} tour={this.props.tour} onSubmit={this.props.updateTour} cancelEdit={this.cancelEdit}/>
+    			<EditMenu id={id} tour={tour}/>
 			);
 		}
         return (
@@ -52,9 +52,25 @@ export default class TourComponent extends React.Component<TourComponentProps, T
 						</tr>
 					</tbody>
 				</table>
-				<button onClick={() => {this.props.deleteTour(id)}}>delete</button>
-				<button onClick={this.startEdit}>edit</button>
+				<button onClick={() => {this.deleteTour(id)}}>delete</button>
+				<button onClick={() => {this.props.startEdit(id)}}>edit</button>
 			</div>
         );
     }
 }
+
+const mapStateToProps = () => {
+	return {}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		deleteTour: (id: string) => dispatch(deleteTour(id)),
+		startEdit: (id: string) => dispatch(startEdit(id))
+	}
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TourComponent)

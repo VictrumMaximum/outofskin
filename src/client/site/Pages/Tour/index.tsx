@@ -1,16 +1,16 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Tour, Tours} from "../../../../schemas/TourSchema";
+import {TourJSON, TourWithoutID} from "../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
 import TourColumn from "./TourColumn";
 import {tourDataRoute} from "../../../../server/DataRouters/dataRoutes";
 const styles = require("./styles.less");
 
 interface TourProps {
-	pastTours: Tour[];
-	upcomingTours: Tour[]
-	setTours: (tours: Tours) => void
+	pastTours: TourWithoutID[];
+	upcomingTours: TourWithoutID[]
+	setTours: (tours: TourJSON) => void
 }
 
 class TourContainer extends React.Component<TourProps, {}> {
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setTours: (tours: Tours) => dispatch(setTours(tours))
+		setTours: (tours: TourJSON) => dispatch(setTours(tours))
 	}
 };
 

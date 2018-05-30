@@ -1,17 +1,54 @@
-import {Tour, Tours} from "../../../../schemas/TourSchema";
+import {TourJSON, TourWithID, TourWithoutID} from "../../../../schemas/TourSchema";
 import moment = require("moment");
 
-export const setTours = (tours: Tours) => {
-	const splittedTours: Tour[][] = sortAndSplitTours(tours);
+export const setTours = (tours: TourJSON) => {
+	const splittedTours: TourWithID[][] = sortAndSplitTours(tours);
 	return {
-		type: "SET_TOURS",
+		type: "SET",
 		past: splittedTours[0],
 		upcoming: splittedTours[1]
 	};
 };
 
-function sortAndSplitTours(tours: Tours) {//: Tour[] {
-	const compare = (a: Tour, b: Tour) => {
+export const deleteTour = (id: string) => {
+	return {
+		type: "DELETE",
+		id
+	};
+};
+
+export const updateTour = (newTour: TourWithID) => {
+	return {
+		type: "UPDATE",
+		newTour
+	};
+};
+
+export const startEdit = (id: string) => {
+	return {
+		type: "EDIT",
+		id,
+		edit: true
+	};
+};
+
+export const stopEdit = (id: string) => {
+	return {
+		type: "EDIT",
+		id,
+		edit: false
+	};
+};
+
+export const addTour = (newTour: TourWithoutID) => {
+	return {
+		type: "ADD",
+		newTour
+	};
+};
+
+function sortAndSplitTours(tours: TourJSON): TourWithID[][] {
+	const compare = (a: TourWithoutID, b: TourWithoutID) => {
 		if (a.begin.isBefore(b.begin)) {
 			return -1;
 		}
@@ -20,13 +57,16 @@ function sortAndSplitTours(tours: Tours) {//: Tour[] {
 		}
 		return 0;
 	};
-	const sorted = Object.keys(tours)
+	const sorted: TourWithID[] = Object.keys(tours)
 		// convert to array
 		.map((tourId) => {
+			// since this is the reducer for the menu, we need to
+			// keep track of that id so that we can reference it
+			// if it gets updated or deleted
+			const tour: TourWithID = {...tours[tourId], ...{id: tourId, edit: false}};
 			// convert begin from string to moment
-			const tour = tours[tourId];
 			tour.begin = moment(tour.begin);
-			return tours[tourId]})
+			return tour})
 		.sort(compare);
 	let i = 0;
 	const now = moment();

@@ -1,8 +1,8 @@
-import {Tour, Tours} from "../../../../schemas/TourSchema";
+import {TourWithoutID, TourJSON} from "../../../../schemas/TourSchema";
 import moment = require("moment");
 
-export const setTours = (tours: Tours) => {
-	const splittedTours: Tour[][] = sortAndSplitTours(tours);
+export const setTours = (tours: TourJSON) => {
+	const splittedTours: TourWithoutID[][] = sortAndSplitTours(tours);
 	return {
 		type: "SET_TOURS",
 		past: splittedTours[0],
@@ -10,8 +10,8 @@ export const setTours = (tours: Tours) => {
 	};
 };
 
-function sortAndSplitTours(tours: Tours) {//: Tour[] {
-	const compare = (a: Tour, b: Tour) => {
+function sortAndSplitTours(tours: TourJSON) {//: Tour[] {
+	const compare = (a: TourWithoutID, b: TourWithoutID) => {
 		if (a.begin.isBefore(b.begin)) {
 			return -1;
 		}
@@ -23,10 +23,10 @@ function sortAndSplitTours(tours: Tours) {//: Tour[] {
 	const sorted = Object.keys(tours)
 		// convert to array
 		.map((tourId) => {
-			// convert begin from string to moment
 			const tour = tours[tourId];
+			// convert begin from string to moment
 			tour.begin = moment(tour.begin);
-			return tours[tourId]})
+			return tour})
 		.sort(compare);
 	let i = 0;
 	const now = moment();

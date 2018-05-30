@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as moment from "moment";
-import {Tour} from "../../../../schemas/TourSchema";
+import {TourWithoutID} from "../../../../schemas/TourSchema";
 const styles = require("./styles.less");
 
 interface TourProps {
-	tour: Tour;
+	tour: TourWithoutID;
 	showTicketLink: boolean
 }
 

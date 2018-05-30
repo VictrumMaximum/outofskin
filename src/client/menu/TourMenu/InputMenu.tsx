@@ -1,27 +1,19 @@
 import * as React from "react";
 import * as moment from "moment";
 import {Moment} from "moment";
-const styles = require("./inputMenu.less");
-
-interface InputMenuState {
-	eventName: string,
-	eventLink: string,
-	begin: Moment,
-	city: string,
-	location: string,
-	locationLink: string
-}
+import {TourWithID} from "../../../schemas/TourSchema";
+const styles = require("./styles.less");
 
 interface InputMenuProps {
-	initialState: InputMenuState,
+	initialState: any,
 	buttons: {
-		onClick: () => void,
+		onClick: (id) => void,
 		text: string
 	}[],
 	onChange: (newState) => void
 }
 
-export default class InputMenu extends React.Component<InputMenuProps, InputMenuState> {
+export default class InputMenu extends React.Component<InputMenuProps, any> {
     constructor(props) {
         super(props);
         this.state = this.props.initialState;

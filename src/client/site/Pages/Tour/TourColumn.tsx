@@ -1,10 +1,10 @@
 import * as React from "react";
 import TourComponent from "./TourComponent";
-import {Tour} from "../../../../schemas/TourSchema";
+import {TourWithoutID} from "../../../../schemas/TourSchema";
 const styles = require("./styles.less");
 
 interface TourColumnProps {
-	tours: Tour[];
+	tours: TourWithoutID[];
 	header: string;
 	showTicketLink: boolean,
 	sortAscending: boolean

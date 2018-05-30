@@ -1,21 +1,15 @@
 import * as React from "react";
+import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import {Moment} from "moment";
 import * as moment from "moment";
 import InputMenu from "./InputMenu";
 import {tourDataRoute} from "../../../server/DataRouters/dataRoutes";
-
-interface AddMenuState {
-	eventName: string,
-	eventLink: string,
-	begin: Moment,
-	city: string,
-	location: string,
-	locationLink: string
-}
+import {TourWithoutID} from "../../../schemas/TourSchema";
+import {addTour} from "../redux/actions/tours";
 
 interface AddMenuProps {
-    fetchTours: () => void
+    addTour: (tour: TourWithoutID) => void
 }
 
 const premade = {
@@ -27,7 +21,7 @@ const premade = {
 	locationLink: "testLocationLink"
 };
 
-export default class AddMenu extends React.Component<AddMenuProps, AddMenuState> {
+class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
     constructor(props) {
         super(props);
         this.state = this.getInitialState();
@@ -71,12 +65,12 @@ export default class AddMenu extends React.Component<AddMenuProps, AddMenuState>
 		    }
 		    else {
 			    console.log("success");
-                this.props.fetchTours();
+                this.props.addTour(tour);
 		    }
 	    });
     }
 
-    onChange(newState: AddMenuState) {
+    onChange(newState: TourWithoutID) {
     	this.setState(newState);
 	}
 
@@ -86,3 +80,18 @@ export default class AddMenu extends React.Component<AddMenuProps, AddMenuState>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+	return {}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addTour: (tour: TourWithoutID) => dispatch(addTour(tour))
+	}
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(AddMenu)

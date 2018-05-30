@@ -21,7 +21,6 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 	}
 
 	render() {
-		console.log(styles);
 		const Component = menuOptions[this.state.selected];
 		return (
 			<div>
