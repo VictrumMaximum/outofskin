@@ -1,6 +1,19 @@
+@import "../variables.less";
+
 .contentFixator {
   text-align: center;
   height: 100%;
+  color: @text-color;
+  font-weight: 400;
+  text-shadow:
+          -@text-border-size 0 @text-border-color, // left
+            -@text-border-size -@text-border-size @text-border-color, // top-left
+            0 -@text-border-size @text-border-color, // top
+            @text-border-size -@text-border-size @text-border-color, // top-right
+          @text-border-size 0 @text-border-color, // right
+          @text-border-size @text-border-size @text-border-color, // bottom-right
+          0  @text-border-size @text-border-color, // bottom
+          -@text-border-size  @text-border-size @text-border-color; // bottom-left
 }
 
 .backgroundDiv {
