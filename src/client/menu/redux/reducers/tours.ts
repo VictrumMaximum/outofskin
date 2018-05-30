@@ -58,6 +58,23 @@ export default (state = {
 					return tour;
 				})
 			};
+		case "UPDATE":
+			// find tour and set replace it
+			const newState = {
+				past: state.past.map((tour: TourWithID) => {
+					if (tour.id === action.newTour.id) {
+						return {...action.newTour, ...{edit: false}};
+					}
+					return tour;
+				}),
+				upcoming: state.upcoming.map((tour: TourWithID) => {
+					if (tour.id === action.newTour.id) {
+						return {...action.newTour, ...{edit: false}};
+					}
+					return tour;
+				})
+			};
+			return newState;
 
 		default:
 			return state;

@@ -31,7 +31,6 @@ class EditMenu extends React.Component<EditMenuProps, TourWithID> {
 			}
 			else {
 				console.log("success");
-				this.props.stopEdit(tour.id);
 				this.props.updateTour(tour);
 			}
 		});

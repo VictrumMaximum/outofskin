@@ -16,7 +16,6 @@ class TourComponent extends React.Component<TourComponentProps, {}> {
     constructor(props) {
         super(props);
 		this.deleteTour = this.deleteTour.bind(this);
-		// this.updateTour = this.updateTour.bind(this);
     }
 
 	deleteTour(id) {
