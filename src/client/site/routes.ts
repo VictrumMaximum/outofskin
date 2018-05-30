@@ -5,7 +5,7 @@ import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
 import Home from "./Pages/Home/index";
 
-const cover = "cover_1080(low).jpg";
+export const cover = "cover_1080(low).jpg";
 const normal = "normal_1080(low).jpg";
 const weird = "weird_1080(low).jpg";
 

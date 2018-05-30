@@ -6,10 +6,16 @@ interface ContentFixatorProps {
 	background: string;
 }
 
+import {cover} from "../routes";
+
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
 
 	componentDidMount() {
-		document.documentElement.style.backgroundImage = this.props.background;
+		if (window.innerWidth <= 375) {
+			document.documentElement.style.backgroundImage = "url('../images/"+cover+"')";
+		} else {
+			document.documentElement.style.backgroundImage = "url('../images/"+this.props.background+"')";
+		}
 	}
 
 	render() {

@@ -33,7 +33,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 										const Component = routes[path].component;
 										return <ContentFixator
 											content={<Component {...routeProps}/>}
-											background={"url('./images/"+routes[path].background+"')"}/>
+											background={routes[path].background}/>
 									}}/>
 							</div>);
 					})}
