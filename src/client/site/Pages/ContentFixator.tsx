@@ -10,17 +10,16 @@ import {cover} from "../routes";
 
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
 
-	componentDidMount() {
-		if (window.innerWidth <= 375) {
-			document.documentElement.style.backgroundImage = "url('../images/"+cover+"')";
-		} else {
-			document.documentElement.style.backgroundImage = "url('../images/"+this.props.background+"')";
-		}
-	}
-
 	render() {
+		let backgroundImageURL = "url('../images/"+this.props.background+"')";
+		if (window.innerWidth <= 375) {
+			backgroundImageURL = "url('../images/"+cover+"')";
+		}
 		return (
 			<div className={styles.contentFixator}>
+				<div
+					className={styles.backgroundDiv}
+					style={{backgroundImage: backgroundImageURL}}/>
 				{this.props.content}
 			</div>
 		);
