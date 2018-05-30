@@ -2,9 +2,6 @@ import * as React from "react";
 const socialMedias = require("./socialMedias").default;
 import Button from "./Button";
 const styles = require("./styles.less");
-require("./icons/facebook.png");
-require("./icons/youtube.png");
-require("./icons/instagram.png");
 
 export default class SocialMedia extends React.Component<{}, {}> {
 
