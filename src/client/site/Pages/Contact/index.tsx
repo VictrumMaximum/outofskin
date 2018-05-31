@@ -42,31 +42,41 @@ export default class Contact extends React.Component<{}, ContactState> {
 
 	render() {
 		return (
-			<table className={styles.information}>
-				<tbody>
-					<tr>
-						<td><ReactSVG
-							path={"../images/phone.svg"}
-							svgClassName={styles.icon}
-						/></td>
-						<td>+316 42 96 12 33</td>
-					</tr>
-					<tr>
-						<td><ReactSVG
-							path={"../images/phone.svg"}
-							svgClassName={styles.icon}
-						/></td>
-						<td>+316 15 58 62 06</td>
-					</tr>
-					<tr>
-						<td><ReactSVG
-							path={"../images/email.svg"}
-							svgClassName={styles.icon}
-						/></td>
-						<td>band@outofskin.com</td>
-					</tr>
-				</tbody>
-			</table>
+			<div>
+				<table className={styles.information}>
+					<tbody>
+						<tr>
+							<td><ReactSVG
+								path={"../images/phone.svg"}
+								svgClassName={styles.icon}
+							/></td>
+							<td>+316 42 96 12 33</td>
+						</tr>
+						<tr>
+							<td><ReactSVG
+								path={"../images/phone.svg"}
+								svgClassName={styles.icon}
+							/></td>
+							<td>+316 15 58 62 06</td>
+						</tr>
+						<tr>
+							<td><ReactSVG
+								path={"../images/email.svg"}
+								svgClassName={styles.icon}
+							/></td>
+							<td>band@outofskin.com</td>
+						</tr>
+
+					</tbody>
+				</table>
+				<br/>
+				Meld je aan voor de nieuwsbrief!<br/>
+				<input placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
+				<div className={styles.boxLinkWrapper}>
+					<div className={styles.boxLink} onClick={this.handleClick}>subscribe</div>
+				</div>
+				<br/><br/>
+			</div>
 		);
 	}
 }
