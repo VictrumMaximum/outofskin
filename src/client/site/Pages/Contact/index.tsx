@@ -2,6 +2,11 @@ import * as React from "react";
 import {AxiosResponse} from "axios";
 import axios from "axios";
 import {subscribersDataRoute} from "../../../../server/DataRouters/dataRoutes";
+import ReactSVG from 'react-svg';
+const styles = require("./styles.less");
+
+require("../../media/images/icons/phone.svg");
+require("../../media/images/icons/email.svg");
 
 interface ContactState {
 	email: string
@@ -30,23 +35,38 @@ export default class Contact extends React.Component<{}, ContactState> {
 	}
 
 	handleChange(event) {
-		console.log("ahandleChange");
 		this.setState({
 			email: event.target.value
 		});
 	}
 
 	render() {
-		const breaks = [];
-		for (let i = 0; i < 70; i++) {
-			breaks.push((<br/>))
-		}
-
 		return (
-			<div>
-				<input value={this.state.email} onChange={this.handleChange}/>
-				<button onClick={this.handleClick}>subscribe</button>
-			</div>
+			<table className={styles.information}>
+				<tbody>
+					<tr>
+						<td><ReactSVG
+							path={"../images/phone.svg"}
+							svgClassName={styles.icon}
+						/></td>
+						<td>+316 42 96 12 33</td>
+					</tr>
+					<tr>
+						<td><ReactSVG
+							path={"../images/phone.svg"}
+							svgClassName={styles.icon}
+						/></td>
+						<td>+316 15 58 62 06</td>
+					</tr>
+					<tr>
+						<td><ReactSVG
+							path={"../images/email.svg"}
+							svgClassName={styles.icon}
+						/></td>
+						<td>band@outofskin.com</td>
+					</tr>
+				</tbody>
+			</table>
 		);
 	}
 }
