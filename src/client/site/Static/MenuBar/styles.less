@@ -1,16 +1,31 @@
 @import "../../../variables.less";
 
 .menuBar {
-  width: 100%;
-  text-align: center;
+  top: 0;
+  left: 0;
   z-index: 1;
 }
 
-.optionDiv {
-  text-align: center;
+.option {
+  border: 1px solid black;
+}
+
+.menuIcon {
+  width: 2em;
+  height: 2em;
   display: inline-block;
-  margin-left: 2%;
-  margin-right: 2%;
+  border: 1px solid black;
+}
+
+.optionDiv {
+  display: block;
+  border-bottom: 1px solid black;
+  width: 10em;
+}
+
+// h1 elements that are children of .optionDiv
+.optionDiv h1 {
+  margin: 0;
 }
 
 .optionLink {
@@ -35,7 +50,21 @@
 
 @media (min-width: @min-width) {
   .menuBar {
-    position: fixed;
-    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .optionDiv {
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .menuOptionsWrapper {
+    display: block;
+  }
+
+  .menuIcon {
+    display: none;
   }
 }
