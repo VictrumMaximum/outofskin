@@ -6,10 +6,6 @@
   z-index: 1;
 }
 
-.option {
-  border: 1px solid black;
-}
-
 .menuIcon {
   width: 2em;
   height: 2em;
@@ -50,9 +46,10 @@
 
 @media (min-width: @min-width) {
   .menuBar {
+    position: fixed;
+    top: 2em;
     width: 100%;
     text-align: center;
-    z-index: 1;
   }
 
   .optionDiv {
@@ -60,7 +57,7 @@
     margin-left: 2%;
     margin-right: 2%;
     border: none;
-    z-index: 1;
+    width: auto;
   }
   .menuOptionsWrapper {
     display: block !important;
@@ -68,10 +65,5 @@
 
   .menuIcon {
     display: none;
-  }
-
-  .optionLink:hover {
-    cursor: pointer;
-    text-decoration: underline;
   }
 }
