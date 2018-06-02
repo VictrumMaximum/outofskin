@@ -3,11 +3,13 @@ import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import {TourJSON, TourWithoutID} from "../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
-import TourColumn from "./TourColumn";
 import {tourDataRoute} from "../../../../server/DataRouters/dataRoutes";
+import TourLeftColumn from "./TourLeftColumn";
+import TourRightColumn from "./TourRightColumn";
 const styles = require("./styles.less");
 
 interface TourProps {
+	// tours are stored in ascending order
 	pastTours: TourWithoutID[];
 	upcomingTours: TourWithoutID[]
 	setTours: (tours: TourJSON) => void
@@ -36,9 +38,9 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 	render() {
 		return (
-			<div>
-				<TourColumn tours={this.props.upcomingTours} header={"Upcoming"} showTicketLink={true} sortAscending={true}/>
-				<TourColumn tours={this.props.pastTours} header={"Past"} showTicketLink={false} sortAscending={false}/>
+			<div className={styles.columnsWrapper}>
+				<TourLeftColumn tours={this.props.upcomingTours} />
+                <TourRightColumn tours={this.props.pastTours.slice().reverse()} />
 			</div>
 		);
 	}

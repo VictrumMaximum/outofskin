@@ -1,3 +1,5 @@
+@import "../../../variables.less";
+
 .tourComponent {
   //border: 1px solid red;
   margin-top: 1em;
@@ -28,13 +30,30 @@
 }
 
 .tourColumn {
-  width: 20em;
-  display: inline-block;
-  margin-left: 5%;
-  margin-right: 5%;
+  max-width: 20em;
+  width: auto;
   text-align: left;
+  margin: auto auto;
 }
 
 td.tourCell {
   width: 16em;
+}
+
+@media(min-width: @min-width) {
+  .columnsWrapper {
+    // encourage the wrapper div to contain both the floated children,
+    // or it will think it's empty and not put the border around them
+    // https://stackoverflow.com/questions/5803023/how-to-place-two-divs-next-to-each-other
+    overflow: hidden;
+  }
+
+  .leftColumn {
+    float: left;
+    margin-left: 2em;
+  }
+
+  .rightColumn {
+    float: right;
+  }
 }
