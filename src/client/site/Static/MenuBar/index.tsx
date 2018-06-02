@@ -24,7 +24,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 	}
 
     render() {
-		const menuDisplayStyle = "block";//this.state.toggleMenu ? "block" : "none";
+		const menuDisplayStyle = this.state.toggleMenu ? "block" : "none";
         return (
 			<div className={styles.menuBar}>
 				<ReactSVG
