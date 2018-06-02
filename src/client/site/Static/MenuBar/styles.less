@@ -1,22 +1,24 @@
 @import "../../../variables.less";
 
-.menuBar {
+@menu-width-mobile: 10em;
+
+#menuBar {
   top: 0;
   left: 0;
   z-index: 1;
+  outline: none;
+  width: @menu-width-mobile;
 }
 
-.menuIcon {
+#menuIcon {
   width: 2em;
   height: 2em;
-  display: inline-block;
-  border: 1px solid black;
 }
 
 .optionDiv {
   display: block;
   border-bottom: 1px solid black;
-  width: 10em;
+  width: @menu-width-mobile;
 }
 
 // h1 elements that are children of .optionDiv
@@ -45,7 +47,7 @@
 }
 
 @media (min-width: @min-width) {
-  .menuBar {
+  #menuBar {
     position: fixed;
     top: 2em;
     width: 100%;
@@ -59,11 +61,11 @@
     border: none;
     width: auto;
   }
-  .menuOptionsWrapper {
+  #menuOptionsWrapper {
     display: block !important;
   }
 
-  .menuIcon {
+  #menuIcon {
     display: none;
   }
 }
