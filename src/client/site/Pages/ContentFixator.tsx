@@ -20,7 +20,9 @@ export default class ContentFixator extends React.Component<ContentFixatorProps,
 				<div
 					className={styles.backgroundDiv}
 					style={{backgroundImage: backgroundImageURL}}/>
+				<div style={{backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
 				{this.props.content}
+				</div>
 			</div>
 		);
 	}

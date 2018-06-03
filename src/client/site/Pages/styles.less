@@ -5,21 +5,21 @@
   height: 100%;
   color: @text-color;
   font-weight: 400;
-  //text-shadow:
-  //        -@text-border-size 0 @text-border-color, // left
-  //          -@text-border-size -@text-border-size @text-border-color, // top-left
-  //          0 -@text-border-size @text-border-color, // top
-  //          @text-border-size -@text-border-size @text-border-color, // top-right
-  //        @text-border-size 0 @text-border-color, // right
-  //        @text-border-size @text-border-size @text-border-color, // bottom-right
-  //        0  @text-border-size @text-border-color, // bottom
-  //        -@text-border-size  @text-border-size @text-border-color; // bottom-left
+  text-shadow:
+            -@text-border-size 0                  @text-border-blur @text-border-color, // left
+            -@text-border-size -@text-border-size @text-border-blur @text-border-color, // top-left
+            0                   -@text-border-size @text-border-blur @text-border-color, // top
+            @text-border-size -@text-border-size @text-border-blur @text-border-color, // top-right
+          @text-border-size 0 @text-border-blur @text-border-color, // right
+          @text-border-size @text-border-size @text-border-blur @text-border-color, // bottom-right
+          0  @text-border-size @text-border-blur @text-border-color, // bottom
+          -@text-border-size  @text-border-size @text-border-blur @text-border-color; // bottom-left
 }
 
 .backgroundDiv {
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
@@ -40,6 +40,7 @@
     // https://stackoverflow.com/questions/36950151/the-calc-returns-percentage-not-pixels
     height: ~"calc(100% - 8em);";
     overflow: auto;
-    width: calc(100% - 8em);
+    width: calc(100% - 16em);
+    margin-left: 8em;
   }
 }
