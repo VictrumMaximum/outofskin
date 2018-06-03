@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
-const style = require("./styles.less");
+const styles = require("./styles.less");
 
 interface OptionProps {
     title: string;
@@ -15,15 +15,18 @@ export default class Option extends React.Component<OptionProps, {}> {
 
     render() {
         return (
-			<div className={style.optionDiv}>
+			<div className={styles.optionDiv}>
 				<h1>
-					<Link to={this.props.path}
-						className={style.optionLink}
+					<NavLink
+						to={this.props.path}
+						exact={true}
+						className={styles.optionLink}
+						  activeClassName={styles.activeOptionLink}
 						onClick={() => {
 							this.props.select(this.props.title);
 						}}>
 						{this.props.title}
-						</Link>
+						</NavLink>
 				</h1>
 			</div>
         );

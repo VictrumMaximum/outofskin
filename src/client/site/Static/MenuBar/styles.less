@@ -51,14 +51,25 @@
   color: @menu-color;
 }
 
-.optionLink:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.activeOptionLink {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  text-decoration: none;
+  color: black;
 }
 
-.optionLink:visited {
-  color: @menu-color;
+.optionLink:hover {
+  cursor: pointer;
+  color: @menu-color-active;
 }
+
+//.optionLink:visited {
+//  color: @menu-color;
+//}
 
 @media (min-width: @min-width) {
   #menuBar {
