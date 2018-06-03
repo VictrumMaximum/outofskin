@@ -7,7 +7,7 @@ require("../../media/images/icons/menu.svg");
 
 interface MenuBarState {
 	showMenu: boolean;
-	// selected equals a option title
+	// selected equals an option title
 	selected: string;
 }
 
@@ -17,6 +17,10 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
         let targetElement = event.target;
 		// check if selected element is part of menubar
         do {
+        	// Layer_1 is something very specific. It gets the id assigned
+			// by the ReactSVG module. Maybe better to change it to use
+			// class instead, since part of it is user defined (react-svg
+			// also assigns it a class).
             if (targetElement == menuBar || targetElement["id"] == "Layer_1") {
             	// part of menubar, do nothing
                 return;
@@ -56,10 +60,11 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 		this.setState({
 			showMenu: !this.state.showMenu
 		});
+
 	}
 
     render() {
-		const menuDisplayStyle = this.state.showMenu ? "block" : "none";
+		const menuMaxHeight = this.state.showMenu ? "11em" : "0";
         return (
 			<div
 				id={styles.menuBar}>
@@ -68,7 +73,8 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					id={styles.menuIcon}
 					onClick={this.toggleDisplay}
 				/>
-				<div id={styles.menuOptionsWrapper} style={{display: menuDisplayStyle}}>
+				<div id={styles.menuOptionsWrapper}
+					 style={{maxHeight: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {
 						return <Option
 							key={path}

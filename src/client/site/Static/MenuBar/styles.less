@@ -1,18 +1,27 @@
 @import "../../../variables.less";
 
+
 @menu-width-mobile: 10em;
 
 #menuBar {
   top: 0;
   left: 0;
   z-index: 1;
-  outline: none;
   width: @menu-width-mobile;
 }
 
 #menuIcon {
   width: 2em;
   height: 2em;
+}
+
+#menuOptionsWrapper {
+  overflow: hidden;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease;
+  -o-transition: 1s ease;
+  transition: 1s ease;
 }
 
 .optionDiv {
