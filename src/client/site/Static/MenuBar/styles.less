@@ -13,15 +13,20 @@
 #menuIcon {
   width: 2em;
   height: 2em;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -ms-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+  transition: transform 0.5s;
 }
 
 #menuOptionsWrapper {
   overflow: hidden;
-  -webkit-transition: 1s ease;
-  -moz-transition: 1s ease;
-  -ms-transition: 1s ease;
-  -o-transition: 1s ease;
-  transition: 1s ease;
+  -webkit-transition: max-height 0.5s ease;
+  -moz-transition: max-height 0.5s ease;
+  -ms-transition: max-height 0.5s ease;
+  -o-transition: max-height 0.5s ease;
+  transition: max-height 0.5s ease;
 }
 
 .optionDiv {
@@ -72,6 +77,7 @@
   }
   #menuOptionsWrapper {
     display: block !important;
+    max-height: 11em !important;
   }
 
   #menuIcon {

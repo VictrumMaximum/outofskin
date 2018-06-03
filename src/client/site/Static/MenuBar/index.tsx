@@ -65,6 +65,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 
     render() {
 		const menuMaxHeight = this.state.showMenu ? "11em" : "0";
+		const menuIconRotation = this.state.showMenu ? "90deg" : "0";
         return (
 			<div
 				id={styles.menuBar}>
@@ -72,6 +73,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					path={"../images/menu.svg"}
 					id={styles.menuIcon}
 					onClick={this.toggleDisplay}
+					style={{transform: "rotate(" + menuIconRotation + ")"}}
 				/>
 				<div id={styles.menuOptionsWrapper}
 					 style={{maxHeight: menuMaxHeight}}>
