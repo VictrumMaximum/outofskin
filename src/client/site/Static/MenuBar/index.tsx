@@ -7,6 +7,8 @@ require("../../media/images/icons/menu.svg");
 
 interface MenuBarState {
 	showMenu: boolean;
+	// selected equals a option title
+	selected: string;
 }
 
 export default class MenuBar extends React.Component<{}, MenuBarState> {
@@ -29,9 +31,16 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showMenu: false
+			showMenu: false,
+			selected: routes[Object.keys(routes)[0]].title
 		};
 		this.toggleDisplay = this.toggleDisplay.bind(this);
+	}
+
+	handleSelect(optionTitle) {
+		this.setState({
+			selected: optionTitle
+		}, () => {this.toggleDisplay()});
 	}
 
 	toggleDisplay() {
@@ -66,6 +75,8 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 							title={routes[path].title}
 							path={path}
 							hideMenu={this.toggleDisplay}
+							selected={routes[path].title === this.state.selected}
+							select={this.handleSelect.bind(this)}
 						/>
 					})}
 				</div>

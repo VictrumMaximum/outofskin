@@ -7,6 +7,8 @@ interface OptionProps {
     title: string;
     path: string;
     hideMenu: () => void;
+    select: (route: string) => void;
+    selected: boolean;
 }
 
 export default class Option extends React.Component<OptionProps, {}> {
@@ -17,7 +19,9 @@ export default class Option extends React.Component<OptionProps, {}> {
 				<h1>
 					<Link to={this.props.path}
 						className={style.optionLink}
-						onClick={this.props.hideMenu}>
+						onClick={() => {
+							this.props.select(this.props.title);
+						}}>
 						{this.props.title}
 						</Link>
 				</h1>
