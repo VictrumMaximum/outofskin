@@ -30,7 +30,6 @@ require("./media/faviconit/browserconfig.xml");
 
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
-import Home from "./Pages/Home/index";
 import ContentFixator from "./Pages/ContentFixator";
 import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
@@ -43,10 +42,8 @@ export default class MainContainer extends React.Component<{}, {}> {
 				{/*router may only have 1 child element*/}
 				<div>
 					<MenuBar />
-					{/*<Route exact path={"/"} component={Home}/>*/}
 					{Object.keys(routes).map(path => {
 						return (
-							<div key={path}>
 								<Route
 									key={path}
 									exact path={path}
@@ -56,8 +53,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 										return <ContentFixator
 											content={<Component {...routeProps}/>}
 											background={routes[path].background}/>
-									}}/>
-							</div>);
+									}}/>);
 					})}
 					<SocialMedia/>
 				</div>
