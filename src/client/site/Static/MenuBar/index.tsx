@@ -2,7 +2,7 @@ import * as React from "react";
 import Option from "./Option";
 import routes from "../../routes";
 const styles = require("./styles.less");
-import ReactSVG from 'react-svg';
+// import ReactSVG from 'react-svg';
 require("../../media/images/icons/menu.svg");
 
 interface MenuBarState {
@@ -69,12 +69,12 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
         return (
 			<div
 				id={styles.menuBar}>
-				<ReactSVG
-					path={"../images/menu.svg"}
-					id={styles.menuIcon}
-					onClick={this.toggleDisplay}
-					style={{transform: "rotate(" + menuIconRotation + ")"}}
-				/>
+				{/*<ReactSVG*/}
+					{/*path={"../images/menu.svg"}*/}
+					{/*id={styles.menuIcon}*/}
+					{/*onClick={this.toggleDisplay}*/}
+					{/*style={{transform: "rotate(" + menuIconRotation + ")"}}*/}
+				{/*/>*/}
 				<div id={styles.menuOptionsWrapper}
 					 style={{maxHeight: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {

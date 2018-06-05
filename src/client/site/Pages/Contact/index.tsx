@@ -2,7 +2,7 @@ import * as React from "react";
 import {AxiosResponse} from "axios";
 import axios from "axios";
 import {subscribersDataRoute} from "../../../../server/DataRouters/dataRoutes";
-import ReactSVG from 'react-svg';
+// import ReactSVG from 'react-svg';
 const styles = require("./styles.less");
 
 require("../../media/images/icons/phone.svg");
@@ -57,27 +57,27 @@ export default class Contact extends React.Component<{}, ContactState> {
 			<div>
 				<table className={styles.information}>
 					<tbody>
-						<tr>
-							<td><ReactSVG
-								path={"../images/phone.svg"}
-								svgClassName={styles.icon}
-							/></td>
-							<td>+316 42 96 12 33</td>
-						</tr>
-						<tr>
-							<td><ReactSVG
-								path={"../images/phone.svg"}
-								svgClassName={styles.icon}
-							/></td>
-							<td>+316 15 58 62 06</td>
-						</tr>
-						<tr>
-							<td><ReactSVG
-								path={"../images/email.svg"}
-								svgClassName={styles.icon}
-							/></td>
-							<td>band@outofskin.com</td>
-						</tr>
+						{/*<tr>*/}
+							{/*<td><ReactSVG*/}
+								{/*path={"../images/phone.svg"}*/}
+								{/*svgClassName={styles.icon}*/}
+							{/*/></td>*/}
+							{/*<td>+316 42 96 12 33</td>*/}
+						{/*</tr>*/}
+						{/*<tr>*/}
+							{/*<td><ReactSVG*/}
+								{/*path={"../images/phone.svg"}*/}
+								{/*svgClassName={styles.icon}*/}
+							{/*/></td>*/}
+							{/*<td>+316 15 58 62 06</td>*/}
+						{/*</tr>*/}
+						{/*<tr>*/}
+							{/*<td><ReactSVG*/}
+								{/*path={"../images/email.svg"}*/}
+								{/*svgClassName={styles.icon}*/}
+							{/*/></td>*/}
+							{/*<td>band@outofskin.com</td>*/}
+						{/*</tr>*/}
 
 					</tbody>
 				</table>

@@ -112,7 +112,11 @@ module.exports = function createConfig(dir, deploy) { // deploy is a boolean val
         // dependencies, which allows browsers to cache those libraries between builds.
         externals: {
             "axios": "axios",
-            "moment": "moment"
+            "moment": "moment",
+            'react': 'React',
+            'react-dom': 'ReactDOM',
+            'react-router': 'ReactRouter',
+            'react-svg': 'ReactSVG'
         }
     };
 };
