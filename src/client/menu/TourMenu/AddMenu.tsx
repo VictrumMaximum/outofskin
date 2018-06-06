@@ -45,10 +45,6 @@ class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
 			{
 				text: "Add",
 				onClick: () => this.onSubmit(this.state)
-			},
-			{
-				text: "Add premade",
-				onClick: () => this.onSubmit(premade)
 			}
 		]
     }
