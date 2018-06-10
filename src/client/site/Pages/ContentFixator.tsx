@@ -20,7 +20,9 @@ export default class ContentFixator extends React.Component<ContentFixatorProps,
 				<div
 					className={styles.backgroundDiv}
 					style={{backgroundImage: backgroundImageURL}}/>
+				<div style={{zIndex: 2, position: "relative"}}>
 				{this.props.content}
+				</div>
 			</div>
 		);
 	}
