@@ -7,7 +7,7 @@ import musicRouter from "./DataRouters/MusicRouter";
 import pressRouter from "./DataRouters/PressRouter";
 import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
-const port = 8080;
+const port = 3000;
 
 import * as dataRoutes from "./DataRouters/dataRoutes";
 
