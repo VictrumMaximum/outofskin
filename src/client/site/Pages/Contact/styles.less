@@ -2,6 +2,7 @@
 
 .icon {
   width: 1.5em;
+  height: 1.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
   fill: @social-media-button-color;
@@ -14,6 +15,7 @@
 table.information {
   margin-left:auto;
   margin-right:auto;
+  text-align: left;
 }
 
 .boxLink {
@@ -41,6 +43,15 @@ table.information {
 
 .boxLinkWrapper {
   display: inline-block;
+}
+
+.blackToWhiteLink {
+  font-weight: bold;
+  color: @text-color;
+}
+
+.blackToWhiteLink:hover {
+  color: white;
 }
 
 @media (min-width: @min-width) {

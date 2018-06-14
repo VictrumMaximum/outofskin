@@ -7,6 +7,7 @@ const styles = require("./styles.less");
 
 require("../../media/images/icons/phone.svg");
 require("../../media/images/icons/email.svg");
+require("../../media/images/icons/dropbox.svg");
 
 interface ContactState {
 	email: string;
@@ -78,7 +79,19 @@ export default class Contact extends React.Component<{}, ContactState> {
 							/></td>
 							<td>band@outofskin.com</td>
 						</tr>
-
+						<tr>
+							<td><ReactSVG
+								path={"../images/dropbox.svg"}
+								svgClassName={styles.icon}
+							/></td>
+							<td>
+								<a href={"https://www.dropbox.com/sh/wgen8pi81nojwdb/AAABu1ZapzS2w_BiJ4WEuHfFa?dl=0"}
+									target={"blank"}
+									className={styles.blackToWhiteLink}>
+									Press-kit
+								</a>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<br/>
