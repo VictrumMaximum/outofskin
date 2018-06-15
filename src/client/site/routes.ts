@@ -17,7 +17,7 @@ export default {
 	},
 	"/bio": {
 		component: Bio,
-		background: normal,
+		background: weird,
 		title: "Bio"
 	},
 	"/music": {
@@ -27,7 +27,7 @@ export default {
 	},
 	"/press": {
 		component: Press,
-		background: normal,
+		background: weird,
 		title: "Press"
 	},
 	"/contact": {
