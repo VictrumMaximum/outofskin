@@ -6,14 +6,14 @@ interface ContentFixatorProps {
 	background: string;
 }
 
-import {cover} from "../routes";
+import {mobileBg} from "../routes";
 
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
 
 	render() {
 		let backgroundImageURL = "url('../images/"+this.props.background+"')";
 		if (window.innerWidth <= 375) {
-			backgroundImageURL = "url('../images/"+cover+"')";
+			backgroundImageURL = "url('../images/"+mobileBg+"')";
 		}
 		return (
 			<div className={styles.contentFixator}>
