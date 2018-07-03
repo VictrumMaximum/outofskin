@@ -68,4 +68,7 @@ outofskin.iml
 # data files
 data/*.json
 
+# idk what this is, appeared on 3 july 2018
+desktop.ini
+
 package-lock.json
