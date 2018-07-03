@@ -5,10 +5,10 @@ import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
 import Home from "./Pages/Home/index";
 
-require("./media/images/TOUR.jpg");
-require("./media/images/BIO.jpg");
-require("./media/images/PRESS.jpg");
-require("./media/images/CONTACT.jpg");
+require("./media/images/tour.jpg");
+require("./media/images/bio.jpg");
+require("./media/images/press.jpg");
+require("./media/images/contact.jpg");
 
 const tourBg = "tour.jpg";
 const bioBg = "bio.jpg";
