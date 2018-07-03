@@ -25,13 +25,15 @@ function sortAndSplitTours(tours: TourJSON) {//: Tour[] {
 		.map((tourId) => {
 			const tour = tours[tourId];
 			// convert begin from string to moment
+
 			tour.begin = moment(tour.begin);
-			return tour})
+			return tour;
+		})
 		.sort(compare);
 	let i = 0;
 	const now = moment();
 	// find index of first tour which comes after today
-	while (sorted[i].begin.isBefore(now) && i < sorted.length) {
+	while (i < sorted.length && sorted[i].begin.isBefore(now)) {
 		i++;
 	}
 	// splice actually modifies the array, does not make a copy
