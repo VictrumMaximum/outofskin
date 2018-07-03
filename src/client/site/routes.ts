@@ -10,10 +10,10 @@ require("./media/images/BIO.jpg");
 require("./media/images/PRESS.jpg");
 require("./media/images/CONTACT.jpg");
 
-const tourBg = "TOUR.jpg";
-const bioBg = "BIO.jpg";
-const pressBg = "PRESS.jpg";
-const contactBg = "CONTACT.jpg";
+const tourBg = "tour.jpg";
+const bioBg = "bio.jpg";
+const pressBg = "press.jpg";
+const contactBg = "contact.jpg";
 
 export const mobileBg = tourBg;
 
