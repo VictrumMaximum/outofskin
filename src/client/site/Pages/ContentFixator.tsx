@@ -12,9 +12,10 @@ export default class ContentFixator extends React.Component<ContentFixatorProps,
 
 	render() {
 		let backgroundImageURL = "url('../images/"+this.props.background+"')";
-		if (window.innerWidth <= 375) {
-			backgroundImageURL = "url('../images/"+mobileBg+"')";
-		}
+		// disabled because all current bgs work on mobile
+		// if (window.innerWidth <= 375) {
+		// 	backgroundImageURL = "url('../images/"+mobileBg+"')";
+		// }
 		return (
 			<div className={styles.contentFixator}>
 				<div
