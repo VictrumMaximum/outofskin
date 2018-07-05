@@ -31,7 +31,34 @@ import ContentFixator from "./Pages/ContentFixator";
 import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
 
-export default class MainContainer extends React.Component<{}, {}> {
+interface MainContainerState {
+    textColor: string;
+    textSize: string;
+    borderColor: string;
+    borderSize: string;
+}
+
+export default class MainContainer extends React.Component<{}, MainContainerState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            textColor: "white",
+            textSize: "300",
+            borderColor: "black",
+            borderSize: "0.3"
+        };
+        this.styleChangeHandler = this.styleChangeHandler.bind(this);
+    }
+
+    styleChangeHandler(evt) {
+        console.log("hello");
+        const id = evt.target.id;
+        const value = evt.target.value;
+        console.log(id + ", " + value);
+        this.setState({
+            [id]: value
+        }, () => {console.log(this.state)});
+    }
 
 	render() {
 		return (
@@ -39,19 +66,22 @@ export default class MainContainer extends React.Component<{}, {}> {
 				{/*router may only have 1 child element*/}
 				<div>
 					<MenuBar />
-					{Object.keys(routes).map(path => {
-						return (
-								<Route
-									key={path}
-									exact path={path}
-									render = {(routeProps) => {
-										// react syntax requires component names to start with capital letter
-										const Component = routes[path].component;
-										return <ContentFixator
-											content={<Component {...routeProps}/>}
-											background={routes[path].background}/>
-									}}/>);
-					})}
+                    <input id={"textColor"} type={"color"} onChange={this.styleChangeHandler} />
+					<div style={{color: this.state.textColor}}>
+						{Object.keys(routes).map(path => {
+							return (
+									<Route
+										key={path}
+										exact path={path}
+										render = {(routeProps) => {
+											// react syntax requires component names to start with capital letter
+											const Component = routes[path].component;
+											return <ContentFixator
+												content={<Component {...routeProps}/>}
+												background={routes[path].background}/>
+										}}/>);
+						})}
+					</div>
 					<SocialMedia/>
 				</div>
 			</BrowserRouter>
