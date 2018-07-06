@@ -1,11 +1,12 @@
 import * as React from "react";
-import PressColumn from "./PressColumn";
 import {connect} from "react-redux";
 import {setQuotes} from "../../redux/actions/press";
 import Quote from "../../../../schemas/QuoteSchema";
 import {pressDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import {AxiosResponse} from "axios";
 import axios from "axios";
+import PressLeftColumn from "./PressLeftColumn";
+import PressRightColumn from "./PressRightColumn";
 
 interface PressContainerProps {
 	left: Quote[],
@@ -37,8 +38,8 @@ class PressContainer extends React.Component<PressContainerProps, {}> {
 	render() {
 		return (
 			<div>
-				<PressColumn quotes={this.props.left}/>
-				<PressColumn quotes={this.props.right}/>
+				<PressLeftColumn quotes={this.props.left}/>
+				<PressRightColumn quotes={this.props.right}/>
 			</div>
 		);
 	}

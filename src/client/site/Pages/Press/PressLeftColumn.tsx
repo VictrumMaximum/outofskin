@@ -7,11 +7,11 @@ interface PressColumnProps {
 	quotes: QuoteSchema[]
 }
 
-export default class PressColumn extends React.Component<PressColumnProps, {}> {
+export default class PressLeftColumn extends React.Component<PressColumnProps, {}> {
 
     render() {
         return (
-            <div className={styles.pressColumn}>
+            <div className={styles.pressColumn + " " + styles.pressLeftColumn}>
                 {this.props.quotes.map((x) => {
                     return (
                         <Quote author={x.author} quote={x.text} link={x.link}/>
