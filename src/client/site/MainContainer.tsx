@@ -48,9 +48,9 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
         	show: true,
             textColor: "#828282",
             textSize: 16,
-			headerColor: "e6e6e6",
+			headerColor: "#e6e6e6",
 			headerSize: 24,
-            borderColor: "black",
+            borderColor: "#e6e6e6",
             borderSize: 0.3
         };
         this.styleChangeHandler = this.styleChangeHandler.bind(this);
