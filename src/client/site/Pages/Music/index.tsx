@@ -1,11 +1,12 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import VideoColumn from "./VideoColumn";
 import axios, {AxiosResponse} from "axios";
 
 import {musicDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
 import {setVideos} from "../../redux/actions/music";
+import VideoLeftColumn from "./VideoLeftColumn";
+import VideoRightColumn from "./VideoRightColumn";
 
 interface MusicProps {
 	setVideos,
@@ -36,8 +37,8 @@ class MusicContainer extends React.Component<MusicProps, {}> {
 	render() {
 		return (
 			<div>
-				<VideoColumn header={this.props.left.header} videos={this.props.left.videos}/>
-				<VideoColumn header={this.props.right.header} videos={this.props.right.videos}/>
+				<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>
+				<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>
 			</div>
 		);
 	}

@@ -7,11 +7,11 @@ interface VideoColumnProps {
 	videos: string[]
 }
 
-export default class VideoColumn extends React.Component<VideoColumnProps, {}> {
+export default class VideoLeftColumn extends React.Component<VideoColumnProps, {}> {
 
 	render() {
 		return (
-			<div className={styles.videoColumn}>
+			<div className={styles.videoColumn + " " + styles.videoLeftColumn}>
 				<h3>{this.props.header}</h3>
 				{this.props.videos.map((videoId) => {
 					return (
