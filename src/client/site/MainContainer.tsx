@@ -46,9 +46,9 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
         super(props);
         this.state = {
         	show: true,
-            textColor: "white",
+            textColor: "#828282",
             textSize: 16,
-			headerColor: "black",
+			headerColor: "e6e6e6",
 			headerSize: 24,
             borderColor: "black",
             borderSize: 0.3
