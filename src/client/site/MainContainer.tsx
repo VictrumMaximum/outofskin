@@ -31,7 +31,83 @@ import ContentFixator from "./Pages/ContentFixator";
 import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
 
-export default class MainContainer extends React.Component<{}, {}> {
+export interface MainContainerState {
+	show: boolean;
+    textColor: string;
+    textSize: number;
+    headerColor: string;
+    headerSize: number;
+    borderColor: string;
+    borderSize: number;
+}
+
+export default class MainContainer extends React.Component<{}, MainContainerState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+        	show: true,
+            textColor: "white",
+            textSize: 16,
+			headerColor: "black",
+			headerSize: 24,
+            borderColor: "black",
+            borderSize: 0.3
+        };
+        this.styleChangeHandler = this.styleChangeHandler.bind(this);
+		this.changeTextSize = this.changeTextSize.bind(this);
+		this.handleHeaderChange = this.handleHeaderChange.bind(this);
+		this.changeHeaderSize = this.changeHeaderSize.bind(this);
+		this.changeBorderSize = this.changeBorderSize.bind(this);
+		this.toggleMenu = this.toggleMenu.bind(this);
+    }
+
+    styleChangeHandler(evt) {
+        const id = evt.target.id;
+        const value = evt.target.value;
+        this.setState({
+            [id]: value
+        });
+    }
+
+    changeTextSize(scalar) {
+    	this.setState({
+			textSize: (this.state.textSize + scalar)
+		});
+	}
+
+	changeHeaderSize(scalar) {
+		this.setState({
+			headerSize: (this.state.headerSize + scalar)
+		}, () => {
+			const list = document.getElementsByTagName("H3");
+			for (let i = 0; i < list.length; i++) {
+				list[i]["style"].fontSize = this.state.headerSize + "px";
+			}
+		});
+	}
+
+	handleHeaderChange(evt) {
+    	this.setState({
+			[evt.target.id]: evt.target.value
+		}, () => {
+			const list = document.getElementsByTagName("H3");
+			for (let i = 0; i < list.length; i++) {
+				list[i]["style"].color = this.state.headerColor;
+			}
+		});
+	}
+
+	changeBorderSize(scalar) {
+		this.setState({
+			borderSize: (this.state.borderSize + scalar)
+		});
+	}
+
+	toggleMenu() {
+    	this.setState({
+			show: !this.state.show
+		});
+	}
 
 	render() {
 		return (
@@ -39,19 +115,74 @@ export default class MainContainer extends React.Component<{}, {}> {
 				{/*router may only have 1 child element*/}
 				<div>
 					<MenuBar />
-					{Object.keys(routes).map(path => {
-						return (
-								<Route
-									key={path}
-									exact path={path}
-									render = {(routeProps) => {
-										// react syntax requires component names to start with capital letter
-										const Component = routes[path].component;
-										return <ContentFixator
-											content={<Component {...routeProps}/>}
-											background={routes[path].background}/>
-									}}/>);
-					})}
+					<button style={{zIndex: 1, position: "relative"}} onClick={this.toggleMenu}>show/hide</button>
+					<div style={{zIndex: 1, position: "relative", width: "12em", display: (this.state.show ? "block" : "none")}}>
+						Text color
+                    	<input id={"textColor"}
+							   type={"color"}
+							   onChange={this.styleChangeHandler} />
+						<br/>
+						Text size
+						<input id={"textSize"}
+							   style={{width: "3em"}}
+							   value={this.state.textSize} />
+						<button onClick={() => {this.changeTextSize(1)}}>+</button>
+						<button onClick={() => {this.changeTextSize(-1)}}>-</button>
+						<br/>
+						Header color
+						<input id={"headerColor"}
+							   type={"color"}
+							   onChange={this.handleHeaderChange} />
+						<br/>
+						Header size
+						<input id={"headerSize"}
+							   style={{width: "3em"}}
+							   value={this.state.headerSize} />
+						<button onClick={() => {this.changeHeaderSize(1)}}>+</button>
+						<button onClick={() => {this.changeHeaderSize(-1)}}>-</button>
+						<br/>
+						Border color
+						<input id={"borderColor"} type={"color"} onChange={this.styleChangeHandler} />
+						<br/>
+						Border size
+						<input id={"borderSize"}
+							   style={{width: "3em"}}
+							   value={this.state.borderSize} />
+						<button onClick={() => {this.changeBorderSize(0.1)}}>+</button>
+						<button onClick={() => {this.changeBorderSize(-0.1)}}>-</button>
+						<br/>
+						{Object.keys(this.state).map((key) => {
+							return (key + ": " + this.state[key] + ",\n");
+						})}
+					</div>
+					<div style={{
+						color: this.state.textColor,
+						fontSize: this.state.textSize + "px",
+						textShadow: "" +
+						"			-" + this.state.borderSize + "px 0 " + this.state.borderColor + "," +
+						"            -" + this.state.borderSize + "px -" + this.state.borderSize + "px " + this.state.borderColor + "," +
+						"            0 -" + this.state.borderSize + "px " + this.state.borderColor + "," +
+						"            " + this.state.borderSize + "px -" + this.state.borderSize + "px " + this.state.borderColor + "," +
+						"          " + this.state.borderSize + "px 0 " + this.state.borderColor + "," +
+						"          " + this.state.borderSize + "px " + this.state.borderSize + "px " + this.state.borderColor + "," +
+						"          0  " + this.state.borderSize + "px " + this.state.borderColor + "," +
+						"          -" + this.state.borderSize + "px  " + this.state.borderSize + "px " + this.state.borderColor
+					}}>
+						{Object.keys(routes).map(path => {
+							return (
+									<Route
+										key={path}
+										exact path={path}
+										render = {(routeProps) => {
+											// react syntax requires component names to start with capital letter
+											const Component = routes[path].component;
+											return <ContentFixator
+												content={<Component {...routeProps}/>}
+												background={routes[path].background}
+												style={this.state}/>
+										}}/>);
+						})}
+					</div>
 					<SocialMedia/>
 				</div>
 			</BrowserRouter>
