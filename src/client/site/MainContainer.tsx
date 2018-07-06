@@ -32,6 +32,7 @@ import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
 
 export interface MainContainerState {
+	show: boolean;
     textColor: string;
     textSize: number;
     headerColor: string;
@@ -44,6 +45,7 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
     constructor(props) {
         super(props);
         this.state = {
+        	show: true,
             textColor: "white",
             textSize: 16,
 			headerColor: "black",
@@ -56,6 +58,7 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 		this.handleHeaderChange = this.handleHeaderChange.bind(this);
 		this.changeHeaderSize = this.changeHeaderSize.bind(this);
 		this.changeBorderSize = this.changeBorderSize.bind(this);
+		this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     styleChangeHandler(evt) {
@@ -100,13 +103,20 @@ export default class MainContainer extends React.Component<{}, MainContainerStat
 		});
 	}
 
+	toggleMenu() {
+    	this.setState({
+			show: !this.state.show
+		});
+	}
+
 	render() {
 		return (
 			<BrowserRouter>
 				{/*router may only have 1 child element*/}
 				<div>
 					<MenuBar />
-					<div style={{zIndex: 1, position: "relative", width: "12em"}}>
+					<button style={{zIndex: 1, position: "relative"}} onClick={this.toggleMenu}>show/hide</button>
+					<div style={{zIndex: 1, position: "relative", width: "12em", display: (this.state.show ? "block" : "none")}}>
 						Text color
                     	<input id={"textColor"}
 							   type={"color"}
