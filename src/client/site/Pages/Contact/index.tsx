@@ -55,7 +55,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 		}
 
 		return (
-			<div>
+			<div className={styles.informationWrapper}>
 				<table className={styles.information}>
 					<tbody>
 						<tr>
