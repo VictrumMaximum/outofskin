@@ -1,14 +1,24 @@
 import * as React from "react";
 const styles = require("./styles.less");
 
+import {mobileBg} from "../routes";
+import {MainContainerState} from "../MainContainer";
+
 interface ContentFixatorProps {
 	content: JSX.Element;
 	background: string;
+	style: MainContainerState;
 }
 
-import {mobileBg} from "../routes";
-
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
+
+	componentDidMount() {
+		const list = document.getElementsByTagName("H3");
+		for (let i = 0; i < list.length; i++) {
+			list[i]["style"].color = this.props.style.headerColor;
+			list[i]["style"].fontSize = this.props.style.headerSize + "px";
+		}
+	}
 
 	render() {
 		let backgroundImageURL = "url('../images/"+this.props.background+"')";
