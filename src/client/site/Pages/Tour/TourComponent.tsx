@@ -5,7 +5,7 @@ const styles = require("./styles.less");
 
 interface TourProps {
 	tour: TourWithoutID;
-	showTicketLink: boolean
+	showButtons: boolean
 }
 
 export default class TourComponent extends React.Component<TourProps, {}> {
@@ -20,14 +20,16 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 							<td className={styles.tourCell}><strong>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</strong></td>
 						</tr>
 						<tr>
-							<td>{this.props.tour.eventName}</td>
-							{this.props.showTicketLink ?
+							<td><i>{this.props.tour.eventName}</i></td>
+							{this.props.showButtons ?
 								(<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.eventLink)}}>Tickets</div></td>) :
 								(<td/>)}
 						</tr>
 						<tr>
-							<td>{this.props.tour.location}, {this.props.tour.city}</td>
-							<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.locationLink)}}>Maps</div></td>
+							<td>{this.props.tour.location}{(this.props.tour.city.length > 0) ? (", "+this.props.tour.city):""}</td>
+							{this.props.showButtons ? <td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.locationLink)}}>Maps</div></td> :
+							<td/>}
+
 						</tr>
 					</tbody>
 				</table>

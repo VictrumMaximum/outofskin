@@ -19,7 +19,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
                 {this.props.tours.map((tour) => {
                     return <TourComponent
                         key={tour.begin.format("DD MMMM HH:mm")}
-                        showTicketLink={true}
+						showButtons={true}
                         tour={tour} />
                 })}
             </div>
