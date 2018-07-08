@@ -51,7 +51,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 	}
 
 	render() {
-		let subscribeButton = <Button text={"subscribe"} action={this.handleClick} height={"0.1em"}/>;
+		let subscribeButton = <Button text={"subscribe"} action={this.handleClick} height={"0.3em"}/>;
 		if (this.state.subscribed) {
 			subscribeButton = <span style={{color: "green"}}>Bedankt!</span>;
 		}
@@ -99,7 +99,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 				<br/>
 				Meld je aan voor de nieuwsbrief!<br/>
 				<span style={{color: "red"}}>{this.state.subscribeErrorMessage}</span><br/>
-				<input placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
+				<input id={styles.emailInput} placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
 				<div className={styles.boxLinkWrapper}>
 					{subscribeButton}
 				</div>
