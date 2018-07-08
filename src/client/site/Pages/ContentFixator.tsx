@@ -21,7 +21,9 @@ export default class ContentFixator extends React.Component<ContentFixatorProps,
 				<div
 					id={styles.backgroundDiv}
 					style={{backgroundImage: backgroundImageURL}}/>
+				<div id={styles.contentOffsetter}>
 				{this.props.content}
+				</div>
 			</div>
 		);
 	}

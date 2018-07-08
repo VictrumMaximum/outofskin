@@ -1,6 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
+const styles = require("./styles.less");
 
 import {musicDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
@@ -36,7 +37,7 @@ class MusicContainer extends React.Component<MusicProps, {}> {
 
 	render() {
 		return (
-			<div>
+			<div id={styles.columnWrapper}>
 				<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>
 				<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>
 			</div>

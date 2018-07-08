@@ -35,6 +35,10 @@
   border-radius: @border-radius;
 }
 
+#contentOffsetter {
+  margin-top: 2em;
+}
+
 // https://stackoverflow.com/questions/19038240/media-query-styles-not-overriding-original-styles
 
 @media (min-width: @min-width) {
@@ -49,5 +53,9 @@
     height: ~"calc(100% - 8em);";
     overflow: auto;
     width: calc(100% - 8em);
+  }
+
+  #contentOffsetter {
+    margin: 0;
   }
 }
