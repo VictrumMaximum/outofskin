@@ -17,9 +17,9 @@ export default class ContentFixator extends React.Component<ContentFixatorProps,
 		// 	backgroundImageURL = "url('../images/"+mobileBg+"')";
 		// }
 		return (
-			<div className={styles.contentFixator}>
+			<div id={styles.contentFixator}>
 				<div
-					className={styles.backgroundDiv}
+					id={styles.backgroundDiv}
 					style={{backgroundImage: backgroundImageURL}}/>
 				{this.props.content}
 			</div>

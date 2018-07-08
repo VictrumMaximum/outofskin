@@ -4,6 +4,7 @@ import axios from "axios";
 import {subscribersDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import ReactSVG from 'react-svg';
 const styles = require("./styles.less");
+const pageStyles = require("../styles.less");
 
 require("../../media/images/icons/phone.svg");
 require("../../media/images/icons/email.svg");
@@ -55,7 +56,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 		}
 
 		return (
-			<div className={styles.informationWrapper}>
+			<div id={styles.informationWrapper} className={pageStyles.whitePlaneBackground}>
 				<table className={styles.information}>
 					<tbody>
 						<tr>

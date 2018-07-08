@@ -41,20 +41,13 @@ td.tourCell {
 }
 
 @media(min-width: @min-width) {
-  .columnsWrapper {
-    // encourage the wrapper div to contain both the floated children,
-    // or it will think it's empty and not put the border around them
-    // https://stackoverflow.com/questions/5803023/how-to-place-two-divs-next-to-each-other
-    overflow: hidden;
-  }
-
-  .leftColumn {
+  #leftColumn {
     display: inline-block;
     position: absolute;
     left: 5%;
   }
 
-  .rightColumn {
+  #rightColumn {
     display: inline-block;
     position: absolute;
     right: 5%;

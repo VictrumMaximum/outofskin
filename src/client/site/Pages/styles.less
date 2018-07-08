@@ -1,6 +1,6 @@
 @import "../../variables.less";
 
-.contentFixator {
+#contentFixator {
   text-align: center;
   height: 100%;
   color: @text-color;
@@ -16,7 +16,7 @@
   //        -@text-border-size  @text-border-size @text-border-color; // bottom-left
 }
 
-.backgroundDiv {
+#backgroundDiv {
   background-size: cover;
   background-position: center center;
   height: 100vh;
@@ -27,10 +27,15 @@
   z-index: -1;
 }
 
+.whitePlaneBackground {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1em;
+}
+
 // https://stackoverflow.com/questions/19038240/media-query-styles-not-overriding-original-styles
 
 @media (min-width: @min-width) {
-  .contentFixator {
+  #contentFixator {
     position: fixed;
     top: 6em;
     left: 0;

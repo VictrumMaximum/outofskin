@@ -1,6 +1,8 @@
 import * as React from "react";
 import TourComponent from "./TourComponent";
 import {TourWithoutID} from "../../../../schemas/TourSchema";
+import {classNameSeparator} from "../../../util";
+const pageStyles = require("../styles.less");
 
 const styles = require("./styles.less");
 
@@ -13,7 +15,7 @@ export default class TourRightColumn extends React.Component<TourRightColumnProp
 
     render() {
         return (
-            <div className={styles.rightColumn + " " + styles.tourColumn}>
+            <div id={styles.rightColumn} className={classNameSeparator(styles.tourColumn, pageStyles.whitePlaneBackground)}>
                 <h3>{this.header}</h3>
                 {this.props.tours.map((tour) => {
                     return <TourComponent
