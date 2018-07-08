@@ -35,7 +35,7 @@ export default class EditColumn extends React.Component<EditColumnProps, {}> {
 	render() {
 		return (
 			<div className={styles.editColumn}>
-				<h3>{this.props.header}</h3>
+				<h2>{this.props.header}</h2>
 				{this.props.quotes.map((quote, index) => {
 					return (<div key={index} className={styles.quote}>
 						<textarea className={styles.quoteText}

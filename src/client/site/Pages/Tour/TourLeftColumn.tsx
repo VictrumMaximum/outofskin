@@ -15,7 +15,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
     render() {
         return (
             <div id={styles.leftColumn} className={classNameSeparator(styles.tourColumn, pageStyles.whitePlaneBackground)}>
-                <h3>{this.header}</h3>
+                <h2>{this.header}</h2>
                 {this.props.tours.map((tour) => {
                     return <TourComponent
                         key={tour.begin.format("DD MMMM HH:mm")}
