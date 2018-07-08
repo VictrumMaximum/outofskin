@@ -7,11 +7,13 @@ import Home from "./Pages/Home/index";
 
 require("./media/images/tour.jpg");
 require("./media/images/bio.jpg");
+require("./media/images/music.jpg");
 require("./media/images/press.jpg");
 require("./media/images/contact.jpg");
 
 const tourBg = "tour.jpg";
 const bioBg = "bio.jpg";
+const musicBg = "music.jpg";
 const pressBg = "press.jpg";
 const contactBg = "contact.jpg";
 
@@ -30,7 +32,7 @@ export default {
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: tourBg,
+		background: musicBg,
 		title: "Music"
 	},
 	"/press": {
