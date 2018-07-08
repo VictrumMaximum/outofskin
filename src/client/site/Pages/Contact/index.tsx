@@ -3,6 +3,7 @@ import {AxiosResponse} from "axios";
 import axios from "axios";
 import {subscribersDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import ReactSVG from 'react-svg';
+import Button from "../../Static/Button";
 const styles = require("./styles.less");
 const pageStyles = require("../styles.less");
 
@@ -50,7 +51,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 	}
 
 	render() {
-		let subscribeButton = <div className={styles.boxLink} onClick={this.handleClick}>subscribe</div>;
+		let subscribeButton = <Button text={"subscribe"} action={this.handleClick} height={"0.1em"}/>;
 		if (this.state.subscribed) {
 			subscribeButton = <span style={{color: "green"}}>Bedankt!</span>;
 		}
