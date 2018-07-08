@@ -13,7 +13,7 @@ export default class PressRightColumn extends React.Component<PressColumnProps, 
 
     render() {
         return (
-            <div id={styles.pressRightColumn} className={classNameSeparator(styles.pressColumn, pageStyles.whitePlaneBackground)}>
+            <div id={styles.pressRightColumn} className={styles.pressColumn}>
                 {this.props.quotes.map((x, index) => {
                     return (
                         <Quote key={index} author={x.author} quote={x.text} link={x.link}/>
