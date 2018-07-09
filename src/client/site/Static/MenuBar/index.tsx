@@ -41,6 +41,11 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 		this.toggleDisplay = this.toggleDisplay.bind(this);
 	}
 
+	componentDidMount() {
+		const selected = document.getElementsByClassName(styles.activeOptionLink)[0];
+		this.setState({selected: selected.innerHTML});
+	}
+
 	handleSelect(optionTitle) {
 		this.setState({
 			selected: optionTitle
@@ -75,6 +80,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					onClick={this.toggleDisplay}
 					style={{transform: "rotate(" + menuIconRotation + ")"}}
 				/>
+				<div id={styles.mobilePageIndicator}>{this.state.selected}</div>
 				<div id={styles.menuOptionsWrapper}
 					 style={{maxHeight: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {

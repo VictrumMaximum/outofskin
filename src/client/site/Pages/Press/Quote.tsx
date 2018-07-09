@@ -18,9 +18,8 @@ export default class Quote extends React.Component<QuoteProps, {}> {
 		        <div>{this.props.quote}</div>
 				- <strong>{this.props.author}</strong>
 				<div className={styles.buttonWrapper}>
-					<Button text={"Bron"} action={() => {window.open(this.props.link)}} height={"0.3em;"}/>
+					<Button text={"Bron"} action={() => {window.open(this.props.link)}} height={"0.3em"}/>
 				</div>
-				{/*<div className={styles.boxLink} onClick={() => {window.open(this.props.link)}}>Bron</div>*/}
 	        </div>
         );
     }
