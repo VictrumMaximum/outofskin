@@ -9,12 +9,19 @@
 
 @media (min-width: @min-width) {
   .videoColumn {
-    width: 40%;
+    width: 48%;
     display: inline-block;
     text-align: left;
-    min-width: 30em;
-    padding-left: 1em;
-    padding-right: 1em;
+    min-width: 20em;
+  }
+
+  .videoLeftColumn {
+    position: absolute;
+    left: 0.1em;
+  }
+  .videoRightColumn {
+    position: absolute;
+    right: 0;
   }
 }
 
@@ -42,6 +49,9 @@ iframe {
   padding-top: 56.25%;
   overflow: hidden;
   cursor: pointer;
+  -webkit-border-radius: @border-radius;
+  -moz-border-radius: @border-radius;
+  border-radius: @border-radius;
 }
 .youtube img {
   width: 100%;
@@ -85,4 +95,14 @@ iframe {
   width: 100%;
   top: 0;
   left: 0;
+}
+
+#columnWrapper {
+  margin-top: 9em;
+}
+
+@media (min-width: @min-width) {
+  #columnWrapper {
+    margin-top: 10em;
+  }
 }

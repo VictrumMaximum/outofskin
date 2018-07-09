@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as moment from "moment";
 import {TourWithoutID} from "../../../../schemas/TourSchema";
+import Button from "../../Static/Button";
 const styles = require("./styles.less");
 
 interface TourProps {
 	tour: TourWithoutID;
-	showTicketLink: boolean
+	showButtons: boolean
 }
 
 export default class TourComponent extends React.Component<TourProps, {}> {
@@ -13,20 +14,24 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 	render() {
 		return (
 			<div className={styles.tourComponent}>
+				<div className={styles.tourComponentSeparator}/>
 				<table>
 					<tbody>
 						<tr>
-							<td className={styles.tourCell}>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</td>
+							<td className={styles.tourCell}><strong>{moment(this.props.tour.begin).format("DD MMMM HH:mm")}</strong></td>
 						</tr>
 						<tr>
-							<td>{this.props.tour.eventName}</td>
-							{this.props.showTicketLink ?
-								(<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.eventLink)}}>Tickets</div></td>) :
+							<td><i>{this.props.tour.eventName}</i></td>
+							{this.props.showButtons ?
+								(<td><Button text={"Tickets"} action={() => {window.open(this.props.tour.eventLink)}} height={"0.3em"}/></td>) :
 								(<td/>)}
 						</tr>
 						<tr>
-							<td>{this.props.tour.location}, {this.props.tour.city}</td>
-							<td><div className={styles.boxLink} onClick={() => {window.open(this.props.tour.locationLink)}}>Maps</div></td>
+							<td>{this.props.tour.location}{(this.props.tour.city.length > 0) ? (", "+this.props.tour.city):""}</td>
+							{this.props.showButtons ?
+								<td><Button text={"Location"} action={() => {window.open(this.props.tour.locationLink)}} height={"0.3em"}/></td> :
+							<td/>}
+
 						</tr>
 					</tbody>
 				</table>

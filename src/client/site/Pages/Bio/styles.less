@@ -1,11 +1,11 @@
 @import "../../../variables.less";
 
-.bio {
-  width: 95%;
+#bio {
+  max-width: 95%;
   text-align: left;
   display: inline-block;
   line-height: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 5em;
 }
 
 p.indent {
@@ -13,7 +13,10 @@ p.indent {
 }
 
 @media (min-width: @min-width) {
-  .bio {
-    width: 80%;
+  #bio {
+    //position: absolute;
+    //right: 3%;
+    margin-top: 10em;
+    width: 30em;
   }
 }

@@ -3,7 +3,9 @@ import {AxiosResponse} from "axios";
 import axios from "axios";
 import {subscribersDataRoute} from "../../../../server/DataRouters/dataRoutes";
 import ReactSVG from 'react-svg';
+import Button from "../../Static/Button";
 const styles = require("./styles.less");
+const pageStyles = require("../styles.less");
 
 require("../../media/images/icons/phone.svg");
 require("../../media/images/icons/email.svg");
@@ -49,13 +51,13 @@ export default class Contact extends React.Component<{}, ContactState> {
 	}
 
 	render() {
-		let subscribeButton = <div className={styles.boxLink} onClick={this.handleClick}>subscribe</div>;
+		let subscribeButton = <Button text={"subscribe"} action={this.handleClick} height={"0.3em"}/>;
 		if (this.state.subscribed) {
 			subscribeButton = <span style={{color: "green"}}>Bedankt!</span>;
 		}
 
 		return (
-			<div>
+			<div id={styles.informationWrapper} className={pageStyles.whitePlaneBackground}>
 				<table className={styles.information}>
 					<tbody>
 						<tr>
@@ -97,7 +99,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 				<br/>
 				Meld je aan voor de nieuwsbrief!<br/>
 				<span style={{color: "red"}}>{this.state.subscribeErrorMessage}</span><br/>
-				<input placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
+				<input id={styles.emailInput} placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
 				<div className={styles.boxLinkWrapper}>
 					{subscribeButton}
 				</div>

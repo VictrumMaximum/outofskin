@@ -6,6 +6,7 @@ import * as showdown from "showdown";
 import MarkdownPreview from "../../../menu/Bio/MarkdownPreview";
 import {bioDataRoute} from "../../../../server/DataRouters/dataRoutes";
 const styles = require("./styles.less");
+const pageStyles = require("../styles.less");
 
 
 interface BioProps {
@@ -39,7 +40,7 @@ class Bio extends React.Component<BioProps, {}> {
 
 	render() {
 		return (
-			<div  className={styles.bio}>
+			<div id={styles.bio} className={pageStyles.whitePlaneBackground}>
 				<MarkdownPreview text={this.props.bio}/>
 			</div>
 		);

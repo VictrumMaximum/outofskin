@@ -1,10 +1,7 @@
 import * as React from "react";
 import "./styles.less";
 import "./fontStyle.css";
-require("./media/images/tour.jpg");
-require("./media/images/normal_1080(low).jpg");
-require("./media/images/cover_1080(low).jpg");
-require("./media/images/weird_1080(low).jpg");
+
 require("./media/fonts/mic-32regular.ttf");
 
 require("./media/faviconit/favicon.ico");

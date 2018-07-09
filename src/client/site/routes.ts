@@ -5,34 +5,44 @@ import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
 import Home from "./Pages/Home/index";
 
-export const cover = "cover_1080(low).jpg";
-const normal = "normal_1080(low).jpg";
-const weird = "weird_1080(low).jpg";
+require("./media/images/tour.jpg");
+require("./media/images/bio.jpg");
+require("./media/images/music.jpg");
+require("./media/images/press.jpg");
+require("./media/images/contact.jpg");
+
+const tourBg = "tour.jpg";
+const bioBg = "bio.jpg";
+const musicBg = "music.jpg";
+const pressBg = "press.jpg";
+const contactBg = "contact.jpg";
+
+export const mobileBg = tourBg;
 
 export default {
 	"/": {
 		component: Tour,
-		background: cover,
+		background: tourBg,
 		title: "Tour"
 	},
 	"/bio": {
 		component: Bio,
-		background: weird,
+		background: bioBg,
 		title: "Bio"
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: cover,
+		background: musicBg,
 		title: "Music"
 	},
 	"/press": {
 		component: Press,
-		background: weird,
+		background: pressBg,
 		title: "Press"
 	},
 	"/contact": {
 		component: Contact,
-		background: normal,
+		background: contactBg,
 		title: "Contact"
 	}
 };
