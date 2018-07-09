@@ -82,7 +82,10 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					style={{transform: "rotate(" + menuIconRotation + ")"}}
 				/>
 				<div id={styles.mobilePageIndicator}
-					 style={{opacity: pageIndicatorOpacity}}>{this.state.selected}</div>
+					 style={{opacity: pageIndicatorOpacity}}
+					 onClick={this.toggleDisplay}>
+					{this.state.selected}
+					 </div>
 				<div id={styles.menuOptionsWrapper}
 					 style={{maxHeight: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {
