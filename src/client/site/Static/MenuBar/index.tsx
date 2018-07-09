@@ -71,6 +71,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
     render() {
 		const menuMaxHeight = this.state.showMenu ? "11em" : "0";
 		const menuIconRotation = this.state.showMenu ? "90deg" : "0";
+		const pageIndicatorOpacity = this.state.showMenu ? 0 : 1;
         return (
 			<div
 				id={styles.menuBar}>
@@ -80,7 +81,8 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					onClick={this.toggleDisplay}
 					style={{transform: "rotate(" + menuIconRotation + ")"}}
 				/>
-				<div id={styles.mobilePageIndicator}>{this.state.selected}</div>
+				<div id={styles.mobilePageIndicator}
+					 style={{opacity: pageIndicatorOpacity}}>{this.state.selected}</div>
 				<div id={styles.menuOptionsWrapper}
 					 style={{maxHeight: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {
