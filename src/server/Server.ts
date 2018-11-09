@@ -7,7 +7,7 @@ import musicRouter from "./DataRouters/MusicRouter";
 import pressRouter from "./DataRouters/PressRouter";
 import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
-const port = 3001;
+const port = 8080;
 
 import {start} from "./IPUpdater";
 start();
@@ -27,5 +27,5 @@ app.use(dataRoutes.pressDataRoute, pressRouter);
 app.use("/", express.static(__dirname + "/client/site/"));
 app.use("/menu", express.static(__dirname + "/client/menu/"));
 
-// app.listen(port);
-// Logger.info("Server started on port " + port);
+app.listen(port);
+Logger.info("Server started on port " + port);
