@@ -9,6 +9,9 @@ import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
 const port = 8080;
 
+import {start} from "./IPUpdater";
+start();
+
 import * as dataRoutes from "./DataRouters/dataRoutes";
 
 // to support JSON-encoded bodies
