@@ -13,15 +13,19 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
     header = "Upcoming";
 
     render() {
+        let tours:any = "Op dit moment hebben we geen tours gepland.";
+        if (this.props.tours.length > 0) {
+            tours = this.props.tours.map((tour) => {
+                return <TourComponent
+                    key={tour.begin.format("DD MMMM HH:mm")}
+                    showButtons={true}
+                    tour={tour} />
+            })
+        }
         return (
             <div id={styles.leftColumn} className={classNameSeparator(styles.tourColumn, pageStyles.whitePlaneBackground)}>
                 <h2>{this.header}</h2>
-                {this.props.tours.map((tour) => {
-                    return <TourComponent
-                        key={tour.begin.format("DD MMMM HH:mm")}
-						showButtons={true}
-                        tour={tour} />
-                })}
+                {tours}
             </div>
         );
     }
