@@ -1,7 +1,7 @@
 import * as React from "react";
 import Button from "./Button";
+import styles from "./styles.module.scss";
 const socialMedias = require("./socialMedias").default;
-const styles = require("./styles.less");
 
 export default class SocialMedia extends React.Component<{}, {}> {
 

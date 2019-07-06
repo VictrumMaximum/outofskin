@@ -1,8 +1,7 @@
 import * as React from "react";
-import * as moment from "moment";
 import {TourWithoutID} from "../../../../schemas/TourSchema";
 import Button from "../../Static/Button";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface TourProps {
 	tour: TourWithoutID;

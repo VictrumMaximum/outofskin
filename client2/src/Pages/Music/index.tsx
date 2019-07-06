@@ -5,7 +5,7 @@ import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
 import {setVideos} from "../../redux/actions/music";
 import VideoLeftColumn from "./VideoLeftColumn";
 import VideoRightColumn from "./VideoRightColumn";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface MusicProps {
 	setVideos,

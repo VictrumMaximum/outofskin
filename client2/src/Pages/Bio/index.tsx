@@ -4,8 +4,8 @@ import axios, {AxiosResponse} from "axios";
 import {setBio} from "../../redux/actions/bio";
 import * as showdown from "showdown";
 // import MarkdownPreview from "../../menu/Bio/MarkdownPreview";
-const styles = require("./styles.less");
-const pageStyles = require("../styles.less");
+import styles from "./styles.module.scss";
+const pageStyles = require("../styles.module.scss");
 
 
 interface BioProps {

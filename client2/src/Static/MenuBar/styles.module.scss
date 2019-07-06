@@ -1,13 +1,13 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 
-@menu-width-mobile: 10em;
+$menu-width-mobile: 10em;
 
 #menuBar {
   top: 0;
   left: 0;
   z-index: 1;
-  width: @menu-width-mobile;
+  width: $menu-width-mobile;
 }
 
 #menuIcon {
@@ -32,7 +32,7 @@
 .optionDiv {
   display: block;
   border-bottom: 1px solid black;
-  width: @menu-width-mobile;
+  width: $menu-width-mobile;
 }
 
 // h1 elements that are children of .optionDiv
@@ -48,7 +48,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
   text-decoration: none;
-  color: @menu-color;
+  color: $menu-color;
 }
 
 .activeOptionLink {
@@ -64,7 +64,7 @@
 
 .optionLink:hover {
   cursor: pointer;
-  color: @menu-color-active;
+  color: $menu-color-active;
 }
 
 #mobilePageIndicator {
@@ -83,7 +83,7 @@
   -webkit-transition: opacity .25s ease-in-out;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   #menuBar {
     position: fixed;
     top: 2em;

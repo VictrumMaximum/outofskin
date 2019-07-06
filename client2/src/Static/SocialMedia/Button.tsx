@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface ButtonProps {
 	socialMedia: {

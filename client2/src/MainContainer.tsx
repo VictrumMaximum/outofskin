@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.less";
+import "./styles.module.scss";
 import "./fontStyle.css";
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";

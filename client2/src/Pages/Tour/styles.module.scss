@@ -1,4 +1,4 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 .tourComponent {
   //border: 1px solid red;
@@ -20,9 +20,9 @@ td.tourCell {
 .tourComponentSeparator {
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: @border-radius;
-  -moz-border-radius: @border-radius;
-  border-radius: @border-radius;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
   width: 60%;
   margin-bottom: 1em;
 }
@@ -31,7 +31,7 @@ td.tourCell {
   margin-bottom: 2em;
 }
 
-@media(min-width: @min-width) {
+@media(min-width: $min-width) {
   #leftColumn {
     display: inline-block;
     position: absolute;

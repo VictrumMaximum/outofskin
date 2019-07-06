@@ -1,4 +1,4 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 #socialMedia {
   position: static;
@@ -11,7 +11,7 @@
   height: 2.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  fill: @social-media-button-color-mobile;
+  fill: $social-media-button-color-mobile;
 }
 
 .socialMediaButtonImageWrapper {
@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   #socialMedia {
     position: fixed;
     right: 1em;
@@ -36,7 +36,7 @@
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     display: block;
-    fill: @social-media-button-color;
+    fill: $social-media-button-color;
   }
 
   .socialMediaButtonImageWrapper {

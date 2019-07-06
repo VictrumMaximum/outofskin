@@ -1,7 +1,7 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
 
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface OptionProps {
     title: string;

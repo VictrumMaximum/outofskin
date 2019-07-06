@@ -1,6 +1,6 @@
 import * as React from "react";
 import Video from "./Video";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface VideoColumnProps {
 	header: string;

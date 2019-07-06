@@ -2,9 +2,8 @@ import * as React from "react";
 import TourComponent from "./TourComponent";
 import {TourWithoutID} from "../../../../schemas/TourSchema";
 import {classNameSeparator} from "../../util";
-const pageStyles = require("../styles.less");
-
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
+import pageStyles from "../styles.module.scss";
 
 interface TourRightColumnProps {
     tours: TourWithoutID[];

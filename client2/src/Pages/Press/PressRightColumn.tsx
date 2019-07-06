@@ -2,8 +2,8 @@ import * as React from "react";
 import QuoteSchema from "../../../../schemas/QuoteSchema";
 import Quote from "./Quote";
 import {classNameSeparator} from "../../util";
-const styles = require("./styles.less");
-const pageStyles = require("../styles.less");
+import styles from "./styles.module.scss";
+const pageStyles = require("../styles.module.scss");
 
 interface PressColumnProps {
 	quotes: QuoteSchema[]

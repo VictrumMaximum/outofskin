@@ -1,4 +1,4 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 .videoColumn {
   width: 100%;
@@ -7,7 +7,7 @@
   vertical-align: top;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   .videoColumn {
     width: 48%;
     display: inline-block;
@@ -49,9 +49,9 @@ iframe {
   padding-top: 56.25%;
   overflow: hidden;
   cursor: pointer;
-  -webkit-border-radius: @border-radius;
-  -moz-border-radius: @border-radius;
-  border-radius: @border-radius;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
 }
 .youtube img {
   width: 100%;
@@ -101,7 +101,7 @@ iframe {
   margin-top: 9em;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   #columnWrapper {
     margin-top: 10em;
   }

@@ -1,11 +1,11 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 .icon {
   width: 1.5em;
   height: 1.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  fill: @social-media-button-color;
+  fill: $social-media-button-color;
 }
 
 .iconWrapper {
@@ -24,7 +24,7 @@ table.information {
 
 .blackToWhiteLink {
   font-weight: bold;
-  color: @text-color;
+  color: $text-color;
 }
 
 .blackToWhiteLink:hover {
@@ -37,12 +37,12 @@ table.information {
 
 #emailInput {
   height: 2em;
-  -webkit-border-radius: @border-radius;
-  -moz-border-radius: @border-radius;
-  border-radius: @border-radius;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   #informationWrapper {
     position: absolute;
     bottom: 14em;

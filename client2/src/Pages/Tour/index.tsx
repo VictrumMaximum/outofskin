@@ -5,7 +5,7 @@ import {TourJSON, TourWithoutID} from "../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
 import TourLeftColumn from "./TourLeftColumn";
 import TourRightColumn from "./TourRightColumn";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface TourProps {
 	// tours are stored in ascending order

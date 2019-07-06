@@ -1,8 +1,8 @@
 import * as React from "react";
 import {classNameSeparator} from "../../util";
 import Button from "../../Static/Button";
-const styles = require("./styles.less");
-const pageStyles = require("../styles.less");
+import styles from "./styles.module.scss";
+const pageStyles = require("../styles.module.scss");
 
 interface QuoteProps {
     author: string;

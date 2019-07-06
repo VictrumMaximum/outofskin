@@ -3,7 +3,7 @@ import Option from "./Option";
 import routes from "../../routes";
 
 import {ReactComponent as MenuIcon} from "../../images/icons/menu.svg";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface MenuBarState {
 	showMenu: boolean;

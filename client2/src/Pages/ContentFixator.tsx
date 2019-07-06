@@ -1,6 +1,6 @@
 import * as React from "react";
 import {mobileBg} from "../routes";
-const styles = require("./styles.less");
+import styles from "./styles.module.scss";
 
 interface ContentFixatorProps {
 	content: JSX.Element;
@@ -11,6 +11,7 @@ interface ContentFixatorProps {
 export default class ContentFixator extends React.Component<ContentFixatorProps, {}> {
 
 	render() {
+		console.log(styles);
 		let backgroundImageURL = "url('../images/"+this.props.background+"')";
 		// disabled because all current bgs work on mobile
 		// if (window.innerWidth <= 375) {

@@ -1,4 +1,4 @@
-@import "../../../variables.less";
+@import "../../variables.scss";
 
 .pressColumn {
   width: 80%;
@@ -18,7 +18,7 @@
   width: 4em;
 }
 
-@media (min-width: @min-width) {
+@media (min-width: $min-width) {
   .pressColumn {
     max-width: 40%;
   }
