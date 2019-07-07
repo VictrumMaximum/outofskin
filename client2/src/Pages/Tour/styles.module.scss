@@ -1,5 +1,11 @@
 @import "../../variables.scss";
 
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .tourComponent {
   //border: 1px solid red;
   margin-top: 1em;
@@ -8,9 +14,9 @@
 
 .tourColumn {
   max-width: 20em;
-  width: auto;
   text-align: left;
-  margin: auto auto;
+  width: 100%;
+  overflow-y: auto;
 }
 
 td.tourCell {
@@ -32,17 +38,4 @@ td.tourCell {
 }
 
 @media(min-width: $min-width) {
-  #leftColumn {
-    display: inline-block;
-    position: absolute;
-    left: 5%;
-    margin: 0;
-  }
-
-  #rightColumn {
-    display: inline-block;
-    position: absolute;
-    right: 5%;
-    margin: 0;
-  }
 }
