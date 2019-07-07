@@ -63,41 +63,25 @@ export default class Contact extends React.Component<{}, ContactState> {
 					<tbody>
 						<tr>
 							<td>
-								{/*<ReactSVG*/}
-								{/*	path={"../images/phone.svg"}*/}
-								{/*	svgClassName={styles.icon}*/}
-								{/*/>*/}
-								<PhoneIcon />
+								<PhoneIcon className={styles.icon}/>
 							</td>
 							<td>+316 42 96 12 33</td>
 						</tr>
 						<tr>
 							<td>
-								{/*<ReactSVG*/}
-								{/*	path={"../images/phone.svg"}*/}
-								{/*	svgClassName={styles.icon}*/}
-								{/*/>*/}
-								<PhoneIcon />
+								<PhoneIcon className={styles.icon}/>
 							</td>
 							<td>+316 15 58 62 06</td>
 						</tr>
 						<tr>
 							<td>
-								{/*<ReactSVG*/}
-								{/*	path={"../images/email.svg"}*/}
-								{/*	svgClassName={styles.icon}*/}
-								{/*/>*/}
-								<EmailIcon />
+								<EmailIcon className={styles.icon}/>
 							</td>
 							<td>band@outofskin.com</td>
 						</tr>
 						<tr>
 							<td>
-								{/*<ReactSVG*/}
-								{/*	path={"../images/dropbox.svg"}*/}
-								{/*	svgClassName={styles.icon}*/}
-								{/*/>*/}
-								<DropboxIcon />
+								<DropboxIcon className={styles.icon}/>
 							</td>
 							<td>
 								<a href={"https://www.dropbox.com/sh/wgen8pi81nojwdb/AAABu1ZapzS2w_BiJ4WEuHfFa?dl=0"}
@@ -109,14 +93,16 @@ export default class Contact extends React.Component<{}, ContactState> {
 						</tr>
 					</tbody>
 				</table>
-				<br/>
-				Meld je aan voor de nieuwsbrief!<br/>
-				<span style={{color: "red"}}>{this.state.subscribeErrorMessage}</span><br/>
-				<input id={styles.emailInput} placeholder={"email"} value={this.state.email} onChange={this.handleChange}/>
+				Meld je aan voor de nieuwsbrief!
+				<span style={{color: "red"}}>{this.state.subscribeErrorMessage}</span>
+				<input
+					id={styles.emailInput}
+					placeholder={"email"}
+					value={this.state.email}
+					onChange={this.handleChange}/>
 				<div className={styles.boxLinkWrapper}>
 					{subscribeButton}
 				</div>
-				<br/><br/>
 			</div>
 		);
 	}

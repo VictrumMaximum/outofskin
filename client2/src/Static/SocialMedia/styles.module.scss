@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 #socialMedia {
-  position: static;
+  //position: static;
   text-align: center;
   margin-top: 2em;
 }
@@ -24,10 +24,8 @@
 
 @media (min-width: $min-width) {
   #socialMedia {
-    position: fixed;
-    right: 1em;
-    top: 10em;
     margin: 0;
+    max-width: 100%;
   }
 
   .socialButtonImage {

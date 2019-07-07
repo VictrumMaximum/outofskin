@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 interface ButtonProps {
 	socialMedia: {
 		name: string;
-		image: string;
+		image: any; // react component
 		link: string;
 	}
 }
@@ -13,13 +13,13 @@ interface ButtonProps {
 export default class Button extends React.Component<ButtonProps, {}> {
 
 	render() {
+		const Icon = this.props.socialMedia.image;
 		return (
 			<div className={styles.socialMediaButtonImageWrapper}>
-				{/*<ReactSVG*/}
-				{/*	path={"../images/" + this.props.socialMedia.image + ".svg"}*/}
-				{/*	svgClassName={styles.socialButtonImage}*/}
-				{/*	onClick={() => {window.open(this.props.socialMedia.link)}}*/}
-				{/*/>*/}
+				<Icon
+					className={styles.socialButtonImage}
+					onClick={() => {window.open(this.props.socialMedia.link)}}
+				/>
 			</div>
 		);
 	}

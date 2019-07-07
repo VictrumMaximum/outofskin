@@ -55,7 +55,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 	toggleDisplay() {
 		// add event listeners if opening the menu,
 		// remove event listeners when closing the menu
-		if (this.state.showMenu === true) {
+		if (this.state.showMenu) {
             document.removeEventListener("mousedown", this.hideMenuOnBlur);
             document.removeEventListener("touchstart", this.hideMenuOnBlur);
         } else {
@@ -81,7 +81,11 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 				{/*	onClick={this.toggleDisplay}*/}
 				{/*	style={{transform: "rotate(" + menuIconRotation + ")"}}*/}
 				{/*/>*/}
-				<MenuIcon />
+				<MenuIcon
+					id={styles.menuIcon}
+					onClick={this.toggleDisplay}
+					style={{transform: "rotate(" + menuIconRotation + ")"}}
+				/>
 				<div id={styles.mobilePageIndicator}
 					 style={{opacity: pageIndicatorOpacity}}
 					 onClick={this.toggleDisplay}>
