@@ -1,5 +1,5 @@
 import * as express from "express";
-const app = express();
+import "./env";
 import tourRouter from "./DataRouters/TourRouter";
 import bioRouter from "./DataRouters/BioRouter";
 import subscribersRouter from "./DataRouters/SubscribersRouter";
@@ -7,7 +7,9 @@ import musicRouter from "./DataRouters/MusicRouter";
 import pressRouter from "./DataRouters/PressRouter";
 import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
-const port = 8080;
+
+const app = express();
+const port = process.env.PORT;
 
 // import {start} from "./IPUpdater";
 // start();
