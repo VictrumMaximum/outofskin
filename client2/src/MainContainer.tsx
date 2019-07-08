@@ -8,7 +8,6 @@ import SocialMedia from "./Static/SocialMedia/index";
 import styles from "./styles.module.scss";
 
 export default class MainContainer extends React.Component<{}, {}> {
-
 	render() {
 		return (
 			<BrowserRouter>
@@ -21,7 +20,17 @@ export default class MainContainer extends React.Component<{}, {}> {
 								(<Route
 									key={path}
 									exact path={path}
-									component={routes[path].component} />))}
+									render={() => {
+										const Component = routes[path].component;
+										return (
+										<>
+											<div
+												id={styles.background}
+												style={{backgroundImage: `url(${routes[path].background}`}} />
+											<Component />
+										</>);
+									}}
+								/>))}
 						</div>
 						<SocialMedia/>
 					</div>
