@@ -1,10 +1,10 @@
 import * as path from "path";
-const fs = require("fs");
+import * as fs from "fs";
+import {resolve} from "path";
 import Logger from "../Logs/Logger";
-import {Promise} from "es6-promise";
 
-const dataFolder = "./data/";
-const testDataFolder = "./data/test/";
+const dataFolder = resolve(__dirname + "/../../../data/");
+const testDataFolder = resolve(__dirname + "/../../../data/test/");
 
 /**
  * The general structure of the datafiles is

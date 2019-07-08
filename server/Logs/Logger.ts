@@ -1,26 +1,35 @@
-import * as moment from "moment";
-const winston = require("winston");
-import * as fs from "fs";
+import { createLogger, transports, format } from 'winston';
+import {resolve} from "path";
 
-const now = moment().format("YYYYMMDD");
-const logDir =  __dirname + "/" + now;
+const myFormat = format.combine(
+    format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+    format.printf(info => `[${info.timestamp}] [${info.level}]: ${JSON.stringify(info.message, null, 2)}`),
+);
 
-// Create the log directory if it does not exist
-if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir);
-}
-
-const Logger = new (winston.Logger)({
-    level: "debug",
+const logger = createLogger({
     exceptionHandlers: [
-        new (winston.transports.Console)({ json: false, timestamp: true }),
-        new winston.transports.File({ filename: logDir + "/exceptions.log", json: false }),
+        new transports.Console({
+            format: format.combine(
+                format.colorize(),
+                myFormat,
+            ),
+        }),
+        new transports.File({ filename: resolve(__dirname + "exceptions.log")}),
     ],
-    exitOnError: false,
+    exitOnError: true, // default
+    format: myFormat,
     transports: [
-        new (winston.transports.Console)({ json: false, timestamp: true }),
-        new winston.transports.File({ filename: logDir + "/debug.log", json: false }),
+        new transports.Console({
+            format: format.combine(
+                format.colorize(),
+                myFormat,
+            ),
+            level: 'silly',
+        }),
+        new transports.File({
+            filename: resolve(__dirname + "combined.log"),
+            level: 'debug',
+        }),
     ],
 });
-
-export default Logger;
+export default logger;

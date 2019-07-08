@@ -1,11 +1,10 @@
-import {Promise} from "es6-promise";
 import Logger from "../Logs/Logger";
 import Database from "./Database";
 
 export default class TourDatabase extends Database {
 
     public addTour(tour) {
-    	return new Promise((resolve, reject) => {
+    	return new Promise((resolve) => {
 			const toursMetadata = this.cache.metadata;
 			const tours = this.cache.data;
 			// get next id

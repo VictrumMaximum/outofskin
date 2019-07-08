@@ -1,8 +1,8 @@
+import * as express from "express";
 import BioDatabase from "../Databases/BioDatabase";
 const fileName = "bio.json";
 const db = new BioDatabase(fileName);
 
-import * as express from "express";
 import Logger from "../Logs/Logger";
 const router = express.Router();
 

@@ -1,6 +1,4 @@
 import Database from "./Database";
-import {Promise} from "es6-promise";
-import * as moment from "moment";
 
 const tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-?\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
@@ -14,7 +12,7 @@ export default class SubscribersDatabase extends Database {
 				throw ("Email already in use: " + email);
 			}
 			subscribers[email] = {
-				joinDate: moment()
+				joinDate: Date.now()
 			};
 			return this.persist().catch((error) => {
 				delete subscribers[email];
