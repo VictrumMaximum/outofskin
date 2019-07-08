@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import {setBio} from "../../redux/actions/bio";
-import * as showdown from "showdown";
+import {Markdown} from "react-showdown";
 // import MarkdownPreview from "../../menu/Bio/MarkdownPreview";
 import styles from "./styles.module.scss";
 const pageStyles = require("../styles.module.scss");
@@ -16,11 +16,8 @@ interface BioProps {
 const bioDataRoute = "/bioData";
 
 class Bio extends React.Component<BioProps, {}> {
-	converter;
-
 	constructor(props) {
 		super(props);
-		this.converter = new showdown.Converter();
 	}
 
 	componentDidMount() {
@@ -33,16 +30,13 @@ class Bio extends React.Component<BioProps, {}> {
 		axios.get(bioDataRoute).then((response: AxiosResponse) => {
 			const bio = response.data.data;
 			this.props.setBio(bio);
-			this.setState({
-				text: bio
-			});
 		});
 	}
 
 	render() {
 		return (
 			<div id={styles.bio} className={pageStyles.whitePlaneBackground}>
-				{/*<MarkdownPreview text={this.props.bio}/>*/}
+				<Markdown markup={this.props.bio} />
 			</div>
 		);
 	}

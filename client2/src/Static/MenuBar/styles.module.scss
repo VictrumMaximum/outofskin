@@ -4,6 +4,8 @@
 $menu-width-mobile: 10em;
 
 #menuBar {
+  padding-top: 0.3em;
+  padding-bottom: 2.3em;
   width: $menu-width-mobile;
 }
 
@@ -87,20 +89,25 @@ $menu-width-mobile: 10em;
 
 @media (min-width: $min-width) {
   #menuBar {
-    width: 100%;
-    text-align: center;
+    z-index: 100;
+    //position: fixed;
+    width: 61.8%;
+    //text-align: center;
+    align-self: center;
   }
 
   .optionDiv {
     display: inline-block;
-    margin-left: 2%;
-    margin-right: 2%;
+    //margin-left: 2%;
+    //margin-right: 2%;
     border: none;
     width: auto;
   }
   #menuOptionsWrapper {
-    display: block !important;
     max-height: 11em !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   #menuIcon {

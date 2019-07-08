@@ -1,11 +1,12 @@
 @import "../../variables.scss";
 
 #bio {
-  max-width: 95%;
+  max-width: 85%;
   text-align: left;
   display: inline-block;
   line-height: 1.5em;
   margin-top: 5em;
+  //overflow-y: auto;
 }
 
 p.indent {
@@ -14,8 +15,6 @@ p.indent {
 
 @media (min-width: $min-width) {
   #bio {
-    //position: absolute;
-    //right: 3%;
     margin-top: 10em;
     width: 30em;
   }

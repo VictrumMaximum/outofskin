@@ -6,7 +6,8 @@ html {
 }
 
 * {
-  scrollbar-width: thin;
+  //scrollbar-width: thin;
+  //overflow-y: hidden;
 }
 
 body {
@@ -34,6 +35,8 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  //padding-top: 1em;
+  //padding-bottom: 1em;
 }
 
 #background {
@@ -48,15 +51,15 @@ body {
   background-position: center;
 }
 
-::-webkit-scrollbar {
-  width: 0.8em;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-  border-radius: $border-radius;
-}
+//::-webkit-scrollbar {
+//  width: 0.8em;
+//}
+//
+//::-webkit-scrollbar-thumb {
+//  background-color: darkgrey;
+//  outline: 1px solid slategrey;
+//  border-radius: $border-radius;
+//}
 
 h1, h2, h3, h4, h5, b, strong {
   color: $nice-black;
@@ -64,7 +67,7 @@ h1, h2, h3, h4, h5, b, strong {
 
 @media (min-width: $min-width) {
   #contentSidebar {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
   }
 

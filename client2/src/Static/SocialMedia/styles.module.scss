@@ -1,7 +1,16 @@
 @import "../../variables.scss";
 
 #socialMedia {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: linear-gradient(0, black, rgba(0, 0, 0, 0));//black;//rgba(0, 0, 0, 0.7);
+  //padding: 1em;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+  padding-top: 2em;
 }
 
 .socialButtonImage {
@@ -10,6 +19,7 @@
   margin-left: 0.5em;
   margin-right: 0.5em;
   fill: $social-media-button-color-mobile;
+  padding-top: 0.5em;
 }
 
 .socialMediaButtonImageWrapper {
@@ -29,13 +39,13 @@
   .socialButtonImage {
     width: 3em;
     height: 3em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    //margin-top: 0.5em;
+    //margin-bottom: 0.5em;
     display: block;
     fill: $social-media-button-color;
   }
 
-  .socialMediaButtonImageWrapper {
-    display: block;
-  }
+  //.socialMediaButtonImageWrapper {
+  //  display: block;
+  //}
 }
