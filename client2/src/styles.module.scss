@@ -3,6 +3,7 @@
 html {
   height: 100%;
   font-style: normal;
+  scrollbar-width: thin;
 }
 
 body {
@@ -57,10 +58,6 @@ body {
 //  background-color: darkgrey;
 //  outline: 1px solid slategrey;
 //}
-
-::-webkit-scrollbar {
-  display: none;
-}
 
 h1, h2, h3, h4, h5, b, strong {
   color: $nice-black;
