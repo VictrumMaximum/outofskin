@@ -2,12 +2,12 @@
 
 #container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .tourComponent {
-  //border: 1px solid red;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -17,6 +17,7 @@
   text-align: left;
   width: 100%;
   overflow-y: auto;
+  margin-top: 2em;
 }
 
 td.tourCell {
@@ -33,9 +34,10 @@ td.tourCell {
   margin-bottom: 1em;
 }
 
-#leftColumn {
-  margin-bottom: 2em;
-}
-
 @media(min-width: $min-width) {
+  #container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
 }

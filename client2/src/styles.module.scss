@@ -18,7 +18,7 @@ body {
 
 #contentSidebar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-end;
   flex: 1;
 }
@@ -30,7 +30,6 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 #background {
@@ -65,4 +64,11 @@ body {
 
 h1, h2, h3, h4, h5, b, strong {
   color: $nice-black;
+}
+
+@media (min-width: $min-width) {
+  #contentSidebar {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
