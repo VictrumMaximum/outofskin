@@ -7,6 +7,11 @@ $menu-width-mobile: 10em;
   width: $menu-width-mobile;
 }
 
+#menuButton {
+  display: flex;
+  flex-direction: row;
+}
+
 #menuIcon {
   width: 2em;
   height: 2em;
@@ -65,11 +70,11 @@ $menu-width-mobile: 10em;
 }
 
 #mobilePageIndicator {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 1.5em;
-  top: 0.3em;
+  //position: absolute;
+  //margin-left: auto;
+  //margin-right: auto;
+  //left: 1.5em;
+  //top: 0.3em;
 
   font-size: 32px;
   font-weight: bold;

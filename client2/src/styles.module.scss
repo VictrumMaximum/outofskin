@@ -19,7 +19,6 @@ body {
 #contentSidebar {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   flex: 1;
   overflow-y: auto;
 }
@@ -31,7 +30,6 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  overflow-y: auto;
 }
 
 #background {
@@ -72,5 +70,13 @@ h1, h2, h3, h4, h5, b, strong {
   #contentSidebar {
     flex-direction: row;
     justify-content: flex-end;
+  }
+
+  #contentSidebar {
+    justify-content: flex-end;
+  }
+
+  #content {
+    overflow-y: auto;
   }
 }

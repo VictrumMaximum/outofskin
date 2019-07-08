@@ -1,27 +1,26 @@
 @import "../../variables.scss";
 
+#columnWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .videoColumn {
   width: 100%;
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: $min-width) {
-  .videoColumn {
-    width: 48%;
-    display: inline-block;
-    text-align: left;
-    min-width: 20em;
+  #columnWrapper {
+    flex-direction: row;
+    justify-content: space-around;
   }
 
-  .videoLeftColumn {
-    position: absolute;
-    left: 0.1em;
-  }
-  .videoRightColumn {
-    position: absolute;
-    right: 0;
+  .videoColumn {
+    width: 48%;
+    min-width: 20em;
   }
 }
 
@@ -95,14 +94,4 @@ iframe {
   width: 100%;
   top: 0;
   left: 0;
-}
-
-#columnWrapper {
-  margin-top: 9em;
-}
-
-@media (min-width: $min-width) {
-  #columnWrapper {
-    margin-top: 10em;
-  }
 }
