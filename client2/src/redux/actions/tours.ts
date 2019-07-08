@@ -11,10 +11,10 @@ export const setTours = (tours: TourJSON) => {
 
 function sortAndSplitTours(tours: TourJSON) {//: Tour[] {
 	const compare = (a: TourWithoutID, b: TourWithoutID) => {
-		if (a.begin.isBefore(b.begin)) {
+		if (a.begin.getTime() < b.begin.getTime()) {
 			return -1;
 		}
-		if (a.begin.isAfter(b.begin)) {
+		if (a.begin.getTime() > b.begin.getTime()) {
 			return 1;
 		}
 		return 0;
@@ -25,14 +25,14 @@ function sortAndSplitTours(tours: TourJSON) {//: Tour[] {
 			const tour = tours[tourId];
 			// convert begin from string to moment
 
-			tour.begin = new Date(tour.begin);
+			tour.begin = new Date(tour.begin); // TODO: use the constructor which takes all parameters separately?
 			return tour;
 		})
 		.sort(compare);
 	let i = 0;
-	const now = Date.now();
+	const now = new Date();
 	// find index of first tour which comes after today
-	while (i < sorted.length && sorted[i].begin.isBefore(now)) {
+	while (i < sorted.length && sorted[i].begin.getTime() < now.getTime()) {
 		i++;
 	}
 	// splice actually modifies the array, does not make a copy

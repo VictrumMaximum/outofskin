@@ -6,6 +6,7 @@ import {AxiosResponse} from "axios";
 import axios from "axios";
 import PressLeftColumn from "./PressLeftColumn";
 import PressRightColumn from "./PressRightColumn";
+import styles from "./styles.module.scss";
 
 interface PressContainerProps {
 	left: Quote[],
@@ -38,7 +39,7 @@ class PressContainer extends React.Component<PressContainerProps, {}> {
 
 	render() {
 		return (
-			<div>
+			<div id={styles.container}>
 				<PressLeftColumn quotes={this.props.left}/>
 				<PressRightColumn quotes={this.props.right}/>
 			</div>

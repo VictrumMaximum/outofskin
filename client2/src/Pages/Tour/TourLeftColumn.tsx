@@ -17,7 +17,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
         if (this.props.tours.length > 0) {
             tours = this.props.tours.map((tour) => {
                 return <TourComponent
-                    key={tour.begin.format("DD MMMM HH:mm")}
+                    key={tour.begin.getTime()}
                     showButtons={true}
                     tour={tour} />
             })
