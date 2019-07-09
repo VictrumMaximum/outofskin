@@ -5,7 +5,6 @@ $menu-width-mobile: 10em;
 
 #menuBar {
   padding-top: 0.3em;
-  padding-bottom: 2.3em;
   width: $page-width;
 }
 
@@ -94,6 +93,7 @@ $menu-width-mobile: 10em;
     width: $page-width;
     //text-align: center;
     align-self: center;
+    padding-bottom: 2.3em;
   }
 
   .optionDiv {

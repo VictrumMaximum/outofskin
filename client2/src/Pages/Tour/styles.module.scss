@@ -6,6 +6,7 @@
   align-items: center;
   width: 100%;
   overflow: auto;
+  max-width: $max-width-mobile;
 }
 
 .tourComponent {
@@ -51,9 +52,7 @@ td.tourCell {
 
 @media(min-width: $min-width) {
   #container {
-    //flex-direction: row;
-    //justify-content: space-around;
-    //align-items: flex-start;
+    max-width: initial;
   }
 
   //.tourColumn:first-child {
