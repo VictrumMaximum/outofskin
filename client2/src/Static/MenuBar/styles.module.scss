@@ -6,7 +6,7 @@ $menu-width-mobile: 10em;
 #menuBar {
   padding-top: 0.3em;
   padding-bottom: 2.3em;
-  width: $menu-width-mobile;
+  width: $page-width;
 }
 
 #menuButton {
@@ -91,7 +91,7 @@ $menu-width-mobile: 10em;
   #menuBar {
     z-index: 100;
     //position: fixed;
-    width: 61.8%;
+    width: $page-width;
     //text-align: center;
     align-self: center;
   }
