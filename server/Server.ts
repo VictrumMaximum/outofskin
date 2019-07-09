@@ -1,11 +1,12 @@
 import * as express from "express";
+import * as dataRoutes from "./DataRouters/dataRoutes";
+import {resolve} from "path";
 import "./env";
 import tourRouter from "./DataRouters/TourRouter";
 import bioRouter from "./DataRouters/BioRouter";
 import subscribersRouter from "./DataRouters/SubscribersRouter";
 import musicRouter from "./DataRouters/MusicRouter";
 import pressRouter from "./DataRouters/PressRouter";
-import mainRouter from "./Routes";
 import Logger from "./Logs/Logger";
 
 const app = express();
@@ -14,19 +15,19 @@ const port = process.env.PORT;
 // import {start} from "./IPUpdater";
 // start();
 
-import * as dataRoutes from "./DataRouters/dataRoutes";
-
 // to support JSON-encoded bodies
 app.use(express.json());
 // to support URL-encoded bodiesW
 app.use(express.urlencoded({extended: true}));
-app.use(mainRouter);
 app.use(dataRoutes.tourDataRoute, tourRouter);
 app.use(dataRoutes.bioDataRoute, bioRouter);
 app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(dataRoutes.pressDataRoute, pressRouter);
-app.use("/", express.static(__dirname + "/client/site/"));
+// for static files except index.html
+app.use(express.static(resolve(__dirname + '/../../client2/build/')));
+// any other route should return index.html (specific route is handled by react router)
+app.get('/*', (req, res): void => {res.sendFile(resolve(__dirname + '/../../client2/build/index.html'))});
 app.use("/menu", express.static(__dirname + "/client/menu/"));
 
 app.listen(port);
