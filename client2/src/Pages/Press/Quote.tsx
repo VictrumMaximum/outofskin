@@ -2,7 +2,6 @@ import * as React from "react";
 import {classNameSeparator} from "../../util";
 import Button from "../../Static/Button";
 import styles from "./styles.module.scss";
-const pageStyles = require("../styles.module.scss");
 
 interface QuoteProps {
     author: string;
@@ -14,7 +13,7 @@ export default class Quote extends React.Component<QuoteProps, {}> {
 
     render() {
         return (
-	        <div className={classNameSeparator(styles.quote, pageStyles.whitePlaneBackground)}>
+	        <div className={classNameSeparator(styles.quote, "whitePlaneBackground")}>
 				<div><i>{this.props.quote}</i></div>
 				- <strong>{this.props.author}</strong>
 				<div className={styles.buttonWrapper}>

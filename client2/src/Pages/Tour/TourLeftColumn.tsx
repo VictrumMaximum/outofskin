@@ -3,7 +3,6 @@ import {TourWithoutID} from "../../../../schemas/TourSchema";
 import TourComponent from "./TourComponent";
 import {classNameSeparator} from "../../util";
 import styles from "./styles.module.scss";
-import pageStyles from "../styles.module.scss";
 
 interface TourLeftColumnProps {
     tours: TourWithoutID[];
@@ -13,7 +12,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
     header = "Upcoming";
 
     render() {
-        let tours:any = "Op dit moment hebben we geen tours gepland.";
+        let tours: any = "Op dit moment hebben we geen tours gepland.";
         if (this.props.tours.length > 0) {
             tours = this.props.tours.map((tour) => {
                 return <TourComponent
@@ -23,7 +22,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
             })
         }
         return (
-            <div id={styles.leftColumn} className={classNameSeparator(styles.tourColumn, pageStyles.whitePlaneBackground)}>
+            <div className={classNameSeparator(styles.tourColumn, "whitePlaneBackground", "col")}>
                 <h2>{this.header}</h2>
                 {tours}
             </div>

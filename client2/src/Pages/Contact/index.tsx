@@ -8,7 +8,6 @@ import {ReactComponent as EmailIcon} from "../../images/icons/email.svg";
 import {ReactComponent as DropboxIcon} from "../../images/icons/dropbox.svg";
 
 import styles from "./styles.module.scss";
-const pageStyles = require("../styles.module.scss");
 
 const subscribersDataRoute = "/subscribersData";
 
@@ -58,7 +57,7 @@ export default class Contact extends React.Component<{}, ContactState> {
 		}
 
 		return (
-			<div id={styles.informationWrapper} className={pageStyles.whitePlaneBackground}>
+			<div id={styles.informationWrapper} className={"whitePlaneBackground col"}>
 				<table className={styles.information}>
 					<tbody>
 						<tr>

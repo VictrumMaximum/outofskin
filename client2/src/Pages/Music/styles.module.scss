@@ -1,8 +1,6 @@
 @import "../../variables.scss";
 
 #columnWrapper {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
   margin-top: $margin-top;
@@ -15,8 +13,6 @@
 .videoColumn {
   background-color: rgba(255, 255, 255, 0.5) !important;
   width: $max-width-mobile;
-  display: flex;
-  flex-direction: column;
 }
 
 @media (min-width: $min-width) {

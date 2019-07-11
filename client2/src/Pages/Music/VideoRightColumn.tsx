@@ -1,6 +1,7 @@
 import * as React from "react";
 import Video from "./Video";
 import styles from "./styles.module.scss";
+import {classNameSeparator} from "../../util";
 
 interface VideoColumnProps {
 	header: string;
@@ -11,7 +12,7 @@ export default class VideoRightColumn extends React.Component<VideoColumnProps, 
 
 	render() {
 		return (
-			<div className={styles.videoColumn + " " + styles.videoRightColumn}>
+			<div className={classNameSeparator(styles.videoColumn, "col")}>
 				<h2>{this.props.header}</h2>
 				{this.props.videos.map((videoId) => {
 					return (

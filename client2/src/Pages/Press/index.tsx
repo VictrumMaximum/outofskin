@@ -39,7 +39,7 @@ class PressContainer extends React.Component<PressContainerProps, {}> {
 
 	render() {
 		return (
-			<div id={styles.container}>
+			<div id={styles.container} className={"col"}>
 				<PressLeftColumn quotes={this.props.left}/>
 				<PressRightColumn quotes={this.props.right}/>
 			</div>

@@ -1,42 +1,18 @@
 @import "./variables.scss";
 
-html {
-  height: 100%;
-  font-style: normal;
-}
-
-* {
-  //scrollbar-width: thin;
-  //overflow-y: hidden;
-}
-
-body {
-  margin: 0;
-  height: 100%;
-}
-
 #mainContainer {
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 #contentSidebar {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   overflow-y: auto;
 }
 
 #content {
-  flex: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: flex;
   justify-content: center;
-  //padding-top: 1em;
-  //padding-bottom: 1em;
 }
 
 #background {

@@ -8,11 +8,6 @@ $menu-width-mobile: 10em;
   width: $page-width;
 }
 
-#menuButton {
-  display: flex;
-  flex-direction: row;
-}
-
 #menuIcon {
   width: 2em;
   height: 2em;
@@ -30,6 +25,8 @@ $menu-width-mobile: 10em;
   -ms-transition: max-height 0.5s ease;
   -o-transition: max-height 0.5s ease;
   transition: max-height 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .optionDiv {
@@ -105,7 +102,6 @@ $menu-width-mobile: 10em;
   }
   #menuOptionsWrapper {
     max-height: 11em !important;
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
   }

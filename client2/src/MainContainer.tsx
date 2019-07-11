@@ -1,10 +1,9 @@
 import * as React from "react";
-import "./styles.module.scss";
-import "./fontStyle.css";
 import {Route, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
 import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
+import "./global.scss";
 import styles from "./styles.module.scss";
 
 export default class MainContainer extends React.Component<{}, {}> {
@@ -12,10 +11,10 @@ export default class MainContainer extends React.Component<{}, {}> {
 		return (
 			<BrowserRouter>
 				{/*router may only have 1 child element*/}
-				<div id={styles.mainContainer}>
+				<div id={styles.mainContainer} className={"col"}>
 					<MenuBar />
-					<div id={styles.contentSidebar}>
-						<div id={styles.content}>
+					<div id={styles.contentSidebar} className={"col grow"}>
+						<div id={styles.content} className={"row grow"}>
 							{Object.keys(routes).map(path =>
 								(<Route
 									key={path}

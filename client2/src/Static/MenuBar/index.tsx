@@ -75,13 +75,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
         return (
 			<div
 				id={styles.menuBar}>
-				{/*<ReactSVG*/}
-				{/*	path={"../images/menu.svg"}*/}
-				{/*	id={styles.menuIcon}*/}
-				{/*	onClick={this.toggleDisplay}*/}
-				{/*	style={{transform: "rotate(" + menuIconRotation + ")"}}*/}
-				{/*/>*/}
-				<div id={styles.menuButton}>
+				<div className={"row"}>
 					<MenuIcon
 						id={styles.menuIcon}
 						onClick={this.toggleDisplay}

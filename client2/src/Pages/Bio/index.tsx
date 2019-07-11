@@ -5,7 +5,6 @@ import {setBio} from "../../redux/actions/bio";
 import {Markdown} from "react-showdown";
 // import MarkdownPreview from "../../menu/Bio/MarkdownPreview";
 import styles from "./styles.module.scss";
-const pageStyles = require("../styles.module.scss");
 
 
 interface BioProps {
@@ -35,7 +34,7 @@ class Bio extends React.Component<BioProps, {}> {
 
 	render() {
 		return (
-			<div id={styles.bio} className={pageStyles.whitePlaneBackground}>
+			<div id={styles.bio} className={"whitePlaneBackground"}>
 				<Markdown markup={this.props.bio} />
 			</div>
 		);
