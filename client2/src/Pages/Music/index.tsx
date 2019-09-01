@@ -37,7 +37,7 @@ class MusicContainer extends React.Component<MusicProps, {}> {
 
 	render() {
 		return (
-			<div id={styles.columnWrapper} className={"col"}>
+			<div id={styles.columnWrapper}>
 				<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>
 				<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>
 			</div>

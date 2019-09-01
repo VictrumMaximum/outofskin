@@ -1,18 +1,24 @@
 @import "../../variables.scss";
 
 #columnWrapper {
-  align-items: center;
   width: 100%;
   margin-top: $margin-top;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
   //max-width: $max-width-mobile;
 }
 
 .videoColumn {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  //background-color: rgba(255, 255, 255, 0.5) !important;
   width: $max-width-mobile;
+  display: block;
+  //min-width: 50em;
 }
 
 @media (min-width: $min-width) {
@@ -22,7 +28,7 @@
 
   .videoColumn {
     width: $page-width;
-    min-width: 20em;
+    //min-width: 20em;
   }
 }
 
