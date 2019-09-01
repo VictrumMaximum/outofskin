@@ -39,7 +39,7 @@ class TourContainer extends React.Component<TourProps, {}> {
 	}
 	render() {
 		return (
-			<div id={styles.container} className={"col"}>
+			<div id={styles.container}>
 				<TourLeftColumn tours={this.props.upcomingTours} />
                 <TourRightColumn tours={this.props.pastTours.slice().reverse()} />
 			</div>

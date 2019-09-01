@@ -13,7 +13,7 @@ export default class TourRightColumn extends React.Component<TourRightColumnProp
 
     render() {
         return (
-            <div className={classNameSeparator(styles.tourColumn, "whitePlaneBackground", "col")}>
+            <div className={classNameSeparator(styles.tourColumn, "whitePlaneBackground")}>
                 <h2>{this.header}</h2>
                 {this.props.tours.map((tour) => {
                     return <TourComponent
