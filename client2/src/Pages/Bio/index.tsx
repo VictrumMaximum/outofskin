@@ -34,8 +34,10 @@ class Bio extends React.Component<BioProps, {}> {
 
 	render() {
 		return (
-			<div id={styles.bio} className={"whitePlaneBackground"}>
-				<Markdown markup={this.props.bio} />
+			<div id={styles.bio}>
+				<div className={"whitePlaneBackground"}>
+					<Markdown markup={this.props.bio} />
+				</div>
 			</div>
 		);
 	}

@@ -2,11 +2,7 @@
 
 #bio {
   max-width: $max-width-mobile;
-  text-align: left;
-  display: inline-block;
   line-height: 1.5em;
-  margin-top: 5em;
-  align-self: center;
 }
 
 p.indent {
@@ -15,9 +11,7 @@ p.indent {
 
 @media (min-width: $min-width) {
   #bio {
-    align-self: auto;
     margin-top: $margin-top;
     width: 30em;
-    height: 100%;
   }
 }
