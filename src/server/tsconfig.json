@@ -6,6 +6,6 @@
     "noImplicitAny": false,
     "outDir": "../../build/server/",
     "removeComments": true,
-    "target": "es5"
+    "target": "es6"
   }
 }

@@ -13,7 +13,7 @@ export default class TourLeftColumn extends React.Component<TourLeftColumnProps,
     header = "Upcoming";
 
     render() {
-        let tours:any = "Op dit moment hebben we geen tours gepland.";
+        let tours:any = "Op dit moment hebben we geen tours gepland haha.";
         if (this.props.tours.length > 0) {
             tours = this.props.tours.map((tour) => {
                 return <TourComponent

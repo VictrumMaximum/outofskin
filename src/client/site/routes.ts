@@ -10,19 +10,21 @@ require("./media/images/bio.jpg");
 require("./media/images/music.jpg");
 require("./media/images/press.jpg");
 require("./media/images/contact.jpg");
+require("./media/images/Fair&Eerie.jpg");
 
 const tourBg = "tour.jpg";
 const bioBg = "bio.jpg";
 const musicBg = "music.jpg";
 const pressBg = "press.jpg";
 const contactBg = "contact.jpg";
+const newBg = "Fair&Eerie.jpg";
 
 export const mobileBg = tourBg;
 
 export default {
 	"/": {
 		component: Tour,
-		background: tourBg,
+		background: newBg,
 		title: "Tour"
 	},
 	"/bio": {
