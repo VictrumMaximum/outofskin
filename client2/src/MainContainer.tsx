@@ -14,6 +14,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 				<div id={styles.mainContainer} className={"col"}>
 					<MenuBar />
 					<div id={styles.contentSidebar}>
+						<SocialMedia/>
 						<div id={styles.content} className={"row grow"}>
 							{Object.keys(routes).map(path =>
 								(<Route
@@ -31,7 +32,6 @@ export default class MainContainer extends React.Component<{}, {}> {
 									}}
 								/>))}
 						</div>
-						<SocialMedia/>
 					</div>
 				</div>
 			</BrowserRouter>

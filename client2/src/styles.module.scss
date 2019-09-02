@@ -6,10 +6,10 @@
 
 #contentSidebar {
   overflow-y: auto;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  flex-grow: 1;
+  //display: flex;
+  //flex-direction: column-reverse;
+  //justify-content: flex-end;
+  //flex-grow: 1;
 }
 
 #content {
@@ -17,7 +17,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   justify-content: center;
-  overflow-y: auto;
+  //overflow-y: auto;
 }
 
 #background {
@@ -45,8 +45,9 @@
 @media (min-width: $min-width) {
   #contentSidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: flex-end;
+    flex-grow: 1;
   }
 
   #contentSidebar {
