@@ -1,13 +1,12 @@
 @import "../../variables.scss";
 
 #socialMedia {
-  justify-content: center;
-  background: linear-gradient(0, black, rgba(0, 0, 0, 0));
-  padding-top: 2em;
+  justify-content: right;
   padding-bottom: 1em;
 
   div {
-    width: $page-width;
+    //width: $page-width;
+    //width: 50%;
     justify-content: space-evenly;
   }
 }
@@ -31,8 +30,11 @@
 
 @media (min-width: $min-width) {
   #socialMedia {
+    padding-top: 2em;
     margin: 0;
     max-width: 100%;
+    justify-content: center;
+    background: linear-gradient(0, black, rgba(0, 0, 0, 0));
   }
 
   .socialButtonImage {

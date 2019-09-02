@@ -13,7 +13,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 				{/*router may only have 1 child element*/}
 				<div id={styles.mainContainer} className={"col"}>
 					<MenuBar />
-					<div id={styles.contentSidebar} className={"col grow"}>
+					<div id={styles.contentSidebar}>
 						<div id={styles.content} className={"row grow"}>
 							{Object.keys(routes).map(path =>
 								(<Route

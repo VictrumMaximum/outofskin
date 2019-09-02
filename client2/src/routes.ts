@@ -3,13 +3,13 @@ import Press from "./Pages/Press/index";
 import Contact from "./Pages/Contact/index";
 import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
-import Home from "./Pages/Home/index";
 
 import tourBg from "./images/tour.jpg";
 import bioBg from "./images/bio.jpg";
 import musicBg from "./images/music.jpg";
 import pressBg from "./images/press.jpg";
 import contactBg from "./images/contact.jpg";
+import fairAndEerie from "./images/Fair&EerieWebsite.jpg";
 
 export const mobileBg = tourBg;
 
@@ -22,22 +22,22 @@ const routes: {
 } = {
 	"/": {
 		component: Tour,
-		background: tourBg,
+		background: fairAndEerie,
 		title: "Tour"
 	},
 	"/bio": {
 		component: Bio,
-		background: bioBg,
+		background: fairAndEerie,
 		title: "Bio"
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: musicBg,
+		background: fairAndEerie,
 		title: "Music"
 	},
 	"/press": {
 		component: Press,
-		background: pressBg,
+		background: fairAndEerie,
 		title: "Press"
 	},
 	"/contact": {

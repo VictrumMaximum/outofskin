@@ -6,6 +6,10 @@
 
 #contentSidebar {
   overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
 #content {
@@ -37,12 +41,9 @@
 //  border-radius: $border-radius;
 //}
 
-h1, h2, h3, h4, h5, b, strong {
-  color: $nice-black;
-}
-
 @media (min-width: $min-width) {
   #contentSidebar {
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
