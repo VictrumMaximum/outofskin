@@ -18,7 +18,6 @@
   //background-color: rgba(255, 255, 255, 0.5) !important;
   width: $max-width-mobile;
   display: block;
-  //min-width: 50em;
 }
 
 @media (min-width: $min-width) {
@@ -59,6 +58,9 @@ iframe {
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;
+  -webkit-box-shadow: 0 0 15px 5px #000;
+  -moz-box-shadow: 0 0 15px 5px #000;
+  box-shadow: 0 0 20px 5px #000;
 }
 .youtube img {
   width: 100%;

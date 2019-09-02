@@ -36,6 +36,9 @@ h1, h2, h3, h4, h5, b, strong {
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;
+  -webkit-box-shadow: 0 0 15px 5px #000;
+  -moz-box-shadow: 0 0 15px 5px #000;
+  box-shadow: 0 0 20px 5px #000;
 }
 
 .row, .col {

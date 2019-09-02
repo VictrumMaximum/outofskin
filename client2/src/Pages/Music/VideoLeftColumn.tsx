@@ -12,7 +12,7 @@ export default class VideoLeftColumn extends React.Component<VideoColumnProps, {
 
 	render() {
 		return (
-			<div className={classNameSeparator(styles.videoColumn, "whitePlaneBackground")}>
+			<div className={classNameSeparator(styles.videoColumn)}>
 				<h2>{this.props.header}</h2>
 				{this.props.videos.map((videoId) => {
 					return (
