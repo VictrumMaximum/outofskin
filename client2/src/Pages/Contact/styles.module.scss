@@ -14,6 +14,7 @@
 
 table.information {
   text-align: left;
+  margin-bottom: 2em;
 }
 
 .boxLinkWrapper {
@@ -60,6 +61,6 @@ table.information {
 
 @media (min-width: $min-width) {
   #informationWrapper {
-    width: $page-width;
+    width: 40em;
   }
 }

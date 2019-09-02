@@ -42,7 +42,7 @@ const routes: {
 	},
 	"/contact": {
 		component: Contact,
-		background: contactBg,
+		background: fairAndEerie,
 		title: "Contact"
 	}
 };
