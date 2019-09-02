@@ -1,12 +1,11 @@
 @import "../../variables.scss";
 
 #socialMedia {
-  justify-content: right;
+  justify-content: space-evenly;
   padding-bottom: 1em;
 
   div {
-    //width: $page-width;
-    //width: 50%;
+    width: $page-width;
     justify-content: space-evenly;
   }
 }
@@ -33,7 +32,6 @@
     padding-top: 2em;
     margin: 0;
     max-width: 100%;
-    justify-content: center;
     background: linear-gradient(0, black, rgba(0, 0, 0, 0));
   }
 
