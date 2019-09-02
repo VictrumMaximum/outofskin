@@ -1,8 +1,6 @@
-import {Moment} from "moment";
-
 // This is how tours are stored and sent between client and server.
 export interface TourJSON {
-	[id: string]: TourWithoutID
+	[id: string]: TourWithoutID | {begin: string}
 }
 
 // This is for the tourmenu, where we need the id
@@ -12,7 +10,7 @@ export interface TourWithID {
 	id: string;
 	eventName: string;
 	eventLink: string;
-	begin: Moment;
+	begin: Date;
 	city: string;
 	location: string;
 	locationLink: string;
@@ -23,7 +21,7 @@ export interface TourWithID {
 export interface TourWithoutID {
     eventName: string;
     eventLink: string;
-    begin: Moment;
+    begin: Date;
     city: string;
     location: string;
     locationLink: string;

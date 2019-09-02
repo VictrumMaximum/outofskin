@@ -3,6 +3,21 @@ import {TourWithoutID} from "../../../../schemas/TourSchema";
 import Button from "../../Static/Button";
 import styles from "./styles.module.scss";
 
+const monthsDutch = [
+	"januari",
+	"februari",
+	"maart",
+	"april",
+	"mei",
+	"juni",
+	"juli",
+	"augustus",
+	"september",
+	"oktober",
+	"november",
+	"december"
+];
+
 interface TourProps {
 	tour: TourWithoutID;
 	showButtons: boolean
@@ -10,14 +25,24 @@ interface TourProps {
 
 export default class TourComponent extends React.Component<TourProps, {}> {
 
+	static dateToString(date: Date) {
+		const pad = (n: number) => (n < 10) ? "0"+n : n;
+		return `${pad(date.getDate())} ${monthsDutch[date.getMonth()]} ${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+
+	}
+
 	render() {
+		const begin: Date = this.props.tour.begin;
 		return (
 			<div className={styles.tourComponent}>
 				<div className={styles.tourComponentSeparator}/>
 				<table>
 					<tbody>
 						<tr>
-							<td className={styles.tourCell}><strong>{new Date(this.props.tour.begin).toDateString()}</strong></td>
+							<td
+								className={styles.tourCell}>
+								<strong>{TourComponent.dateToString(begin)}</strong>
+							</td>
 						</tr>
 						<tr>
 							<td><i>{this.props.tour.eventName}</i></td>
