@@ -7,6 +7,7 @@ if (!fs.existsSync(path)) {
     throw new Error(`No environment file found.
     Please create .env in ${path}
     with the following keys:
-    PORT=`);
+    PORT=
+    NODE_ENV=development/production`);
 }
 config({path});

@@ -1,30 +1,27 @@
 import axios, {AxiosResponse} from "axios";
 import * as fs from "fs";
 import Logger from "../Logs/Logger";
+import * as readlineSync from "readline-sync";
+import * as gmailSend from "gmail-send";
+import {resolve} from "path";
 
 const url = "https://api.ipify.org";
-const filePath = "./data/ip.txt";
-const niceApiFilePath = "./data/NiceApi.json";
-let niceApiHeaders: {};
+const filePath = resolve(__dirname + "/../../../data/ip.txt");
 let currentIP: string;
 const period = 43200000; // 12 hours
+let send;
 
 const start = () => {
-	// setup NiceApi
-	// https://niceapi.net/
-	if (fs.existsSync(niceApiFilePath)) {
-		fs.readFile(niceApiFilePath, "utf8", (err, data) => {
-			if (err) {
-				Logger.error(err);
-				// terminate program if niceapi can't be set up.
-				throw err;
-			} else {
-				niceApiHeaders = JSON.parse(data);
-			}
-		});
-	} else {
-		throw "No NiceApi config";
-	}
+	const password = readlineSync.question("Google app pass:", {
+		hideEchoBack: true // The typed text on screen is hidden by `*` (default).
+	});
+	console.log(password);
+	send = gmailSend({
+		user: "victorpionescu@gmail.com",
+		pass: password,
+		to: "victorpionescu@gmail.com",
+		subject: "IP change",
+	});
 	// check if ip file exists
 	if (fs.existsSync(filePath)) {
 		fs.readFile(filePath, (err, data) => {
@@ -41,7 +38,7 @@ const start = () => {
 		// if file doesn't exist yet, create a new empty one.
 		fs.writeFile(filePath, "", (err) => {
 			if (err) {
-				Logger.error(err);
+				console.log(err);
 			} else {
 				Logger.info("Created new IP file");
 				// start checking ip
@@ -64,39 +61,45 @@ const checkIP = () => {
 		if (currentIP !== newIP) {
 			updateIP(newIP);
 		}
-	}).catch(handleException);
-};
-
-const updateIP = (newIP: string)=> {
-	fs.writeFile(filePath, newIP, (err) => {
-		if (err) {
-			Logger.error(err);
-		} else {
-			const msg = "Updated IP from " + currentIP + " to " + newIP;
-			Logger.info(msg);
-			notifyDev(msg);
-			currentIP = newIP;
-		}
-	})
-};
-
-const notifyDev = (msg: string) => {
-	Logger.info("Sending message to dev: " + msg);
-	axios.post("https://NiceApi.net/API", msg, {
-		headers: niceApiHeaders
-	}).then((response: AxiosResponse) => {
-		const responseMessage = response.data.toString();
-		Logger.debug(responseMessage);
 	});
 };
 
-const handleException = (err: any) => {
-	Logger.error(err);
-	try {
-		notifyDev(err.toString())
-	} catch (err) {
-		Logger.error("Failed to notify dev: " + err.toString());
-	}
+const updateIP = (newIP: string)=> {
+	const msg = "Updated IP from " + currentIP + " to " + newIP;
+	const writeToFile = () => {
+		fs.writeFile(filePath, newIP, (err) => {
+			if (err) {
+				Logger.error(err);
+			} else {
+				Logger.info(msg);
+				currentIP = newIP;
+			}
+		})
+	};
+	notifyDev(msg, writeToFile);
 };
+
+const notifyDev = (msg: string, callback) => {
+	Logger.info("Sending message to dev: " + msg);
+	send({
+		text: msg
+	}, (error, result, fullResult) => {
+		if (error) {
+			console.error(error);
+		} else {
+			console.log(result);
+			callback();
+		}
+	});
+};
+
+// const handleException = (err: any) => {
+// 	Logger.error(err);
+// 	try {
+// 		notifyDev(err.toString())
+// 	} catch (err) {
+// 		Logger.error("Failed to notify dev: " + err.toString());
+// 	}
+// };
 
 export {start};
