@@ -5,7 +5,7 @@
   height: 1.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  fill: $social-media-button-color;
+  fill: $social-media-button-color !important;
 }
 
 .iconWrapper {
@@ -31,8 +31,19 @@ table.information {
 
 #informationWrapper {
   align-items: center;
-  width: $page-width;
+  width: 95%;
   align-self: center;
+
+  td:first-child {
+    //border-right: 1px solid $text-color;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 $text-color;
+    margin-right: 2em;
+  }
+
+  td:nth-child(2) {
+    padding-left: 0.5em;
+  }
 }
 
 #emailInput {
@@ -48,4 +59,7 @@ table.information {
 }
 
 @media (min-width: $min-width) {
+  #informationWrapper {
+    width: $page-width;
+  }
 }

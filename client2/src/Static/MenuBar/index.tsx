@@ -75,7 +75,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
         return (
 			<div
 				id={styles.menuBar}>
-				<div className={"row"}>
+				<div className={"row"} style={{alignItems: "center"}}>
 					<MenuIcon
 						id={styles.menuIcon}
 						onClick={this.toggleDisplay}
