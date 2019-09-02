@@ -24,11 +24,12 @@ app.use(dataRoutes.bioDataRoute, bioRouter);
 app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(dataRoutes.pressDataRoute, pressRouter);
+
+app.use("/menu", express.static(__dirname + "/../../client2/menuBuild/"));
 // for static files except index.html
 app.use(express.static(resolve(__dirname + '/../../client2/build/')));
 // any other route should return index.html (specific route is handled by react router)
 app.get('/*', (req, res): void => {res.sendFile(resolve(__dirname + '/../../client2/build/index.html'))});
-app.use("/menu", express.static(__dirname + "/client/menu/"));
 
 app.listen(port);
 Logger.info("Server started on port " + port);
