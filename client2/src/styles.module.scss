@@ -17,6 +17,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   justify-content: center;
+  margin-bottom: 10em;
   //overflow-y: auto;
 }
 
@@ -56,5 +57,6 @@
 
   #content {
     overflow-y: auto;
+    margin-bottom: 2em;
   }
 }
