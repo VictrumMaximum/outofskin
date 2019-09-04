@@ -1,12 +1,15 @@
 @import "../../variables.scss";
 
 #container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   align-items: center;
 }
 
 .pressColumn {
   margin-top: $margin-top;
-  width: 90%;
+  max-width: 25em;
 }
 
 .quote {
@@ -21,6 +24,13 @@
 
 @media (min-width: $min-width) {
   .pressColumn {
-    width: 30em;
+    max-width: 25em;
+  }
+  #container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
   }
 }
