@@ -1,6 +1,6 @@
 import * as React from "react";
 import Option from "./Option";
-import routes from "../../routes";
+import {routes, homepage} from "../../routes";
 
 import {ReactComponent as MenuIcon} from "../../images/icons/menu.svg";
 import styles from "./styles.module.scss";
@@ -42,8 +42,14 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 	}
 
 	componentDidMount() {
-		const selected = document.getElementsByClassName(styles.activeOptionLink)[0];
-		this.setState({selected: selected.innerHTML});
+		const activeLinkElement = document.getElementsByClassName(styles.activeOptionLink)[0];
+		let selected: string;
+		if (activeLinkElement === undefined || activeLinkElement === null) {
+			selected = routes[homepage].title;
+		} else {
+			selected = activeLinkElement.innerHTML;
+		}
+		this.setState({selected: selected});
 	}
 
 	handleSelect(optionTitle) {

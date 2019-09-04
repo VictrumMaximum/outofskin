@@ -20,7 +20,7 @@ const routes: {
 		title: string;
 	};
 } = {
-	"/": {
+	"/tour": {
 		component: Tour,
 		background: fairAndEerie,
 		title: "Tour"
@@ -47,4 +47,9 @@ const routes: {
 	}
 };
 
-export default routes;
+const homepage = "/music";
+
+export {
+	routes,
+	homepage
+};

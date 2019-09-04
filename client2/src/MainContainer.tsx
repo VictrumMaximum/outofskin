@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Route, BrowserRouter} from "react-router-dom";
-import routes from "./routes";
+import {Route, BrowserRouter, Redirect} from "react-router-dom";
+import {routes, homepage} from "./routes";
 import MenuBar from "./Static/MenuBar/index";
 import SocialMedia from "./Static/SocialMedia/index";
 import "./global.scss";
@@ -16,6 +16,7 @@ export default class MainContainer extends React.Component<{}, {}> {
 					<div id={styles.contentSidebar}>
 						<SocialMedia/>
 						<div id={styles.content} className={"row grow"}>
+							<Redirect from={"/"} to={homepage} />
 							{Object.keys(routes).map(path =>
 								(<Route
 									key={path}
