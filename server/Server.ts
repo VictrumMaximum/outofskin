@@ -12,11 +12,6 @@ import Logger from "./Logs/Logger";
 const app = express();
 const port = process.env.PORT;
 
-import {start} from "./IPUpdater";
-if (process.env.NODE_ENV === 'production') {
-    start();
-}
-
 // to support JSON-encoded bodies
 app.use(express.json());
 // to support URL-encoded bodiesW
