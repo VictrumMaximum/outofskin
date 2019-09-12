@@ -53,9 +53,12 @@ class MusicContainer extends React.Component<MusicProps, {}> {
 					})}
 				</div>);
 		}
+		const videos = this.props.right.videos.map((videoId) => {
+			return <Video key={videoId} videoId={videoId} />;
+		});
 		return (
 			<div id={styles.columnWrapper}>
-				{videoElements}
+				{videos}
 
 				{/*<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>*/}
 				{/*<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>*/}
