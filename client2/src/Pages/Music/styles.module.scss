@@ -27,18 +27,20 @@
 @media (min-width: $min-width) {
   #columnWrapper {
     max-width: initial;
-    display: grid;
     display: -ms-grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid;
     -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
     grid-gap: 2em;
     padding: 1em;
     margin-right: 4em;
   }
 
   .youtube:first-child {
-    grid-column: span 2;
     -ms-grid-column-span: 2;
+    grid-column: span 2;
   }
 
   .videoColumn {
