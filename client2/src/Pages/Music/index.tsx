@@ -6,6 +6,7 @@ import {setVideos} from "../../redux/actions/music";
 import VideoLeftColumn from "./VideoLeftColumn";
 import VideoRightColumn from "./VideoRightColumn";
 import styles from "./styles.module.scss";
+import Video from "./Video";
 
 interface MusicProps {
 	setVideos,
@@ -36,10 +37,28 @@ class MusicContainer extends React.Component<MusicProps, {}> {
 	}
 
 	render() {
+		const videoElements: any[] = [];
+		const videosCopy = [...this.props.right.videos];
+		const firstVideo = videosCopy.splice(0, 1)[0];
+		videoElements.push(
+			<div id={styles.bigVideo} className={styles.videoRow}>
+				<Video key={firstVideo} videoId={firstVideo} />;
+			</div>);
+		while (videosCopy.length > 0) {
+			const rowVideos = videosCopy.splice(0, 2);
+			videoElements.push(
+				<div className={styles.videoRow}>
+					{rowVideos.map((videoId) => {
+						return <Video key={videoId} videoId={videoId} />
+					})}
+				</div>);
+		}
 		return (
 			<div id={styles.columnWrapper}>
-				<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>
-				<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>
+				{videoElements}
+
+				{/*<VideoLeftColumn header={this.props.left.header} videos={this.props.left.videos}/>*/}
+				{/*<VideoRightColumn header={this.props.right.header} videos={this.props.right.videos}/>*/}
 			</div>
 		);
 	}

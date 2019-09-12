@@ -41,9 +41,12 @@ export default class Video extends React.Component<VideoProps, VideoState> {
 				</div>
 				);
 		return (
+			<div style={{display: "inline-block", width: "100%", margin: "auto", padding: "2%"}}>
 			<div className={styles.youtube}>
 				{content}
 			</div>
+			</div>
+
 		);
 	}
 }

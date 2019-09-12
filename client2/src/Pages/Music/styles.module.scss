@@ -6,17 +6,21 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
+  //display: flex;
+  //
+  //flex-direction: column;
+  //
+  //align-items: center;
   //max-width: $max-width-mobile;
 }
 
 .videoColumn {
   //background-color: rgba(255, 255, 255, 0.5) !important;
   width: $max-width-mobile;
+  display: block;
+}
+
+.videoRow {
   display: block;
 }
 
@@ -28,6 +32,13 @@
   .videoColumn {
     width: $page-width;
     //min-width: 20em;
+  }
+
+  .videoRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    //width: 40%;
   }
 }
 
