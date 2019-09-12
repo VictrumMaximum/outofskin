@@ -34,7 +34,6 @@ table.information {
   align-items: center;
   width: 95%;
   align-self: center;
-  margin-top: $margin-top;
 
   td:first-child {
     //border-right: 1px solid $text-color;
@@ -63,5 +62,6 @@ table.information {
 @media (min-width: $min-width) {
   #informationWrapper {
     width: 40em;
+    margin-top: $margin-top;
   }
 }
