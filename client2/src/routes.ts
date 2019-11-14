@@ -10,7 +10,7 @@ import musicBg from "./images/music.jpg";
 import pressBg from "./images/press.jpg";
 import contactBg from "./images/contact.jpg";
 import fairAndEerie from "./images/Fair&EerieWebsite.jpg";
-import aHouseSpitsOut from "./images/aHouseSpitsOutWebsite.jpg";
+import aHouseSpitsOut from "./images/AHouseSpitsOutWebsite.jpg";
 
 export const mobileBg = tourBg;
 
