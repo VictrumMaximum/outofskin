@@ -10,6 +10,7 @@ import musicBg from "./images/music.jpg";
 import pressBg from "./images/press.jpg";
 import contactBg from "./images/contact.jpg";
 import fairAndEerie from "./images/Fair&EerieWebsite.jpg";
+import aHouseSpitsOut from "./images/aHouseSpitsOutWebsite.jpg";
 
 export const mobileBg = tourBg;
 
@@ -22,7 +23,7 @@ const routes: {
 } = {
 	"/tour": {
 		component: Tour,
-		background: fairAndEerie,
+		background: aHouseSpitsOut,
 		title: "Tour"
 	},
 	"/bio": {
@@ -32,7 +33,7 @@ const routes: {
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: fairAndEerie,
+		background: aHouseSpitsOut,
 		title: "Music"
 	},
 	"/press": {
