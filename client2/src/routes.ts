@@ -11,6 +11,7 @@ import pressBg from "./images/press.jpg";
 import contactBg from "./images/contact.jpg";
 import fairAndEerie from "./images/Fair&EerieWebsite.jpg";
 import aHouseSpitsOut from "./images/AHouseSpitsOutWebsite.jpg";
+import YDINWebsite from "./images/YDINWebsite.jpg";
 
 export const mobileBg = tourBg;
 
@@ -33,7 +34,7 @@ const routes: {
 	},
 	"/music": {
 		component: OutOfSkin,
-		background: aHouseSpitsOut,
+		background: YDINWebsite,
 		title: "Music"
 	},
 	"/press": {
