@@ -3,6 +3,7 @@ import Press from "./Pages/Press/index";
 import Contact from "./Pages/Contact/index";
 import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
+import Game from "./Pages/Game";
 
 import tourBg from "./images/tour.jpg";
 import bioBg from "./images/bio.jpg";
@@ -46,6 +47,11 @@ const routes: {
 		component: Contact,
 		background: fairAndEerie,
 		title: "Contact"
+	},
+	"/game": {
+		component: Game,
+		background: YDINWebsite,
+		title: "Monster"
 	}
 };
 

@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+div.drawBox {
+  //height: 33%;
+}
+
+button.arrow {
+  width: 3em;
+  background: transparent;
+  color: white;
+  border: none;
+  box-shadow: 0 0 5px 0 white;
+}
+
+button.arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+button.createDelete {
+  display: none;
+}
+
+div.createDeleteContainer {
+  justify-content: space-evenly;
+}
+
+canvas {
+  background-color: black;
+}
+
+@media(min-width: $min-width) {
+  button.createDelete {
+    display: block;
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+  }
+  button.createDelete:hover {
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+  }
+}
