@@ -75,7 +75,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 	}
 
     render() {
-		const menuMaxHeight = this.state.showMenu ? "13em" : "0";
+		const menuMaxHeight = this.state.showMenu ? "15em" : "0";
 		const menuIconRotation = this.state.showMenu ? "90deg" : "0";
 		const pageIndicatorOpacity = this.state.showMenu ? 0 : 1;
         return (

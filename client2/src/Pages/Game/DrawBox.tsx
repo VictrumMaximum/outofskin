@@ -8,15 +8,20 @@ interface DrawBoxProps {
 }
 
 export default class DrawBox extends React.Component<DrawBoxProps, {}> {
+    ref;
     boundingBox;
     context;
+
     saves;
     savesPointer;
-    ref;
+
     isDrawing;
+
     eraserSize;
     penSize;
     color;
+
+    resizeTimer;
 
     constructor(props) {
         super(props);
@@ -34,10 +39,7 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
         this.onMouseMove = this.onMouseMove.bind(this);
         this.newSave = this.newSave.bind(this);
         this.remove = this.remove.bind(this);
-
-        document.addEventListener("mouseup", this.onMouseUp);
-        document.addEventListener("touchend", this.onMouseUp);
-        window.addEventListener("resize", this.onResize.bind(this));
+        this.onResize = this.onResize.bind(this);
     }
 
     componentDidMount(): void {
@@ -45,6 +47,16 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
         this.context = this.ref.current.getContext("2d");
         this.context.strokeStyle = this.color;
         this.context.lineWidth = this.penSize;
+
+        document.addEventListener("mouseup", this.onMouseUp);
+        document.addEventListener("touchend", this.onMouseUp);
+        window.addEventListener("resize", this.onResize);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mouseup", this.onMouseUp);
+        document.removeEventListener("touchend", this.onMouseUp);
+        window.removeEventListener("resize", this.onResize);
     }
 
     getPosition(event: MouseEvent & TouchEvent) {
@@ -154,12 +166,21 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
     }
 
     onResize() {
-        const {width, height} = this.calcCanvasSize();
-        this.ref.current.height = height;
-        this.ref.current.width = width;
-        this.boundingBox = this.ref.current.getBoundingClientRect();
-        this.context.strokeStyle = this.color;
-        this.context.lineWidth = this.penSize;
+        clearTimeout(this.resizeTimer);
+        this.resizeTimer = setTimeout(() => {
+            const {width, height} = this.calcCanvasSize();
+            // if no canvas resize is needed, skip everything
+            if (width === this.ref.current.width && height === this.ref.current.height) {
+                return;
+            }
+            this.ref.current.height = height;
+            this.ref.current.width = width;
+            // NEW BOUNDINGBOX GOES WRONG IF THE MENU ANIMATION IS BEING PERFORMED!
+            // HAPPENS WHEN WINDOW IS RESIZED TO MOBILE WIDTH
+            this.boundingBox = this.ref.current.getBoundingClientRect();
+            this.context.strokeStyle = this.color;
+            this.context.lineWidth = this.penSize;
+        }, 50);
     }
 
     calcCanvasSize() {
@@ -184,7 +205,7 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
                 height = width / 2;
             }
         }
-        return {width, height};
+        return {width: Math.floor(width), height: Math.floor(height)};
     }
 
     render() {
