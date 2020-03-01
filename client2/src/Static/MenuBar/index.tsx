@@ -94,7 +94,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 					</div>
 				</div>
 				<div id={styles.menuOptionsWrapper}
-					 style={{maxHeight: menuMaxHeight}}>
+					 style={{height: menuMaxHeight}}>
 					{Object.keys(routes).map((path) => {
 						return <Option
 							key={path}
