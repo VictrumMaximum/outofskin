@@ -22,6 +22,9 @@ app.use(dataRoutes.subscribersDataRoute, subscribersRouter);
 app.use(dataRoutes.musicDataRoute, musicRouter);
 app.use(dataRoutes.pressDataRoute, pressRouter);
 
+// for ssl certificate
+app.use('/.well-known', express.static(resolve(__dirname + '/.well-known/')));
+
 app.use("/menu", express.static(__dirname + "/../../client2/menuBuild/"));
 // for static files except index.html
 app.use(express.static(resolve(__dirname + '/../../client2/build/')));
