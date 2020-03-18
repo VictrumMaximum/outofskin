@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
         // redirects to secure site
         res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
         res.end();
-    }).listen(portHttps, (): void => {
+    }).listen(portHttp, (): void => {
         Logger.info('HTTP Server running on port ' + portHttp);
     });
 
