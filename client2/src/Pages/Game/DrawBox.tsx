@@ -123,7 +123,15 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
 
     load() {
         this.clearCanvas();
-        this.context.putImageData(this.saves[this.savesPointer], 0, 0);
+        // this.context.putImageData(this.saves[this.savesPointer], 0, 0);
+        const save = this.saves[this.savesPointer];
+        const temp: any = document.createElement("CANVAS");
+        temp.width = save.width;
+        temp.height = save.height;
+        temp.getContext("2d").putImageData(save, 0, 0);
+        console.log("loading: " + this.ref.current.width + ":" + this.ref.current.height);
+        this.context.drawImage(temp, 0, 0, save.width, save.height,
+            0, 0, this.ref.current.width, this.ref.current.height);
     }
 
     newSave() {
@@ -166,21 +174,23 @@ export default class DrawBox extends React.Component<DrawBoxProps, {}> {
     }
 
     onResize() {
-        clearTimeout(this.resizeTimer);
-        this.resizeTimer = setTimeout(() => {
+        // clearTimeout(this.resizeTimer);
+        // this.resizeTimer = setTimeout(() => {
             const {width, height} = this.calcCanvasSize();
-            // if no canvas resize is needed, skip everything
+            // if no canvas resize is needed, only calculate new bounding box
             if (width === this.ref.current.width && height === this.ref.current.height) {
+                this.boundingBox = this.ref.current.getBoundingClientRect();
                 return;
             }
+            console.log("old: " + width + ":" + height);
+            this.save();
             this.ref.current.height = height;
             this.ref.current.width = width;
-            // NEW BOUNDINGBOX GOES WRONG IF THE MENU ANIMATION IS BEING PERFORMED!
-            // HAPPENS WHEN WINDOW IS RESIZED TO MOBILE WIDTH
+            this.load();
             this.boundingBox = this.ref.current.getBoundingClientRect();
             this.context.strokeStyle = this.color;
             this.context.lineWidth = this.penSize;
-        }, 50);
+        // }, 50);
     }
 
     calcCanvasSize() {
