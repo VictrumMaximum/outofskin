@@ -47,7 +47,7 @@ class TourComponent extends React.Component<TourComponentProps, {}> {
 							<td>{tour.eventName}</td>
 						</tr>
 						<tr>
-							<td>{tour.begin.format("DD MMMM HH:mm")}</td>
+							<td>{tour.begin}</td>
 						</tr>
 					</tbody>
 				</table>

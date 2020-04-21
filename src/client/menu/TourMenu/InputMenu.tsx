@@ -1,8 +1,17 @@
 import * as React from "react";
-import * as moment from "moment";
-import {Moment} from "moment";
 import {TourWithID} from "../../../schemas/TourSchema";
 const styles = require("./styles.less");
+
+interface InputMenuState {
+    tour: TourWithID;
+    beginDate: {
+        year: string;
+        month: string;
+        day: string;
+        hours: string;
+        minutes: string;
+    };
+}
 
 interface InputMenuProps {
 	initialState: any,
@@ -10,13 +19,22 @@ interface InputMenuProps {
 		onClick: (id) => void,
 		text: string
 	}[],
-	onChange: (newState) => void
+	onChange: (newState) => void;
 }
 
-export default class InputMenu extends React.Component<InputMenuProps, any> {
+export default class InputMenu extends React.Component<InputMenuProps, InputMenuState> {
     constructor(props) {
         super(props);
-        this.state = this.props.initialState;
+        this.state = {
+            tour: this.props.initialState,
+            beginDate: {
+                year: "",
+                month: "",
+                day: "",
+                hours: "",
+                minutes: "",
+            }
+        };
         this.updateState = this.updateState.bind(this);
         this.updateBegin = this.updateBegin.bind(this);
     }
@@ -24,11 +42,11 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
     updateState(event) {
     	const key = event.target.id;
     	const value = event.target.value;
+    	const newTour = {...this.state.tour, [key]:value};
     	this.setState({
-		    	[key]:value
-	    }, () => {
-    		this.props.onChange(this.state);
-		});
+            tour: newTour
+        });
+        this.props.onChange(this.state.tour);
     }
 
     updateBegin(event) {
@@ -37,35 +55,15 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
 		if (value.length === 0) {
 			return;
 		}
-        const begin = this.state.begin;
-        switch (key) {
-            case "day":
-				if (Number(value) <= begin.daysInMonth()) {
-					begin.date(value);
-				}
-                break;
-            case "month":
-                begin.month(value);
-                break;
-            case "year":
-                begin.year(value);
-                break;
-            case "hours":
-            	if (Number(value) <= 24) {
-					begin.hours(value);
-				}
-                break;
-            case "minutes":
-				if (Number(value) <= 60) {
-					begin.minutes(value);
-				}
-                break;
-        }
+        const date = this.state.beginDate;
+		date[key] = value;
+		const dateString = date.year+"-"+date.month+"-"+date.day+" "+date.hours+":"+date.minutes;
+		const newTour = {...this.state.tour, begin: dateString};
         this.setState({
-            begin
-        }, () => {
-            this.props.onChange(this.state);
+            tour: newTour,
+            beginDate: date,
         });
+        this.props.onChange(newTour);
     }
 
     render() {
@@ -75,28 +73,20 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
                     Event name
 				</div>
                 <div className={"col-12"}>
-                    <input id={"eventName"} className={styles.fullWidth} value={this.state.eventName} onChange={this.updateState} />
+                    <input id={"eventName"} className={styles.fullWidth} value={this.state.tour.eventName} onChange={this.updateState} />
                 </div>
                 <div className={"col-4"}>
                     Event link
                 </div>
                 <div className={"col-12"}>
-                    <input id={"eventLink"} className={styles.fullWidth} value={this.state.eventLink} onChange={this.updateState} />
+                    <input id={"eventLink"} className={styles.fullWidth} value={this.state.tour.eventLink} onChange={this.updateState} />
                 </div>
                 <div className={"col-4"}>
                     Begin
                 </div>
                 <div className={"col-12"}>
-                    <input id={"day"} className={styles.twoDigitInput+" "+styles.centeredInput}
-						   onChange={(event) => {
-                    			const value = event.target.value;
-                    			if (value.length !== 0 && Number(value) <= this.state.begin.daysInMonth())
-                    				{this.updateBegin(event)}}} placeholder="dd"/>
-                    <select id={"month"} className={styles.monthSelect} onChange={this.updateBegin}>
-                        {moment.months().map((month) => {
-							return (<option key={month} value={month} selected={(month === moment.months()[this.state.begin.month()])}>{month}</option>);
-                        })};
-                    </select>
+                    <input id={"day"} className={styles.twoDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="dd"/>
+                    <input id={"month"} className={styles.twoDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="mm"/>
                     <input id={"year"} className={styles.fourDigitInput+" "+styles.centeredInput} onChange={this.updateBegin} placeholder="yyyy"/>
                 </div>
                 <div className={"col-12"}>
@@ -107,13 +97,13 @@ export default class InputMenu extends React.Component<InputMenuProps, any> {
                     Location
                 </div>
                 <div className={"col-12"}>
-                    <input id={"location"} className={styles.fullWidth} value={this.state.location} onChange={this.updateState} />
+                    <input id={"location"} className={styles.fullWidth} value={this.state.tour.location} onChange={this.updateState} />
                 </div>
                 <div className={"col-4"}>
                     Location link
                 </div>
                 <div className={"col-12"}>
-                    <input id={"locationLink"} className={styles.fullWidth} value={this.state.locationLink} onChange={this.updateState} />
+                    <input id={"locationLink"} className={styles.fullWidth} value={this.state.tour.locationLink} onChange={this.updateState} />
                 </div>
                 <div className={"col-12"}>
                     {this.props.buttons.map((button) => {

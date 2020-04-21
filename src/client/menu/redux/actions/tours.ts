@@ -1,5 +1,4 @@
 import {TourJSON, TourWithID, TourWithoutID} from "../../../../schemas/TourSchema";
-import moment = require("moment");
 
 export const setTours = (tours: TourJSON) => {
 	const splittedTours: TourWithID[][] = sortAndSplitTours(tours);
@@ -48,16 +47,35 @@ export const addTour = (id: string, newTour: TourWithoutID) => {
 	};
 };
 
-function sortAndSplitTours(tours: TourJSON): TourWithID[][] {
-	const compare = (a: TourWithoutID, b: TourWithoutID) => {
-		if (a.begin.isBefore(b.begin)) {
-			return -1;
-		}
-		if (a.begin.isAfter(b.begin)) {
-			return 1;
-		}
-		return 0;
+const compare = (a: TourWithoutID, b: TourWithoutID) => {
+	if (a.begin < b.begin) {
+		return -1;
+	}
+	if (a.begin > b.begin) {
+		return 1;
+	}
+	return 0;
+};
+
+export const formatDate = (date) => {
+	const pad = function (num) {
+		return (num < 10 ? "0" : "") + num;
 	};
+	return (
+		date.getFullYear() +
+		"-" +
+		pad(date.getMonth() + 1) +
+		"-" +
+		pad(date.getDate()) +
+		" " +
+		pad(date.getHours()) +
+		":" +
+		pad(date.getMinutes())
+	);
+};
+
+function sortAndSplitTours(tours: TourJSON): TourWithID[][] {
+
 	const sorted: TourWithID[] = Object.keys(tours)
 		// convert to array
 		.map((tourId) => {
@@ -66,13 +84,14 @@ function sortAndSplitTours(tours: TourJSON): TourWithID[][] {
 			// if it gets updated or deleted
 			const tour: TourWithID = {...tours[tourId], ...{id: tourId, edit: false}};
 			// convert begin from string to moment
-			tour.begin = moment(tour.begin);
 			return tour})
 		.sort(compare);
 	let i = 0;
-	const now = moment();
+	const now = formatDate(new Date());
+
 	// find index of first tour which comes after today
-	while (sorted[i].begin.isBefore(now) && i < sorted.length) {
+	while (i < sorted.length && sorted[i].begin < now) {
+		console.log(i);
 		i++;
 	}
 	// splice actually modifies the array, does not make a copy

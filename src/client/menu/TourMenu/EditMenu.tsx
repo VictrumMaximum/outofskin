@@ -21,7 +21,7 @@ class EditMenu extends React.Component<EditMenuProps, TourWithID> {
 
 	updateTour(tour: TourWithID) {
 		const data = {
-			...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
+			...tour, ...{begin: tour.begin}
 		};
 		axios.patch(tourDataRoute, {id: tour.id, updates: data}).then((response: AxiosResponse) => {
 			const responseData = response.data;

@@ -1,5 +1,5 @@
 import {TourWithID} from "../../../../schemas/TourSchema";
-import moment = require("moment");
+import {formatDate} from "../actions/tours";
 
 export default (state = {
 	past: [],
@@ -82,10 +82,10 @@ export default (state = {
 			// add id to tour
 			const newTour = {...action.newTour, ...{id: action.id}};
 			// and add to past or upcoming
-			if (newTour.begin.isBefore(moment())) {
+			if (newTour.begin < formatDate(new Date())) {
 				console.log("go to past");
 				for (let i = 0; i < state.past.length; i++) {
-					if (newTour.begin.isBefore(state.past[i].begin)) {
+					if (newTour.begin < state.past[i].begin) {
 						console.log("found isbefore");
 						return {
 							past: [
@@ -107,7 +107,7 @@ export default (state = {
 			} else {
 				console.log("go to upcoming");
 				for (let i = 0; i < state.upcoming.length; i++) {
-					if (newTour.begin.isBefore(state.upcoming[i].begin)) {
+					if (newTour.begin < state.upcoming[i].begin) {
 						return {
 							past: state.past,
 							upcoming: [

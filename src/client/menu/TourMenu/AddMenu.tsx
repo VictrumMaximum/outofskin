@@ -1,8 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {Moment} from "moment";
-import * as moment from "moment";
 import InputMenu from "./InputMenu";
 import {tourDataRoute} from "../../../server/DataRouters/dataRoutes";
 import {TourWithoutID} from "../../../schemas/TourSchema";
@@ -11,15 +9,6 @@ import {addTour} from "../redux/actions/tours";
 interface AddMenuProps {
     addTour: (id: string, tour: TourWithoutID) => void
 }
-
-const premade = {
-	eventName: "testName",
-	eventLink: "testEventLink",
-	begin: moment("2018-12-11 20:21"),
-	city: "testCity",
-	location: "testLocation",
-	locationLink: "testLocationLink"
-};
 
 class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
     constructor(props) {
@@ -33,7 +22,7 @@ class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
     	return {
             eventName: "",
             eventLink: "",
-            begin: moment(),
+            begin: "",
             city: "",
             location: "",
             locationLink: ""
@@ -51,7 +40,7 @@ class AddMenu extends React.Component<AddMenuProps, TourWithoutID> {
 
     onSubmit(tour) {
     	const data = {
-		    ...tour, ...{begin: tour.begin.format("YYYY-MM-DD HH:mm")}
+		    ...tour, ...{begin: tour.begin}
 	    };
     	console.log(tour);
     	console.log(data);
