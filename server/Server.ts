@@ -39,9 +39,6 @@ if (process.env.NODE_ENV === 'production') {
         cert: certificate,
         ca: ca
     };
-
-    // for ssl certificate
-    app.use('/.well-known', express.static(resolve(__dirname + '/../.well-known/')));
     // for static files except index.html
     app.use(express.static(resolve(__dirname + '/../../client2/build/')));
     // any other route should return index.html (specific route is handled by react router)
