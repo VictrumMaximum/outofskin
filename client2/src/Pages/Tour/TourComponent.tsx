@@ -1,5 +1,5 @@
 import * as React from "react";
-import {TourWithoutID} from "../../../../schemas/TourSchema";
+import {TourJSON} from "../../../../schemas/TourSchema";
 import Button from "../../Static/Button";
 import styles from "./styles.module.scss";
 
@@ -19,7 +19,7 @@ const monthsDutch = [
 ];
 
 interface TourProps {
-	tour: TourWithoutID;
+	tour: TourJSON;
 	showButtons: boolean
 }
 
@@ -32,7 +32,7 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 	}
 
 	render() {
-		const begin: Date = this.props.tour.begin;
+		const begin: string = this.props.tour.begin;
 		return (
 			<div className={styles.tourComponent}>
 				<div className={styles.tourComponentSeparator}/>
@@ -41,7 +41,7 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 						<tr>
 							<td
 								className={styles.tourCell}>
-								<strong>{TourComponent.dateToString(begin)}</strong>
+								<strong>{begin}</strong>
 							</td>
 						</tr>
 						<tr>

@@ -1,7 +1,7 @@
-import {TourWithoutID, TourJSON} from "../../../../schemas/TourSchema";
+import {TourJSON} from "../../../../schemas/TourSchema";
 
 export const setTours = (tours: TourJSON) => {
-	const splittedTours: TourWithoutID[][] = sortAndSplitTours(tours);
+	const splittedTours: TourJSON[][] = sortAndSplitTours(tours);
 	return {
 		type: "SET_TOURS",
 		past: splittedTours[0],
@@ -12,12 +12,16 @@ export const setTours = (tours: TourJSON) => {
 // TODO: properly type these stupid tours to use
 //  strings as date but afterwards assign a js Date to the same variable
 //  without getting a type error.
+
+// TODO: ALSO, I just broke the date comparison because right now it just needs to work
+//  without the menu (and therefore without fetching data).
+//  Good luck, future me.
 function sortAndSplitTours(tours) {//: Tour[] {
-	const compare = (a: TourWithoutID, b: TourWithoutID) => {
-		if (a.begin.getTime() < b.begin.getTime()) {
+	const compare = (a: TourJSON, b: TourJSON) => {
+		if (a.begin < b.begin) {
 			return -1;
 		}
-		if (a.begin.getTime() > b.begin.getTime()) {
+		if (a.begin > b.begin) {
 			return 1;
 		}
 		return 0;

@@ -1,11 +1,11 @@
 import * as React from "react";
-import {TourWithoutID} from "../../../../schemas/TourSchema";
+import {TourJSON} from "../../../../schemas/TourSchema";
 import TourComponent from "./TourComponent";
 import {classNameSeparator} from "../../util";
 import styles from "./styles.module.scss";
 
 interface TourLeftColumnProps {
-    tours: TourWithoutID[];
+    tours: TourJSON[];
 }
 
 export default class TourLeftColumn extends React.Component<TourLeftColumnProps, {}> {

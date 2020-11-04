@@ -28,6 +28,7 @@ export default class Video extends React.Component<VideoProps, VideoState> {
 	render() {
 		const content = this.state.clicked ?
 			(<iframe
+				title={this.props.videoId}
 				src={"https://www.youtube.com/embed/" + this.props.videoId +"?rel=0&showinfo=0&autoplay=1"}
 				frameBorder="0"
 				allowFullScreen>
@@ -35,8 +36,8 @@ export default class Video extends React.Component<VideoProps, VideoState> {
 			</iframe>)
 			: (<div onClick={this.handleClick}>
 					<img
-						vergeet niet deze url te committen. 0.jpg ipv sddefault.jpg
 						src={"https://img.youtube.com/vi/" + this.props.videoId + "/0.jpg"}
+						alt={""}
 					/>
 					<div className={styles.playButton} />
 				</div>

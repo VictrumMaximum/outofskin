@@ -15,10 +15,6 @@ interface BioProps {
 const bioDataRoute = "/bioData";
 
 class Bio extends React.Component<BioProps, {}> {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		if (this.props.bio.length === 0) {
 			this.fetchBio();

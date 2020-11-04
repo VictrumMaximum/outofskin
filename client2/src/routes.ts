@@ -5,10 +5,10 @@ import Tour from "./Pages/Tour/index";
 import Bio from "./Pages/Bio/index";
 
 import tourBg from "./images/tour.jpg";
-import bioBg from "./images/bio.jpg";
-import musicBg from "./images/music.jpg";
-import pressBg from "./images/press.jpg";
-import contactBg from "./images/contact.jpg";
+// import bioBg from "./images/bio.jpg";
+// import musicBg from "./images/music.jpg";
+// import pressBg from "./images/press.jpg";
+// import contactBg from "./images/contact.jpg";
 import fairAndEerie from "./images/Fair&EerieWebsite.jpg";
 import aHouseSpitsOut from "./images/AHouseSpitsOutWebsite.jpg";
 import YDINWebsite from "./images/YDINWebsite.jpg";

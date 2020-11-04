@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
 import VideoColumnSchema from "../../../../schemas/VideoColumnSchema";
 import {setVideos} from "../../redux/actions/music";
-import VideoLeftColumn from "./VideoLeftColumn";
-import VideoRightColumn from "./VideoRightColumn";
 import styles from "./styles.module.scss";
 import Video from "./Video";
 

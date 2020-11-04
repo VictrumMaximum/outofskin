@@ -21,7 +21,7 @@ export default class MenuBar extends React.Component<{}, MenuBarState> {
 			// by the ReactSVG module. Maybe better to change it to use
 			// class instead, since part of it is user defined (react-svg
 			// also assigns it a class).
-            if (targetElement == menuBar || targetElement["id"] == "Layer_1") {
+            if (targetElement === menuBar || targetElement["id"] === "Layer_1") {
             	// part of menubar, do nothing
                 return;
             }

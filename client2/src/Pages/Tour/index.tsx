@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import axios, {AxiosResponse} from "axios";
-import {TourJSON, TourWithoutID} from "../../../../schemas/TourSchema";
+import {TourJSON} from "../../../../schemas/TourSchema";
 import {setTours} from "../../redux/actions/tours";
 import TourLeftColumn from "./TourLeftColumn";
 import TourRightColumn from "./TourRightColumn";
@@ -9,8 +9,8 @@ import styles from "./styles.module.scss";
 
 interface TourProps {
 	// tours are stored in ascending order
-	pastTours: TourWithoutID[];
-	upcomingTours: TourWithoutID[]
+	pastTours: TourJSON[];
+	upcomingTours: TourJSON[]
 	setTours: (tours: TourJSON) => void
 }
 
