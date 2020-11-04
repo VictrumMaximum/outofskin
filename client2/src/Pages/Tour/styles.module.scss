@@ -32,13 +32,36 @@
   border-top-right-radius: 0;
 }
 
-td.tourCell {
-  width: 16em;
+//td.tourCell {
+//  width: 16em;
+//}
+
+.tourComponent {
+  table {
+    width: 21em;
+  }
+
+  tr {
+    height: 2em;
+  }
+  tr:nth-child(1) {
+    text-align: left;
+  }
+
+  tr:nth-child(2) {
+    text-align: center;
+    color: #d28400;
+    font-size: 18px;
+  }
+
+  tr:nth-child(3) {
+    text-align: right;
+  }
 }
 
 .tourComponentSeparator {
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(176, 175, 0);
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;

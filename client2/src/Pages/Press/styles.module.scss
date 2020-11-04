@@ -9,13 +9,14 @@
 
 .pressColumn {
   margin-top: $margin-top;
-  max-width: 25em;
+  max-width: 18em;
 }
 
 .quote {
   white-space: pre-line;
   line-height: 1.5em;
   margin-bottom: 1.5em;
+  background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 .buttonWrapper {
@@ -25,12 +26,13 @@
 @media (min-width: $min-width) {
   .pressColumn {
     max-width: 25em;
+    margin: 0 0.5em 0 0.5em;
   }
   #container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 5em 0 5%;
+    margin: 10em 5em 0 5%;
     align-items: flex-start;
     width: 100%;
   }

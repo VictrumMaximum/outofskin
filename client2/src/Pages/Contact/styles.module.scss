@@ -27,7 +27,7 @@ table.information {
 }
 
 .blackToWhiteLink:hover {
-  color: white;
+  color: $sunset-yellow;
 }
 
 #informationWrapper {
@@ -40,6 +40,7 @@ table.information {
     border-radius: 5px;
     box-shadow: 0 0 2px 0 $text-color;
     margin-right: 2em;
+    width: 1.5em;
   }
 
   td:nth-child(2) {

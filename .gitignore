@@ -66,8 +66,7 @@ build/menu/
 outofskin.iml
 
 # data files
-data/*.json
-data/*.txt
+client2/src/data/
 
 # idk what this is, appeared on 3 july 2018
 desktop.ini

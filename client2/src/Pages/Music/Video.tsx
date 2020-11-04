@@ -36,7 +36,7 @@ export default class Video extends React.Component<VideoProps, VideoState> {
 			</iframe>)
 			: (<div onClick={this.handleClick}>
 					<img
-						src={"https://img.youtube.com/vi/" + this.props.videoId + "/0.jpg"}
+						src={"https://i.ytimg.com/vi/" + this.props.videoId + "/maxresdefault.jpg"}
 						alt={""}
 					/>
 					<div className={styles.playButton} />

@@ -31,6 +31,12 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 
 	}
 
+	private prettyDate(date: string) {
+		const [d, t] = date.split(" ");
+		const [year, month, day] = d.split("-");
+		return `${day} ${monthsDutch[parseInt(month) - 1]} ${year} ${t}`;
+	}
+
 	render() {
 		const begin: string = this.props.tour.begin;
 		return (
@@ -39,9 +45,8 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 				<table>
 					<tbody>
 						<tr>
-							<td
-								className={styles.tourCell}>
-								<strong>{begin}</strong>
+							<td>
+								<strong>{this.prettyDate(begin)}</strong>
 							</td>
 						</tr>
 						<tr>

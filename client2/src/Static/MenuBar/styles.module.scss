@@ -59,7 +59,7 @@ $menu-width-mobile: 10em;
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
   text-decoration: none;
-  color: black;
+  color: $menu-color-active;
 }
 
 .optionLink:hover {
