@@ -1,0 +1,37 @@
+@import "../../variables.scss";
+
+#container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.pressColumn {
+  margin-top: $margin-top;
+  max-width: 25em;
+}
+
+.quote {
+  white-space: pre-line;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.buttonWrapper {
+  width: 4em;
+}
+
+@media (min-width: $min-width) {
+  .pressColumn {
+    max-width: 25em;
+  }
+  #container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 5em 0 5%;
+    align-items: flex-start;
+    width: 100%;
+  }
+}

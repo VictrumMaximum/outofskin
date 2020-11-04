@@ -1,0 +1,132 @@
+@import "../../variables.scss";
+
+#columnWrapper {
+  width: 100%;
+  margin-top: $margin-top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  //display: flex;
+  //
+  //flex-direction: column;
+  //
+  //align-items: center;
+  //max-width: $max-width-mobile;
+}
+
+.videoColumn {
+  //background-color: rgba(255, 255, 255, 0.5) !important;
+  width: $max-width-mobile;
+  display: block;
+}
+
+.videoRow {
+  display: block;
+}
+
+@media (min-width: $min-width) {
+  #columnWrapper {
+    max-width: initial;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    grid-gap: 2em;
+    padding: 1em;
+    margin-right: 4em;
+  }
+
+  .youtube:first-child {
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+  }
+
+  .videoColumn {
+    width: $page-width;
+    //min-width: 20em;
+  }
+
+  .videoRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    //width: 40%;
+  }
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 20em;
+}
+
+.youtube {
+  background-color: #000;
+  margin-bottom: 5%;
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+  -webkit-box-shadow: 0 0 15px 5px #000;
+  -moz-box-shadow: 0 0 15px 5px #000;
+  box-shadow: 0 0 20px 5px #000;
+}
+.youtube img {
+  width: 100%;
+  top: -16.84%;
+  left: 0;
+  opacity: 0.7;
+}
+.youtube .playButton {
+  width: 90px;
+  height: 60px;
+  background-color: #333;
+  box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+  z-index: 1;
+  opacity: 0.8;
+  border-radius: 6px;
+}
+.youtube .playButton:before {
+  content: "";
+  border-style: solid;
+  border-width: 15px 0 15px 26.0px;
+  border-color: transparent transparent transparent #fff;
+}
+.youtube img,
+.youtube .playButton {
+  cursor: pointer;
+}
+.youtube img,
+.youtube iframe,
+.youtube .playButton,
+.youtube .playButton:before {
+  position: absolute;
+}
+.youtube .playButton,
+.youtube .playButton:before {
+  top: 50%;
+  left: 50%;
+  transform: translate3d( -50%, -50%, 0 );
+}
+.youtube iframe {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

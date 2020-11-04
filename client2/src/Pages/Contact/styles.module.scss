@@ -1,0 +1,67 @@
+@import "../../variables.scss";
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  fill: $social-media-button-color !important;
+}
+
+.iconWrapper {
+  display: inline-block;
+}
+
+table.information {
+  text-align: left;
+  margin-bottom: 2em;
+}
+
+.boxLinkWrapper {
+  display: inline-block;
+}
+
+.blackToWhiteLink {
+  font-weight: bold;
+  color: $text-color;
+}
+
+.blackToWhiteLink:hover {
+  color: white;
+}
+
+#informationWrapper {
+  align-items: center;
+  width: 95%;
+  align-self: center;
+
+  td:first-child {
+    //border-right: 1px solid $text-color;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 $text-color;
+    margin-right: 2em;
+  }
+
+  td:nth-child(2) {
+    padding-left: 0.5em;
+  }
+}
+
+#emailInput {
+  height: 2em;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 40%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+@media (min-width: $min-width) {
+  #informationWrapper {
+    width: 40em;
+    margin-top: $margin-top;
+  }
+}

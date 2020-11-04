@@ -1,0 +1,79 @@
+@import "./variables.scss";
+
+@font-face {
+  font-family: 'mic-32';
+  src: url('./fonts/mic-32regular-webfont.woff') format('woff'),
+  url('./fonts/mic-32regular-webfont.woff2') format('woff2'),
+  url("./fonts/mic-32regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  font-style: normal;
+  font-family: mic-32;
+  color: $text-color;
+}
+
+* {
+  //scrollbar-width: thin;
+  //overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, b, strong {
+  color: $text-color;
+}
+
+.whitePlaneBackground {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1em;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+  -webkit-box-shadow: 0 0 15px 5px #000;
+  -moz-box-shadow: 0 0 15px 5px #000;
+  box-shadow: 0 0 20px 5px #000;
+}
+
+.row, .col {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row {
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  //-webkit-flex-wrap: wrap;
+  //-ms-flex-wrap: wrap;
+  //flex-wrap: wrap;
+}
+
+.col {
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.grow {
+  -webkit-flex-grow: 1;
+  -ms-flex: 1;
+  flex-grow: 1;
+}
+
+.shrink {
+  -webkit-flex-shrink: 1;
+  -ms-flex: 1;
+  flex-shrink: 1;
+}
