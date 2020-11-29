@@ -4,16 +4,29 @@ import tours from "../../data/tours";
 import {classNameSeparator} from "../../util";
 import TourComponent from "./TourComponent";
 
+const getDateObject = (dateString: string): Date => {
+	const [date, time] = dateString.split(" ");
+	const [year, month, day] = date.split("-");
+	const [hour, minute] = time.split(":");
+	return new Date(
+		parseInt(year),
+		parseInt(month) - 1,
+		parseInt(day),
+		parseInt(hour),
+		parseInt(minute),
+		0);
+};
+
 const sorted = Object.keys(tours);
 sorted.sort((a, b) => {
-	const dateA = new Date(tours[a].begin); // TODO: DO THIS WITH STRING SPLITTING!!
-	const dateB = new Date(tours[b].begin); // TODO: DO THIS WITH STRING SPLITTING!!
+	const dateA = getDateObject(tours[a].begin);
+	const dateB = getDateObject(tours[b].begin);
 	return dateB.valueOf() - dateA.valueOf();
 });
 
 const now = new Date().valueOf();
-const upcoming = sorted.filter((t) => new Date(tours[t].begin).valueOf() > now);
-const past = sorted.filter((t) => new Date(tours[t].begin).valueOf() < now);
+const upcoming = sorted.filter((t) => getDateObject(tours[t].begin).valueOf() > now);
+const past = sorted.filter((t) => getDateObject(tours[t].begin).valueOf() < now);
 
 export default class TourContainer extends React.Component<{}, {}> {
 	render() {
