@@ -29,6 +29,8 @@ const upcoming = sorted.filter((t) => getDateObject(tours[t].begin).valueOf() > 
 const past = sorted.filter((t) => getDateObject(tours[t].begin).valueOf() < now);
 
 export default class TourContainer extends React.Component<{}, {}> {
+	// TODO: Zet showButtons weer op true voor upcoming tours, wanneer dit weer van toepassing is
+	// (en fix dan gelijk de css, het ziet er nu niet uit met die buttons)
 	render() {
 		return (
 			<div id={styles.container}>
@@ -36,7 +38,7 @@ export default class TourContainer extends React.Component<{}, {}> {
 					upcoming,
 					"Upcoming",
 					"Op dit moment \n hebben wij geen tours gepland staan",
-				true)}
+				false)}
 				{this.column(
 					past,
 					"Past",
