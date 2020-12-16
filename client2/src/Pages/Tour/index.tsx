@@ -38,7 +38,7 @@ export default class TourContainer extends React.Component<{}, {}> {
 					upcoming,
 					"Upcoming",
 					"Op dit moment \n hebben wij geen tours gepland staan",
-				false)}
+				true)}
 				{this.column(
 					past,
 					"Past",

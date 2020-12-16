@@ -1,4 +1,5 @@
 export interface TourJSON {
+    infoLink: string;
     eventName: string;
     eventLink: string;
     begin: string;

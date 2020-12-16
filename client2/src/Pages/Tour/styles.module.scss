@@ -50,7 +50,7 @@
 
   tr:nth-child(2) {
     text-align: center;
-    color: #d28400;
+    color: rgb(227, 225, 0);//#d28400;
     font-size: 18px;
   }
 
@@ -59,9 +59,47 @@
   }
 }
 
+.button {
+  flex-basis: 40%;
+  line-height: 1.5em;
+  border: 1px solid black;
+  background-color: rgba(100, 100, 100, 0.2);
+  -webkit-box-shadow: 0 0 2px #ffffff;
+  -moz-box-shadow: 0 0 2px #ffffff;
+  box-shadow: 0 0 2px #ffffff;
+  //width: 3.0em;
+  justify-content: center;
+  text-align: center;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #d28400;
+  text-decoration: underline;
+}
+
+.button:hover {
+  border: 1px solid rgb(193, 193, 193);
+  color: rgb(193, 193, 193);
+  cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
 .tourComponentSeparator {
   text-align: center;
-  border: 1px solid rgb(176, 175, 0);
+  border: 1px solid #d28400;//rgb(176, 175, 0);
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;
