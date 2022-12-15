@@ -1,8 +1,8 @@
 import * as React from "react";
-import {TourJSON} from "../../../../schemas/TourSchema";
+import { TourJSON } from "../../../../schemas/TourSchema";
 import Button from "../../Static/Button";
 import styles from "./styles.module.scss";
-import {classNameSeparator} from "../../util";
+import { classNameSeparator } from "../../util";
 
 const monthsDutch = [
 	"januari",
@@ -27,7 +27,7 @@ interface TourProps {
 export default class TourComponent extends React.Component<TourProps, {}> {
 
 	static dateToString(date: Date) {
-		const pad = (n: number) => (n < 10) ? "0"+n : n;
+		const pad = (n: number) => (n < 10) ? "0" + n : n;
 		return `${pad(date.getDate())} ${monthsDutch[date.getMonth()]} ${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
 
 	}
@@ -49,7 +49,7 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 		const begin: string = this.props.tour.begin;
 		return (
 			<div className={styles.tourComponent}>
-				<div className={styles.tourComponentSeparator}/>
+				<div className={styles.tourComponentSeparator} />
 				<table>
 					<tbody>
 						<tr>
@@ -61,17 +61,17 @@ export default class TourComponent extends React.Component<TourProps, {}> {
 							<td><i>{this.props.tour.eventName}</i></td>
 						</tr>
 						<tr>
-							<td>{this.props.tour.location}{(this.props.tour.city.length > 0) ? (", "+this.props.tour.city):""}</td>
+							<td>{this.props.tour.location}{(this.props.tour.city.length > 0) ? (", " + this.props.tour.city) : ""}</td>
 						</tr>
 					</tbody>
 				</table>
 				<div className={styles.buttonContainer}>
-					{this.props.showButtons &&
+					{/* {this.props.showButtons &&
 						this.getTourButton("Stream", this.props.tour.eventLink)}
-					{/*(<Button text={"Stream"} action={() => {window.open(this.props.tour.eventLink)}} height={"0.3em"}/>)}*/}
-					{this.props.showButtons &&
+					(<Button text={"Stream"} action={() => {window.open(this.props.tour.eventLink)}} height={"0.3em"}/>)} */}
+					{this.props.showButtons && this.props.tour.infoLink &&
 						this.getTourButton("Info", this.props.tour.infoLink)}
-					 {/*(<Button text={"Info"} action={() => {window.open(this.props.tour.infoLink)}} height={"0.3em"}/>)}*/}
+					{/*(<Button text={"Info"} action={() => {window.open(this.props.tour.infoLink)}} height={"0.3em"}/>)}*/}
 				</div>
 			</div>
 		);

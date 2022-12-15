@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 #bio {
-  margin-top: $margin-top;
+  margin-top: 1em;
   //max-width: $max-width-mobile;
   line-height: 1.2em;
 
@@ -31,5 +31,6 @@ p.indent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: $margin-top;
   }
 }

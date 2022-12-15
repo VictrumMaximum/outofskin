@@ -2,7 +2,7 @@
 
 #columnWrapper {
   width: 100%;
-  margin-top: $margin-top;
+  margin-top: 1em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -129,4 +129,10 @@ iframe {
   width: 100%;
   top: 0;
   left: 0;
+}
+
+@media (min-width: $min-width) {
+  #columnWrapper {
+    margin-top: $margin-top;
+  }
 }

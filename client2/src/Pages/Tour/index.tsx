@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./styles.module.scss";
 import tours from "../../data/tours";
-import {classNameSeparator} from "../../util";
+import { classNameSeparator } from "../../util";
 import TourComponent from "./TourComponent";
 
 const getDateObject = (dateString: string): Date => {
@@ -38,19 +38,19 @@ export default class TourContainer extends React.Component<{}, {}> {
 					upcoming,
 					"Upcoming",
 					"Op dit moment \n hebben wij geen tours gepland staan",
-				true)}
+					true)}
 				{this.column(
 					past,
 					"Past",
 					"",
-				false)}
+					false)}
 			</div>
 		);
 	}
 
 	column(list: string[], header: string, placeHolder: string, showButtons: boolean) {
 		return <div className={classNameSeparator(styles.tourColumn, "whitePlaneBackground")}>
-			<h2>{header}</h2>
+			<h1>{header}</h1>
 			{list.length === 0 && placeHolder}
 			{list.map((id) => {
 				const tour = tours[id];

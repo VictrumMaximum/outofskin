@@ -8,8 +8,8 @@
 }
 
 .tourComponent {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 3em;
+  // margin-bottom: 3em;
 }
 
 .tourColumn {
@@ -19,10 +19,14 @@
   text-align: left;
   width: 100%;
   //overflow-y: auto;
+
+  h1 {
+    color: #d28400;
+  }
 }
 
 .tourColumn:first-child {
-  margin-top: $margin-top;
+  margin-top: 1em;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -42,7 +46,7 @@
   }
 
   tr {
-    height: 2em;
+    height: 1.5em;
   }
   tr:nth-child(1) {
     text-align: left;
@@ -60,7 +64,7 @@
 }
 
 .button {
-  flex-basis: 40%;
+  flex-basis: 50%;
   line-height: 1.5em;
   border: 1px solid black;
   background-color: rgba(100, 100, 100, 0.2);
@@ -84,6 +88,7 @@
   border-radius: 5px;
   color: #d28400;
   text-decoration: underline;
+  margin-top: 1em;
 }
 
 .button:hover {
@@ -103,7 +108,7 @@
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 @media(min-width: $min-width) {
@@ -111,7 +116,7 @@
     max-width: initial;
   }
 
-  //.tourColumn:first-child {
-  //  margin-bottom: 0;
-  //}
+  .tourColumn:first-child {
+    margin-top: $margin-top;
+  }
 }

@@ -8,7 +8,7 @@
 }
 
 .pressColumn {
-  margin-top: $margin-top;
+  margin-top: 1em;
   max-width: 18em;
 }
 
@@ -21,12 +21,14 @@
 
 .buttonWrapper {
   width: 4em;
+  color: $sunset-yellow;
 }
 
 @media (min-width: $min-width) {
   .pressColumn {
     max-width: 25em;
     margin: 0 0.5em 0 0.5em;
+    margin-top: $margin-top;
   }
   #container {
     display: flex;

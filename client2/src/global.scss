@@ -31,14 +31,14 @@ h1, h2, h3, h4, h5, b {
 }
 
 .whitePlaneBackground {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 1em;
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   border-radius: $border-radius;
-  -webkit-box-shadow: 0 0 30px 2px #000;
-  -moz-box-shadow: 0 0 30px 2px #000;
-  box-shadow: 0 0 30px 2px #000;
+  // -webkit-box-shadow: 0 0 30px 2px #000;
+  // -moz-box-shadow: 0 0 30px 2px #000;
+  // box-shadow: 0 0 30px 2px #000;
 }
 
 .row, .col {

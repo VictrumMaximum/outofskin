@@ -6,6 +6,7 @@ $menu-width-mobile: 10em;
 #menuBar {
   padding-top: 0.3em;
   width: $page-width;
+  margin-bottom: 1em;
 }
 
 #menuIcon {
@@ -33,6 +34,7 @@ $menu-width-mobile: 10em;
   display: block;
   border-bottom: 1px solid black;
   width: $menu-width-mobile;
+  font-size: 40px;
 }
 
 // h1 elements that are children of .optionDiv
@@ -49,6 +51,7 @@ $menu-width-mobile: 10em;
   user-select: none;
   text-decoration: none;
   color: $menu-color;
+  -webkit-text-stroke: 1px #422a00;
 }
 
 .activeOptionLink {
@@ -76,11 +79,13 @@ $menu-width-mobile: 10em;
 
   font-size: 32px;
   font-weight: bold;
+  -webkit-text-stroke: 1px #422a00;
 
   opacity: 1;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
+  
 }
 
 @media (min-width: $min-width) {
@@ -91,6 +96,7 @@ $menu-width-mobile: 10em;
     //text-align: center;
     align-self: center;
     padding-bottom: 2.3em;
+    margin-bottom: 0; // reset
   }
 
   .optionDiv {
